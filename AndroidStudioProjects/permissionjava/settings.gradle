@@ -1,0 +1,2 @@
+rootProject.name='permissionjava'
+include ':app'
