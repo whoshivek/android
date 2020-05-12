@@ -96,15 +96,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         checkWinner()
     }
 
-    private fun checkWinner() {
+    private fun checkWinner()
+    {
         //horizontal
         for (i in 0..2){
-            if (boardStatus[i][0] == boardStatus[i][1] && boardStatus[i][0] == boardStatus[i][2]){
-                if (boardStatus[i][0] == 1){
+            if (boardStatus[i][0] == boardStatus[i][1] && boardStatus[i][0] == boardStatus[i][2])
+            {
+                if (boardStatus[i][0] == 1)
+                {
                     updateDisplay("Player X Won")
                     break
                 }
-                if(boardStatus[i][0] == 0){
+                if(boardStatus[i][0] == 0)
+                {
                     updateDisplay("Player 0 Won")
                     break
                 }
@@ -112,12 +116,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
         //vertical
         for (i in 0..2){
-            if (boardStatus[0][i] == boardStatus[1][i] && boardStatus[0][i] == boardStatus[2][i]){
-                if (boardStatus[0][i] == 1){
+            if (boardStatus[0][i] == boardStatus[1][i] && boardStatus[0][i] == boardStatus[2][i])
+            {
+                if (boardStatus[0][i] == 1)
+                {
                     updateDisplay("Player X Won")
                     break
                 }
-                if(boardStatus[0][i] == 0){
+                if(boardStatus[0][i] == 0)
+                {
                     updateDisplay("Player 0 Won")
 
                 }
@@ -127,24 +134,26 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun updateDisplay(text: String) {
        textv.text= text
-        // if (text.contains("won")){
-        //      disableButton()
-        // }
+        if (text.contains("Won")){
+           disableButton()
+         }
     }
-    //  private fun disableButton(){
-    //      for(i in board){
-    //          for(button in i){
-    //              button.isEnabled= false
-    //          }
-    //      }
-    //  }
+     private fun disableButton(){
+         for(i in board){
+             for(button in i)
+             {
+                 button.isEnabled= false
+          }
+       }
+      }
 
     private fun updateValue(row: Int, col: Int, player: Boolean) {
         val text = if (player) "X" else "0"
         val value = if (player) 1 else 0
         board[row][col].apply {
-            isEnabled=false
+            isEnabled=true
             setText(text)
+            isEnabled=false
         }
         boardStatus[row][col]=value
     }

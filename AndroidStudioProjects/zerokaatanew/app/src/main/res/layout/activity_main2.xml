@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#673AB7"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Main2Activity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:backgroundTint="#9C27B0"
+        android:text="CHOOSE"
+        android:textColor="#FFFFFF"
+        android:textSize="50dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#F44336"
+        android:text="O"
+        android:id="@+id/o"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/x"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30sp"
+        android:background="#00BCD4"
+        android:text="X"
+        android:textSize="30dp" />
+
+    <ImageButton
+           android:id="@+id/back"
+        android:layout_width="126dp"
+        android:layout_height="47dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#673AB7"
+        android:src="@android:drawable/ic_media_rew"
+        android:tint="#F44336" />
+
+
+</LinearLayout>
