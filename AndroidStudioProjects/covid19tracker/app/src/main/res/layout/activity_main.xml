@@ -1,228 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/swipe"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:id="@+id/t1"
-        android:layout_height="wrap_content"
-        android:text="INDIA COVID\n TRACKER"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/Black"
-        android:layout_margin="16dp"
-        />
-
-    <TextView
-        android:textAlignment="textEnd"
-        android:id="@+id/lastupdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Last update"
-        android:textAllCaps="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="16dp"
-        android:textSize="15dp"
-        android:textColor="@color/DarkGreen"/>
-
-    <LinearLayout
-        android:id="@+id/containerr"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/t1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="16dp"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="CONFIRMED"
-
-                android:textColor="@color/Red"
-                android:textSize="14dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:id="@+id/deltaconfirmed"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="CONFIRMED"
-                android:textColor="@color/Black"
-                android:textSize="9dp" />
-
-            <ImageView
-                android:layout_width="54dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:tint="@color/Red"
-                android:src="@drawable/coronavirus"/>
-
-            <TextView
-                android:id="@+id/confirm"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="CONFIRMED"
-                android:textColor="@color/Red"
-                android:textSize="16dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="ACTIVE"
-                android:gravity="center"
-                android:textColor="@color/DarkGreen"
-                android:textSize="14dp" />
-            <TextView
-                android:id="@+id/deltaactive"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-
-                android:textColor="@color/Black"
-                android:textSize="9dp" />
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:tint="@color/Green"
-                android:src="@drawable/cot"/>
-            <TextView
-                android:id="@+id/active"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="CONFIRMED"
-                android:textColor="@color/DarkGreen"
-                android:textSize="16dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="RECOVERED"
-                android:gravity="center"
-                android:textSize="14dp"
-                android:textColor="@color/Blue"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="CONFIRMED"
-                android:id="@+id/deltarecover"
-                android:textColor="@color/Black"
-                android:textSize="9dp" />
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:tint="@color/Blue"
-                android:layout_marginTop="15dp"
-                android:src="@drawable/syringe"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="CONFIRMED"
-                android:textColor="@color/Blue"
-                android:id="@+id/recovered"
-                android:textSize="16dp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="DEATHS"
-                android:gravity="center"
-                android:textColor="@color/DarkOrange"
-                android:textSize="14dp" />
-            <TextView
-                android:id="@+id/deltadeath"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="CONFIRMED"
-                android:textColor="@color/Black"
-                android:textSize="9dp" />
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/burial"
-                android:layout_marginTop="15dp"
-                android:layout_gravity="center"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="CONFIRMED"
-                android:textColor="@color/DarkOrange"
-                android:id="@+id/death"
-                android:textSize="16dp" />
 
 
 
-        </LinearLayout>
-
-
-    </LinearLayout>
-<include
-    layout="@layout/headerfile"
-    android:id="@+id/include"
-    android:layout_below="@+id/containerr"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-
-        android:layout_below="@+id/include"
-        android:id="@+id/rv"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@android:color/background_light">
 
-        />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/t1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="INDIA COVID\n TRACKER"
+            android:textColor="@color/Black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lastupdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="16dp"
+            android:text="Last update"
+            android:textAlignment="textEnd"
+            android:textAllCaps="true"
+            android:textColor="@color/DarkGreen"
+            android:textSize="15dp" />
+
+        <LinearLayout
+            android:id="@+id/containerr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/t1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="CONFIRMED"
+
+                    android:textColor="@color/Red"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/deltaconfirmed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="CONFIRMED"
+                    android:textColor="@color/Black"
+                    android:textSize="9dp" />
+
+                <ImageView
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/coronavirus"
+                    android:tint="@color/Red" />
+
+                <TextView
+                    android:id="@+id/confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="CONFIRMED"
+                    android:textColor="@color/Red"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="ACTIVE"
+                    android:textColor="@color/DarkGreen"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/deltaactive"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+
+                    android:textColor="@color/Black"
+                    android:textSize="9dp" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/cot"
+                    android:tint="@color/Green" />
+
+                <TextView
+                    android:id="@+id/active"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="CONFIRMED"
+                    android:textColor="@color/DarkGreen"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="RECOVERED"
+                    android:textColor="@color/Blue"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/deltarecover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="CONFIRMED"
+                    android:textColor="@color/Black"
+                    android:textSize="9dp" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/syringe"
+                    android:tint="@color/Blue" />
+
+                <TextView
+                    android:id="@+id/recovered"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="CONFIRMED"
+                    android:textColor="@color/Blue"
+                    android:textSize="16dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="DEATHS"
+                    android:textColor="@color/DarkOrange"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/deltadeath"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="CONFIRMED"
+                    android:textColor="@color/Black"
+                    android:textSize="9dp" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/burial" />
+
+                <TextView
+                    android:id="@+id/death"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="CONFIRMED"
+                    android:textColor="@color/DarkOrange"
+                    android:textSize="16dp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/headerfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/containerr" />
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/include"
+
+            />
+    </RelativeLayout>
 
 </RelativeLayout>

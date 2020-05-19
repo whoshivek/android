@@ -7,7 +7,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.example.covid19tracker"
+        applicationId "com.shivek.AROGYATRACKER"
         minSdkVersion 24
         targetSdkVersion 29
         versionCode 1

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.covid19tracker">
+    package="com.shivek.AROGYATRACKER">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -9,12 +9,14 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Arogya Tracker"
+
+        android:theme="@style/Theme.AppCompat.NoActionBar"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
 
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        >
+        <activity android:name="com.shivek.AROGYATRACKER.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
