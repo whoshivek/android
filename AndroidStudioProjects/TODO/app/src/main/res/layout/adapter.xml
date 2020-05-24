@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:elevation="10dp"
+    app:cardCornerRadius="10dp"
+    android:layout_height="wrap_content">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/view"/>
+<RelativeLayout
+    android:background="@color/White"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/cardview_default_radius"
+    android:layout_height="120dp">
+
+    <TextView
+        android:layout_marginStart="10dp"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="TASK TITLE"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="@color/Black"
+        android:id="@+id/title"/>
+
+<TextView
+    android:layout_marginEnd="16dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/category"
+    android:layout_alignParentRight="true"
+    android:text="category"/>
+
+    <TextView
+        android:layout_marginStart="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:text="task subtitle"
+        android:textSize="15dp"
+        android:textColor="@color/Black_Cow"
+        android:id="@+id/description"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:id="@+id/usees"
+        android:layout_below="@+id/description"
+        android:text="date:"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mon , 12 nov 2019"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/usees"
+        android:id="@+id/etdate"
+        android:textColor="@color/Black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/description"
+        android:layout_marginTop="16dp"
+
+
+       android:layout_alignParentEnd="true"
+        android:layout_marginEnd="8dp"
+
+
+        android:id="@+id/ussess"
+        android:text="time:"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_alignParentEnd="true"
+        android:layout_below="@+id/ussess"
+        android:text="10:00 AM"
+        android:layout_marginEnd="16dp"
+
+        android:id="@+id/ettime"
+        android:textColor="@color/Black"/>
+
+
+
+
+
+
+</RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

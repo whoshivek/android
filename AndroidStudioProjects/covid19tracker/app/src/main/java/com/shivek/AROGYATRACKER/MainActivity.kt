@@ -81,6 +81,7 @@ builder.setCancelable(false)
         rv.layoutManager = LinearLayoutManager(this)
         rv.adapter = adapterapi
 
+
     }
 
 
