@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/Black"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/shopping"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            app:cardCornerRadius="20dp"
+
+            android:padding="8dp"
+
+            android:layout_margin="8dp"
+            android:background="@color/White"
+            android:layout_height="match_parent">
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:orientation="vertical"
+           android:gravity="center"
+             android:layout_height="match_parent">
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="WELCOME BACK"
+                 android:background="@color/LightBlue"
+                 android:textSize="25dp"
+                 android:textColor="@color/Blue"
+                 android:gravity="center_horizontal"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp">
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="LOGIN ID:-"
+                 android:textColor="@color/Black"
+                 android:textSize="15dp" />
+
+                <EditText
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="wrap_content"
+                  android:textSize="15dp"
+                    android:layout_height="wrap_content"
+                    android:hint="      ENTER YOUR EMAIL        "/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textSize="15dp"
+                 android:layout_marginBottom="40dp"
+                 android:textColor="@color/Black"
+                 android:text="PASSWORD:-"/>
+                <EditText
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"
+                    android:hint="ENTER YOUR PASSWORD"/>
+
+            </LinearLayout>
+
+             <com.google.android.material.button.MaterialButton
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:padding="8dp"
+                 android:layout_margin="8dp"
+                 android:text="SIGN IN"
+                 app:cornerRadius="40dp"
+                 android:layout_gravity="center_horizontal"
+              />
+
+
+             <TextView
+                 android:layout_gravity="end"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textColor="@color/Red"
+
+                 android:text="FORGET PASSWORD?"/>
+
+             <TextView
+                 android:layout_marginTop="55dp"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:text="DON'T HAVE AN ACCOUNT?"
+                 android:textColor="@color/Black"
+                 />
+
+             <TextView
+                 android:id="@+id/signup"
+                 android:layout_width="wrap_content"
+                 android:layout_height="30dp"
+                 android:layout_gravity="center"
+                 android:text="SIGN UP"
+                 android:textColor="@color/Red" />
+
+         </LinearLayout>
+
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+</FrameLayout>
