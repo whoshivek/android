@@ -10,12 +10,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:src="@drawable/shopping"/>
+    <TextView
+        android:id="@+id/skip"
+        android:layout_width="wrap_content"
+        android:layout_margin="4dp"
+        android:textSize="12dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="SKIP FOR NOW▶"
+        android:textColor="@color/White"/>
+</RelativeLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:src="@drawable/shopping"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -40,58 +53,47 @@
                  android:textColor="@color/Blue"
                  android:gravity="center_horizontal"/>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+          <com.google.android.material.textfield.TextInputLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/semail"
+                android:padding="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-               android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="40dp">
-             <TextView
-                 android:layout_width="wrap_content"
+                android:background="@drawable/edittext"
+                android:hint="ENTER YOUR EMAIL"/>
+
+             <EditText
+                 android:id="@+id/spassword"
+                 android:layout_width="match_parent"
                  android:layout_height="wrap_content"
-                 android:text="LOGIN ID:-"
-                 android:textColor="@color/Black"
-                 android:textSize="15dp" />
+                 android:layout_marginStart="8dp"
+                 android:layout_marginTop="20dp"
+                 android:layout_marginEnd="8dp"
+                 android:background="@drawable/edittext"
+                 android:hint="ENTER YOUR PASSWORD"
+                 android:padding="8dp"
+                 android:password="true" />
 
-                <EditText
-                    android:layout_marginLeft="15dp"
-                    android:layout_width="wrap_content"
-                  android:textSize="15dp"
-                    android:layout_height="wrap_content"
-                    android:hint="      ENTER YOUR EMAIL        "/>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
-
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:textSize="15dp"
-                 android:layout_marginBottom="40dp"
-                 android:textColor="@color/Black"
-                 android:text="PASSWORD:-"/>
-                <EditText
-                    android:layout_marginLeft="15dp"
-                    android:layout_width="wrap_content"
-                    android:textSize="15dp"
-                    android:layout_height="wrap_content"
-                    android:hint="ENTER YOUR PASSWORD"/>
-
-            </LinearLayout>
 
              <com.google.android.material.button.MaterialButton
                  android:layout_width="match_parent"
+                 android:id="@+id/sin"
                  android:layout_height="wrap_content"
                  android:padding="8dp"
+                 android:enabled="false"
+                 android:elevation="4dp"
+                 android:backgroundTint="@color/LightBlue"
                  android:layout_margin="8dp"
                  android:text="SIGN IN"
-                 app:cornerRadius="40dp"
+                 android:textColor="@color/Blue"
+                 app:cornerRadius="8dp"
                  android:layout_gravity="center_horizontal"
               />
 
@@ -123,7 +125,25 @@
 
          </LinearLayout>
 
+<RelativeLayout
+    android:visibility="gone"
+    android:id="@+id/pb"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <pl.tajchert.waitingdots.DotsTextView
+        xmlns:dots="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:id="@+id/dots"
+        android:textSize="45sp"
+        android:textColor="@android:color/black"
+        dots:autoplay="true"
+        dots:period="1000"
+        />
 
+</RelativeLayout>
 
         </com.google.android.material.card.MaterialCardView>
 

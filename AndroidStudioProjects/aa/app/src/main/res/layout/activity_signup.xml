@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/Black"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/shopping"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            app:cardCornerRadius="20dp"
+
+            android:padding="8dp"
+
+            android:layout_margin="8dp"
+            android:background="@color/White"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NEW USER"
+                    android:background="@color/LightBlue"
+                    android:textSize="25dp"
+                    android:textColor="@color/Blue"
+                    android:gravity="center_horizontal"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:id="@+id/name"
+                    android:padding="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext"
+                    android:hint="NAME"/>
+
+
+                <EditText
+                    android:padding="8dp"
+                    android:id="@+id/email"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext"
+                    android:hint="EMAIL ADDRESS"/>
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/edittext"
+                    android:hint="PASSWORD(at least 6 characters)"
+                    android:padding="8dp"
+                    android:password="true" />
+
+                <EditText
+                    android:id="@+id/confirmpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/edittext"
+                    android:hint="CONFIRM PASSWORD"
+                    android:padding="8dp"
+                    android:password="true" />
+
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:id="@+id/ss"
+                    android:enabled="false"
+                    android:elevation="4dp"
+                    android:backgroundTint="@color/LightBlue"
+                    android:layout_margin="8dp"
+                    android:text="SIGN UP"
+                    android:textColor="@color/Blue"
+                    app:cornerRadius="8dp"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+
+
+
+                <TextView
+                    android:layout_marginTop="55dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="ALREADY A MEMBER?"
+                    android:textColor="@color/Black"
+                    />
+
+                <TextView
+                    android:id="@+id/signin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:text="SIGN IN"
+                    android:textColor="@color/Red" />
+
+
+
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/progressbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <pl.tajchert.waitingdots.DotsTextView
+                    xmlns:dots="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/dots"
+                    android:textSize="45sp"
+                    android:textColor="@android:color/black"
+                    dots:autoplay="true"
+                    dots:period="1000"
+                    />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+</FrameLayout>

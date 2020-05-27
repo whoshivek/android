@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {
 
@@ -12,16 +13,24 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash)
-
+val user = FirebaseAuth.getInstance().currentUser
 
         Handler().postDelayed({
             // This method will be executed once the timer is over
             // Start your app main activity
 
-            startActivity(Intent(this,login::class.java))
+            if (user == null ) {
 
-            // close this activity
-            finish()
+                startActivity(Intent(this, login::class.java))
+                finish()
+            }
+
+            if (user != null)
+            {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
+
         }, SPLASH_TIME_OUT)
     }
 }
