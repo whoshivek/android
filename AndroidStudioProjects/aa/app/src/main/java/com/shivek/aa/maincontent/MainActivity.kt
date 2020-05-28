@@ -1,7 +1,8 @@
-package com.shivek.aa
+package com.shivek.aa.maincontent
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.shivek.aa.R
 
 class MainActivity : AppCompatActivity() {
 

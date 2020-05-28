@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/Black"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:src="@drawable/shopping"/>
+            <TextView
+                android:id="@+id/skip"
+                android:layout_width="wrap_content"
+                android:layout_margin="4dp"
+                android:textSize="12dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="SKIP FOR NOW▶"
+                android:textColor="@color/White"/>
+        </RelativeLayout>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            app:cardCornerRadius="20dp"
+
+            android:padding="8dp"
+
+            android:layout_margin="8dp"
+            android:background="@color/White"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="VERIFICATION CODE SENT"
+                    android:background="@color/LightBlue"
+                    android:textSize="20dp"
+                    android:textColor="@color/Blue"
+                    android:gravity="center_horizontal"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:id="@+id/phone"
+                    android:padding="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext"
+                    android:hint="ENTER YOUR OTP"/>
+
+
+
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:id="@+id/verify"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:enabled="true"
+                    android:elevation="4dp"
+                    android:backgroundTint="@color/LightBlue"
+                    android:layout_margin="8dp"
+                    android:text="VERIFY"
+                    android:textColor="@color/Blue"
+                    app:cornerRadius="8dp"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/pb"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+               <ProgressBar
+                   android:id="@+id/pbb"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:visibility="gone"
+                   />
+
+
+            </FrameLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+</FrameLayout>

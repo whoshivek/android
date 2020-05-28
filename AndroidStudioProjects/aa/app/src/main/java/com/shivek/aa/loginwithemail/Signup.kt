@@ -1,21 +1,16 @@
-package com.shivek.aa
+package com.shivek.aa.loginwithemail
 
 import android.content.Intent
-import android.content.res.Resources
 import android.graphics.Color
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PatternMatcher
 import android.text.Editable
-import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.shivek.aa.R
 import kotlinx.android.synthetic.main.activity_signup.*
-import java.util.jar.Manifest
 
 class signup : AppCompatActivity() {
 
@@ -30,7 +25,10 @@ class signup : AppCompatActivity() {
 
         signin.setOnClickListener {
             startActivity(Intent(this, login::class.java))
-            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+            overridePendingTransition(
+                R.anim.fadein,
+                R.anim.fadeout
+            )
             finish()
 
         }
@@ -117,13 +115,15 @@ class signup : AppCompatActivity() {
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(),password.text.toString())
                         .addOnCompleteListener{
                             if (it.isSuccessful) {
-                                FirebaseFirestore.getInstance().collection("usersnames")
-                                    .add(username)
-                                    .addOnCompleteListener {
+                                FirebaseAuth.getInstance().currentUser?.sendEmailVerification()
+                                    ?.addOnCompleteListener {
                                         if (it.isSuccessful) {
+                                               Toast.makeText(this,"REGISTERED SUCCESSFULLY \n VERIFY YOUR EMAIL",Toast.LENGTH_LONG).show()
+                                            val i = Intent(this,
+                                                login::class.java)
+                                         i.putExtra("result" ,email.text.toString() )
 
-                                            startActivity(Intent(this, MainActivity::class.java))
-                                            finish()
+                                            startActivity(i)
                                         }
 
                                     }

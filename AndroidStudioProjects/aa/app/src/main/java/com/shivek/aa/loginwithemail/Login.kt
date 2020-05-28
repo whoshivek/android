@@ -1,4 +1,4 @@
-package com.shivek.aa
+package com.shivek.aa.loginwithemail
 
 import android.content.Intent
 import android.graphics.Color
@@ -9,8 +9,8 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.shivek.aa.signup
-import kotlinx.android.synthetic.main.activity_signup.*
+import com.shivek.aa.maincontent.MainActivity
+import com.shivek.aa.R
 import kotlinx.android.synthetic.main.login.*
 
 class login : AppCompatActivity() {
@@ -20,11 +20,16 @@ class login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
         signup.setOnClickListener {
-            startActivity(Intent(this,com.shivek.aa.signup::class.java))
-            overridePendingTransition(R.anim.fadein,R.anim.fadeout)
+            startActivity(Intent(this, com.shivek.aa.loginwithemail.signup::class.java))
+            overridePendingTransition(
+                R.anim.fadein,
+                R.anim.fadeout
+            )
             finish()
         }
 
+        val c = intent.getStringExtra("result")
+        semail.setText(c)
         skip.setOnClickListener {
             FirebaseAuth.getInstance().signInAnonymously()
                 .addOnCompleteListener {
@@ -87,8 +92,17 @@ class login : AppCompatActivity() {
                     .addOnCompleteListener{
                         if (it.isSuccessful)
                         {
-                            startActivity(Intent(this,MainActivity::class.java))
-                            finish()
+                           if (FirebaseAuth.getInstance().currentUser?.isEmailVerified!!) {
+                               startActivity(Intent(this, MainActivity::class.java))
+                               finish()
+                           }
+                            else
+                           {
+                               sin.isEnabled = true
+                             pb.visibility = View.GONE
+                               Toast.makeText(this,"VERIFY YOUR EMAIL",Toast.LENGTH_SHORT).show()
+
+                           }
 
                         }
                         else
