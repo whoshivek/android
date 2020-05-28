@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".login">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+
+        android:gravity="center"
+        android:text="Welcome to Whatsapp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+
+        android:gravity="center"
+        android:text="Verify Your Number"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+
+        android:gravity="center"
+        android:text="please enter your mobile no. You will get a SMS including a verification code"
+
+        android:textSize="15dp"
+        />
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:ccp_defaultCode="91"/>
+
+</LinearLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:elevation="15dp"
+        android:enabled="false"
+        android:layout_marginTop="16dp"
+        android:id="@+id/next"
+        android:textColor="@color/white"
+        android:text="NEXT"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        app:cornerRadius="5dp"/>
+
+
+
+</LinearLayout>

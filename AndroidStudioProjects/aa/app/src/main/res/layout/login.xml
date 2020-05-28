@@ -105,7 +105,15 @@
                  android:textColor="@color/Red"
 
                  android:text="FORGET PASSWORD?"/>
+             <TextView
+                 android:layout_margin="8dp"
+                 android:id="@+id/usephone"
+                 android:layout_gravity="start"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textColor="@color/DarkBlue"
 
+                 android:text="OR USE PHONE NO."/>
              <TextView
                  android:layout_marginTop="55dp"
                  android:layout_width="wrap_content"

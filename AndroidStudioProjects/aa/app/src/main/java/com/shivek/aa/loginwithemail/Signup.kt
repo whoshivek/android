@@ -122,6 +122,7 @@ class signup : AppCompatActivity() {
                                             val i = Intent(this,
                                                 login::class.java)
                                          i.putExtra("result" ,email.text.toString() )
+                                            i.putExtra("name",name.text.toString())
 
                                             startActivity(i)
                                         }

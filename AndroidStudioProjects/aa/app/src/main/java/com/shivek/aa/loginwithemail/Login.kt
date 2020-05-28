@@ -9,8 +9,11 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.shivek.aa.maincontent.MainActivity
 import com.shivek.aa.R
+import com.shivek.aa.loginwithphone.loginwithphone
+import com.shivek.aa.maincontent.Main2Activity
 import kotlinx.android.synthetic.main.login.*
 
 class login : AppCompatActivity() {
@@ -27,6 +30,11 @@ class login : AppCompatActivity() {
             )
             finish()
         }
+val fullname = intent.getStringExtra("name")
+        usephone.setOnClickListener {
+            startActivity(Intent(this,loginwithphone::class.java))
+            finish()
+        }
 
         val c = intent.getStringExtra("result")
         semail.setText(c)
@@ -34,7 +42,7 @@ class login : AppCompatActivity() {
             FirebaseAuth.getInstance().signInAnonymously()
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
-                        startActivity(Intent(this, MainActivity::class.java))
+                        startActivity(Intent(this, Main2Activity::class.java))
                         finish()
                     }
                     else
@@ -85,7 +93,9 @@ class login : AppCompatActivity() {
         if (semail.text.toString().matches(emailpattern.toRegex()))
         {
             if (spassword.text.toString().length >=6)
-            {
+            {val fullname = intent.getStringExtra("name")
+                val map = hashMapOf<String,Any>()
+                map.put("fullname",fullname)
                 pb.visibility = View.VISIBLE
                 sin.isEnabled = false
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(semail.text.toString(),spassword.text.toString())
@@ -93,6 +103,7 @@ class login : AppCompatActivity() {
                         if (it.isSuccessful)
                         {
                            if (FirebaseAuth.getInstance().currentUser?.isEmailVerified!!) {
+                               FirebaseFirestore.getInstance().collection("USERS").add(map)
                                startActivity(Intent(this, MainActivity::class.java))
                                finish()
                            }

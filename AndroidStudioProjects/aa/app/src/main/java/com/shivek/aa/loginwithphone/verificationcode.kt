@@ -1,5 +1,6 @@
 package com.shivek.aa.loginwithphone
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -34,7 +35,7 @@ class verificationcode : AppCompatActivity() {
     sendverificationcode(n)
 
 
-verify.setOnClickListener {
+vb.setOnClickListener {
     pbb.visibility = View.VISIBLE
     authenticate()
 }
@@ -51,17 +52,23 @@ verify.setOnClickListener {
         mCallbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks()
             {
                 override fun onVerificationCompleted(p0: PhoneAuthCredential) {
+                    auto.visibility = View.GONE
                     pbb.visibility = View.GONE
+                    phone.isClickable= true
+                    vb.isEnabled = true
                     signinnn(p0)
 
                 }
 
                 override fun onVerificationFailed(p0: FirebaseException) {
                     pbb.visibility = View.GONE
+                    auto.visibility = View.GONE
+
                   Toast.makeText(this@verificationcode , p0.message,Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onCodeSent(verify: String, p1: PhoneAuthProvider.ForceResendingToken) {
+
                     verificationId = verify
                     super.onCodeSent(verify, p1)
                 }
@@ -87,7 +94,10 @@ verify.setOnClickListener {
     }
 
     fun sendverificationcode(n: String?) {
+        auto.visibility = View.VISIBLE
         pbb.visibility = View.VISIBLE
+        phone.isClickable = false
+        vb.isEnabled = false
         callbacks()
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
             "+91${n}", // Phone number to verify

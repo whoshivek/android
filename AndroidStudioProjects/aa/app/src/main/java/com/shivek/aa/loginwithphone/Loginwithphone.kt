@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.shivek.aa.R
 import com.shivek.aa.loginwithemail.login
+import com.shivek.aa.maincontent.Main2Activity
 import kotlinx.android.synthetic.main.activity_loginwithphone.*
 
 class loginwithphone : AppCompatActivity() {
@@ -16,7 +19,19 @@ class loginwithphone : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loginwithphone)
 
+skipp.setOnClickListener {
+    FirebaseAuth.getInstance().signInAnonymously()
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    startActivity(Intent(this, Main2Activity::class.java))
+                    finish()
+                } else {
+                    val error = it.exception?.message
+                    Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
 
+                }
+            }
+}
         phone.addTextChangedListener(object :TextWatcher{
             override fun afterTextChanged(s: Editable?) {
 
@@ -33,6 +48,7 @@ class loginwithphone : AppCompatActivity() {
 
         email.setOnClickListener {
             startActivity(Intent(this, login::class.java))
+            finish()
         }
 
         mobilelogin.setOnClickListener {

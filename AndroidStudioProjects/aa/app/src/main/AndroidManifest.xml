@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".loginwithphone.verificationcode"></activity>
+        <activity
+            android:name=".maincontent.Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".loginwithphone.verificationcode" />
         <activity android:name=".loginwithphone.loginwithphone" />
         <activity android:name=".maincontent.MainActivity" />
         <activity android:name=".loginwithemail.signup" />
