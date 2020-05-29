@@ -2,6 +2,7 @@ package com.shivek.whatsappclone
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -30,6 +31,7 @@ class otpActivity : AppCompatActivity() {
 
     lateinit var mCallbacks : PhoneAuthProvider.OnVerificationStateChangedCallbacks
     var mverification : String? = null
+    private var istimeractive = false
     var mresend  :PhoneAuthProvider.ForceResendingToken? = null
     private var mcounter : CountDownTimer?= null
 private lateinit var progress : ProgressDialog
@@ -48,12 +50,47 @@ private lateinit var progress : ProgressDialog
             authenticate()
         }
 
+        resend.setOnClickListener {
+            if (mresend != null ) {
+                val phoneno = intent.getStringExtra(PHONE_NO)
+                countertimer(60000)
+                resendVerificationCode(phoneno, mresend!!)
+              
+              progress = createprogress("Sending a verification code", false)
+                progress.show()
+            }
+            else {
+                Toast.makeText(this,"Sorry, You Can't request new code now, Please wait ...",Toast.LENGTH_LONG).show()
+            }
+        }
+
+
 
     }
 
+    private fun resendVerificationCode(phoneno: String?, mresend: PhoneAuthProvider.ForceResendingToken) {
+                 PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                     phoneno!!,
+                     60,
+                     TimeUnit.SECONDS,
+                     this,
+                     mCallbacks,
+                     mresend
+                 )
+    }
+
     private fun authenticate() {
-        val c = otppp.text
-        
+
+        val c = otppp.text.toString()
+        if (c.isNotEmpty() && !mverification.isNullOrBlank()) {
+
+            val credential: PhoneAuthCredential =
+                PhoneAuthProvider.getCredential(mverification!!, c)
+            signin(credential)
+        }
+        else{
+            notifyuserandretry("OOPS SOMETHING WENT WRONG")
+        }
     }
 
     fun  callbacks()
@@ -73,6 +110,7 @@ private lateinit var progress : ProgressDialog
                 }
 
                 signin(p0)
+
             }
 
             override fun onVerificationFailed(p0: FirebaseException) {
@@ -102,10 +140,12 @@ private lateinit var progress : ProgressDialog
           MaterialAlertDialogBuilder(this).apply {
               setMessage(error)
               setPositiveButton("RETRY"){ _,_->
-                  startActivity(Intent(this@otpActivity,login::class.java))
+                 recreate()
+
               }
-              setNegativeButton("CANCEL"){ dialog, which ->
-              dialog.dismiss()
+              setNegativeButton("CANCEL"){ _, _ ->
+                  startActivity(Intent(this@otpActivity,login::class.java))
+                  finish()
               }
               setCancelable(false)
               create()
@@ -122,14 +162,34 @@ private lateinit var progress : ProgressDialog
                 if (it.isSuccessful)
                 {
                          startActivity(Intent(this,welcome::class.java))
+                    finish()
                 }
                 else{
                     val i = it.exception?.message
-                    notifyuserandretry(i)
+                     progress.dismiss()
+                    otppp.setText("")
+                    notifyuserandretrydifferent(i)
 
                 }
             }
 
+    }
+
+    private fun notifyuserandretrydifferent(i: String?) {
+MaterialAlertDialogBuilder(this).apply {
+    setMessage(i)
+    setPositiveButton("RE-ENTER",DialogInterface.OnClickListener{dialog, which ->
+        dialog.dismiss()
+
+
+    })
+    setNegativeButton("EDIT"){_,_ ->
+        startActivity(Intent(this@otpActivity,login::class.java))
+        finish()
+    }
+    create()
+    show()
+}
     }
 
     private fun verify() {
@@ -148,6 +208,7 @@ private lateinit var progress : ProgressDialog
     }
 
     private fun countertimer(timeinmillfuture: Long) {
+        istimeractive = true
         resend.isEnabled = false
       mcounter=  object : CountDownTimer(timeinmillfuture,1000){
             override fun onFinish() {
