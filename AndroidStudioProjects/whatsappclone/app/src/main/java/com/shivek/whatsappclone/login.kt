@@ -72,7 +72,8 @@ class login: AppCompatActivity() {
                 {
                     val credential = data.getParcelableExtra<Credential>(Credential.EXTRA_KEY)
 
-                    enter.setText(credential.id)
+                    val c = credential.id.substring(credential.id.length-10)
+                    enter.setText(c)
                 }
         }
     }

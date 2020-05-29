@@ -31,6 +31,8 @@
 
     <TextView
      android:text="cddddddddd"
+        android:visibility="invisible"
+        android:textColor="@color/red"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/counter"
@@ -41,6 +43,7 @@
 
     <com.mukesh.OtpView
     android:layout_marginTop="40dp"
+        android:id="@+id/otppp"
     android:layout_gravity="center"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

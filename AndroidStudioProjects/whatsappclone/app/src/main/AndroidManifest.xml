@@ -11,8 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".otpActivity"></activity>
-        <activity android:name=".login"></activity>
+        <activity android:name=".welcome"></activity>
+        <activity android:name=".otpActivity" />
+        <activity android:name=".login" />
         <activity android:name=".splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
