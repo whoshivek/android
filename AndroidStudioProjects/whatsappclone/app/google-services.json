@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "1058516370766-hkf8lm0q9p5gmtmtq3oli13j6b10d426.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shivek.whatsappclone",
+            "certificate_hash": "0714debace982ea85e806429c1ee4615b4aa9d7a"
+          }
+        },
+        {
+          "client_id": "1058516370766-j20urisg4ej6lfrlnfa6plcsmc7btnel.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shivek.whatsappclone",
+            "certificate_hash": "91215c41ce1d68f67d8a02f6779f0dae2f4fd36a"
+          }
+        },
+        {
           "client_id": "1058516370766-3jmhboh0g8gah32f15apjmo2k9brpe1d.apps.googleusercontent.com",
           "client_type": 3
         }
