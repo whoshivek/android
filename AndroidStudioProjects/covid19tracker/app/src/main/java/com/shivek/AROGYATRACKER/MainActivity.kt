@@ -118,7 +118,7 @@ val datedd = get?.lastupdatedtime
             }
             hours<24 ->
             {
-                "$hours hours ${minutes % 60} ago"
+                "$hours hours ${minutes % 60}minutes ago"
             }
             else -> { SimpleDateFormat("dd/MM/yy , hh:mm a").format(past).toString()}
         }

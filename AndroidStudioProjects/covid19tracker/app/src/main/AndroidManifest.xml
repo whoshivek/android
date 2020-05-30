@@ -9,7 +9,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Arogya Tracker"
+        android:label="Aarogya Tracker"
 
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:roundIcon="@mipmap/ic_launcher_round"
