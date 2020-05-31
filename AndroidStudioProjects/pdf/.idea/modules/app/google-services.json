@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "879849707463",
+    "firebase_url": "https://pdfviewer-91c1e.firebaseio.com",
+    "project_id": "pdfviewer-91c1e",
+    "storage_bucket": "pdfviewer-91c1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879849707463:android:4a93bda413a95f2627abe2",
+        "android_client_info": {
+          "package_name": "com.shivek.pdf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "879849707463-n9inh3ictfrtoq7u8k75pdjb021cms2a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shivek.pdf",
+            "certificate_hash": "0714debace982ea85e806429c1ee4615b4aa9d7a"
+          }
+        },
+        {
+          "client_id": "879849707463-gpupud5l1hruqids4l6nceb7r96am9qi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9Lyqdy5xIF4HPUyg-8-E_NLNUeU5xOkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879849707463-gpupud5l1hruqids4l6nceb7r96am9qi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
