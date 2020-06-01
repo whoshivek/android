@@ -19,6 +19,7 @@ import com.shivek.aa.maincontent.MainActivity
 import kotlinx.android.synthetic.main.activity_verificationcode.*
 import java.util.concurrent.TimeUnit
 
+  var isphoneverified : Boolean? = false
 class verificationcode : AppCompatActivity() {
     lateinit var mCallbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     lateinit var mAuth: FirebaseAuth
@@ -82,7 +83,9 @@ vb.setOnClickListener {
             .addOnCompleteListener {
                 if (it.isSuccessful)
                 {
-                    startActivity(Intent(this, MainActivity::class.java))
+
+                    startActivity(Intent(this, MainActivity::class.java).putExtra("very", true))
+
                 }
                 else{
                     pbb.visibility = View.GONE

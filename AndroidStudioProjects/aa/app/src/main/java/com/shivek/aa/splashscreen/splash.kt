@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthProvider
 import com.shivek.aa.maincontent.MainActivity
 import com.shivek.aa.R
 import com.shivek.aa.loginwithemail.login
+import com.shivek.aa.loginwithphone.isphoneverified
 import com.shivek.aa.loginwithphone.loginwithphone
 
 class SplashActivity : AppCompatActivity() {
@@ -23,23 +26,39 @@ val user = FirebaseAuth.getInstance().currentUser
             // This method will be executed once the timer is over
             // Start your app main activity
 
+       val phone = PhoneAuthProvider.PHONE_SIGN_IN_METHOD
+
             if (user == null ) {
 
                 startActivity(Intent(this, loginwithphone::class.java))
                 finish()
             }
 
+
             if (user != null) {
-                if (user.isEmailVerified)
-                    {
-                        startActivity(Intent(this, MainActivity::class.java))
-                        finish()
-                    }
-                else
+                if (user.isEmailVerified )
                 {
-                    startActivity(Intent(this, loginwithphone::class.java))
+                    startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 }
+
+            }
+            if (user != null) {
+                if (user.isAnonymous)
+                {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                }
+
+            }
+
+            if (user != null) {
+                if (isphoneverified!!)
+                {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                }
+
             }
 
         }, SPLASH_TIME_OUT)

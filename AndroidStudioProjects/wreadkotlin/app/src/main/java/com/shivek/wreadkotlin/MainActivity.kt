@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
          g.writeText(s)
 
+
         }
 
         read.setOnClickListener {

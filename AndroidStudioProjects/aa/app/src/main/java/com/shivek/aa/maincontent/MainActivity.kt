@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.shivek.aa.R
+import com.shivek.aa.loginwithphone.isphoneverified
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -20,6 +21,6 @@ class MainActivity : AppCompatActivity() {
             name.setText(FirebaseFirestore.getInstance().collection("USERS").get().toString())
         }
 
-
+              isphoneverified == intent.getBooleanExtra("very",false)
     }
 }
