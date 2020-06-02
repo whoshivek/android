@@ -26,7 +26,7 @@ val user = FirebaseAuth.getInstance().currentUser
             // This method will be executed once the timer is over
             // Start your app main activity
 
-       val phone = PhoneAuthProvider.PHONE_SIGN_IN_METHOD
+
 
             if (user == null ) {
 
@@ -35,31 +35,15 @@ val user = FirebaseAuth.getInstance().currentUser
             }
 
 
-            if (user != null) {
-                if (user.isEmailVerified )
-                {
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                }
 
-            }
             if (user != null) {
-                if (user.isAnonymous)
-                {
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                }
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
 
             }
 
-            if (user != null) {
-                if (isphoneverified!!)
-                {
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                }
 
-            }
+
 
         }, SPLASH_TIME_OUT)
     }

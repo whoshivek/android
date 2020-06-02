@@ -112,6 +112,7 @@ class signup : AppCompatActivity() {
                     val username = hashMapOf<String, Any>()
                     username.put("name",name.text.toString())
 
+
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(),password.text.toString())
                         .addOnCompleteListener{
                             if (it.isSuccessful) {
@@ -125,7 +126,9 @@ class signup : AppCompatActivity() {
                                             i.putExtra("name",name.text.toString())
 
                                             startActivity(i)
+                                            FirebaseAuth.getInstance().signOut()
                                         }
+
 
                                     }
                             }else {progressbar.visibility = View.GONE

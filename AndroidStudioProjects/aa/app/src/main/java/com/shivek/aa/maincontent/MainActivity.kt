@@ -21,6 +21,6 @@ class MainActivity : AppCompatActivity() {
             name.setText(FirebaseFirestore.getInstance().collection("USERS").get().toString())
         }
 
-              isphoneverified == intent.getBooleanExtra("very",false)
+
     }
 }

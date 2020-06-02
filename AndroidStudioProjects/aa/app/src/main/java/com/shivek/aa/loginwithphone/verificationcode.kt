@@ -84,7 +84,7 @@ vb.setOnClickListener {
                 if (it.isSuccessful)
                 {
 
-                    startActivity(Intent(this, MainActivity::class.java).putExtra("very", true))
+                    startActivity(Intent(this, MainActivity::class.java))
 
                 }
                 else{
