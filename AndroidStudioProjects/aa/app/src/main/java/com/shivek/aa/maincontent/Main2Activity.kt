@@ -3,6 +3,7 @@ package com.shivek.aa.maincontent
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -47,7 +48,21 @@ class Main2Activity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
+        navView.menu.getItem(0).setChecked(true)
+            navView.setNavigationItemSelectedListener {
+                when(it.itemId)
+                {
+                    R.id.nav_signout ->{
+                        FirebaseAuth.getInstance().signOut()
+                        startActivity(Intent(this, login::class.java))
+                        true
+                    }
+                    R.id.nav_myreward ->{
+                        true
+                    }
+                    else -> false
+                }
+            }
         signout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             startActivity(Intent(this, login::class.java))
@@ -64,4 +79,43 @@ class Main2Activity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId)
+        {
+            R.id.men_cart->
+            {
+                FirebaseAuth.getInstance().signOut()
+                startActivity(Intent(this, login::class.java))
+            }
+            R.id.men_notification->
+            {
+
+            }
+            R.id.men_search->
+            {
+
+            }
+            R.id.nav_myaccount->
+            {
+
+            }
+            R.id.nav_slideshow->
+            {
+
+            }
+            R.id.nav_signout->
+            {
+                FirebaseAuth.getInstance().signOut()
+                startActivity(Intent(this, login::class.java))
+            }
+
+
+        }
+
+
+        return super.onOptionsItemSelected(item)
+    }
+
+
 }
