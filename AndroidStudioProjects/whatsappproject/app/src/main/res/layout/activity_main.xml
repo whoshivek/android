@@ -22,25 +22,18 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-<TextView
+ <TextView
     android:layout_width="wrap_content"
+
+     android:clickable="true"
     android:layout_height="wrap_content"
     android:text=" ⋮ "
+android:focusable="true"
+     android:background="?android:attr/selectableItemBackground"
     android:layout_margin="15dp"
     android:layout_alignParentRight="true"
     android:textSize="30dp"
     android:textColor="@color/colorPrimary"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" ⋮ "
-                android:id="@+id/threedots"
-                android:layout_margin="15dp"
-                android:layout_alignParentRight="true"
-                android:textSize="30dp"
-                android:textColor="@color/colorPrimary"/>
 
         </RelativeLayout>
         <LinearLayout
@@ -63,7 +56,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 android:layout_marginBottom="4dp"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
 <LinearLayout
 android:background="@drawable/borderll"
 
@@ -74,27 +67,34 @@ android:background="@drawable/borderll"
     android:layout_gravity="center"
     android:layout_marginBottom="5dp"
     android:orientation="horizontal">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="60dp"
-    android:gravity="center"
-    android:text="Select Country"
 
-    android:layout_gravity="center"
-    android:textSize="20dp"
-    />
+    <TextView
+          android:textColor="@color/Black"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="left"
+        android:text="Select Country"
+        android:textSize="15sp" />
 
-<LinearLayout
-    android:gravity="end"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <com.hbb20.CountryCodePicker
-        app:textSize="15dp"
+    <ImageView
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:src="@drawable/line"/>
 
-</LinearLayout>
+
+    <com.hbb20.CountryCodePicker
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="end"
+        app:textSize="12sp" />
+
 
 </LinearLayout>
 
@@ -123,6 +123,7 @@ android:background="@drawable/borderll"
                     android:hint="Enter number"
                     android:inputType="phone"
                     android:lines="1"
+                    android:textColorHint="@color/Black"
                     android:maxLength="15"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
@@ -147,6 +148,7 @@ android:background="@drawable/borderll"
                 app:boxCornerRadiusTopStart="20dp"
                 app:boxCornerRadiusBottomStart="20dp"
                 app:hintTextColor="#BF46D2"
+
                 app:boxStrokeColor="#BF46D2"
                 android:layout_height="wrap_content"
                 >
@@ -155,8 +157,10 @@ android:background="@drawable/borderll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingEnd="8dp"
+
                     android:lines="3"
                     android:gravity="start"
+                    android:textColorHint="@color/Black"
                     android:textSize="18sp"
                     android:paddingStart="8dp"
                     android:hint="Enter message"/>
@@ -170,6 +174,7 @@ android:background="@drawable/borderll"
                 android:layout_margin="8dp"
                 android:id="@+id/savedata"
                 android:textAllCaps="false"
+                android:textSize="15sp"
                 android:backgroundTint="#BF46D2"
                 android:textColor="@color/White"
                 android:text="          Chat with WhatsApp       "
@@ -187,6 +192,7 @@ android:background="@drawable/borderll"
                 android:textColor="@color/White"
                 android:text="Chat with WhatsApp Business"
                 app:cornerRadius="25dp"
+                android:textSize="15sp"
                 android:layout_gravity="center"/>
 
             <com.google.android.material.button.MaterialButton
@@ -202,6 +208,7 @@ android:background="@drawable/borderll"
                   android:drawableTint="@color/White"
                 android:text="Share Link "
                 app:cornerRadius="25dp"
+                android:textSize="15sp"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
