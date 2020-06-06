@@ -6,26 +6,34 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
+import android.view.Gravity
+import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
+
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.text.Typography.section
 
 
 class MainActivity : AppCompatActivity() {
 
 
 
+    @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -91,51 +99,49 @@ class MainActivity : AppCompatActivity() {
             val m = message.text.toString()
             intentt.data = Uri.parse("https://wa.me//${i}?text=${m}")
 
-                if (packageManager.resolveActivity(intent, 0) != null) {
-                    if (ccp.selectedCountryCode == "91") {
-                        if (number.length() == 10) {
-                            if (isPackageInstalled("com.whatsapp", packageManager)) {
-                                startActivity(intentt)
-                            } else {
-                                Toast.makeText(
-                                    this,
-                                    "WhatsApp not installed",
-                                    Toast.LENGTH_LONG
-                                ).show()
-                            }
+            if (packageManager.resolveActivity(intent, 0) != null) {
+                if (ccp.selectedCountryCode == "91") {
+                    if (number.length() == 10) {
+                        if (isPackageInstalled("com.whatsapp", packageManager)) {
+                            startActivity(intentt)
                         } else {
                             Toast.makeText(
                                 this,
-                                "Please enter 10 digits number",
-                                Toast.LENGTH_SHORT
-                            )
-                                .show()
+                                "WhatsApp not installed",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     } else {
-                        if (number.length() >= 8) {
-                            if (isPackageInstalled("com.whatsapp", packageManager)) {
-                                startActivity(intentt)
-                            } else {
-                                Toast.makeText(
-                                    this,
-                                    "WhatsApp  not installed",
-                                    Toast.LENGTH_LONG
-                                ).show()
-                            }
-                        } else {
-                            Toast.makeText(this, "Please enter phone number", Toast.LENGTH_SHORT)
-                                .show()
-                        }
-
+                        Toast.makeText(
+                            this,
+                            "Please enter 10 digits number",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
                     }
-                }
+                } else {
+                    if (number.length() >= 8) {
+                        if (isPackageInstalled("com.whatsapp", packageManager)) {
+                            startActivity(intentt)
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "WhatsApp not installed",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    } else {
+                        Toast.makeText(this, "Please enter phone number", Toast.LENGTH_SHORT)
+                            .show()
+                    }
 
+                }
+            }
 
 
         }
 
         copylink.setOnClickListener {
-
 
 
             if (ccp.selectedCountryCode == "91") {
@@ -234,11 +240,49 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        switchsend.setOnCheckedChangeListener { buttonView, isChecked ->
+            buttonView.buttonTintList
+            message.visibility = View.VISIBLE
+
+            if (!isChecked) {
+                message.hideKeyboard()
+                message.visibility = View.GONE
+                message.text = null
+            }
+        }
+
+        val navview : NavigationView = findViewById(R.id.nav_view)
+
+        menutry.setOnClickListener {
+                    if (!drawerlayout.isDrawerOpen(Gravity.START))
+                    {
+                        drawerlayout.openDrawer(Gravity.START)
+                    }
+        }
 
 
 
+       switchsend.setOnTouchListener(object  :View.OnTouchListener{
+           override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+               if (ccp.selectedCountryCode == "91") {
+                   if (number.length() == 10) {
+                     return false
+                   } else {
+                       Toast.makeText(this@MainActivity, "Please enter 10 digits number", Toast.LENGTH_SHORT).show()
+                   }
+               } else {
+                   if (number.length() >= 8) {
+                    return false
+                   } else {
+                       Toast.makeText(this@MainActivity, "Please enter phone number", Toast.LENGTH_SHORT).show()
+                   }
 
 
+               }
+           return true
+           }
+
+       })
 
     }
 
@@ -265,27 +309,33 @@ class MainActivity : AppCompatActivity() {
         private fun checkinput() {
             if (ccp.selectedCountryCode == "91") {
                 if (number.text?.length == 10) {
-                    message.visibility = View.VISIBLE
+                  //  message.visibility = View.VISIBLE
                     number.limitLength(10)
                     number.hideKeyboard()
+                    switchsend.isClickable = true;
 
                 } else {
                     sharelink.visibility = View.GONE
                     copylink.visibility = View.GONE
                     generate.visibility = View.VISIBLE
                     message.visibility = View.GONE
+                    switchsend.isClickable = false;
+                    switchsend.isChecked = false;
                 }
             } else {
                 number.limitLength(15)
                 if (number.text?.length!! >= 8) {
-                    message.visibility = View.VISIBLE
+                  //  message.visibility = View.VISIBLE
+                    switchsend.isClickable = true;
+
                 } else {
                     sharelink.visibility = View.GONE
                     copylink.visibility = View.GONE
                     generate.visibility = View.VISIBLE
                     message.visibility = View.GONE
+                    switchsend.isClickable = false
+                    switchsend.isChecked = false
                 }
-
             }
         }
 
@@ -309,6 +359,9 @@ class MainActivity : AppCompatActivity() {
             false
         }
     }
+
+
+
 
 }
 
