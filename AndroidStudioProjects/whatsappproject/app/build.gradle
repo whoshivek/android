@@ -34,14 +34,16 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.android.material:material:1.1.0'
-    implementation 'com.github.inpossoft:CountryCodePickerProject:2.0.0'
+    implementation 'com.github.joielechong:countrycodepicker:2.4.2'
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
     implementation 'androidx.navigation:navigation-ui:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
+    implementation 'com.varunjohn1990.libraries:iosdialogs4android:2.0.1'
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.6'
 
 
     // Glide image library
-    implementation 'com.jakewharton:butterknife:8.6.0'
+
 }

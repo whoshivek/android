@@ -9,13 +9,22 @@
     android:background="@drawable/bg"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-<LinearLayout
+
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+<FrameLayout
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent">
+
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -49,22 +58,17 @@ android:focusable="true"
             android:layout_margin="4dp"
             android:layout_height="match_parent">
             <ImageView
-                android:layout_width="150dp"
+                android:layout_width="120dp"
+                android:id="@+id/logo"
+                android:visibility="visible"
                 android:layout_marginTop="10dp"
-                android:layout_height="100dp"
+                android:layout_marginBottom="15dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:src="@drawable/whatsapppp"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="WhatsDirect"
-                android:layout_gravity="center"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:textSize="20sp"/>
+
 <LinearLayout
 android:background="@drawable/borderll"
 
@@ -95,14 +99,15 @@ android:background="@drawable/borderll"
         android:src="@drawable/line"/>
 
 
-    <com.hbb20.CountryCodePicker
-        android:layout_width="0dp"
-        android:id="@+id/ccp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:gravity="end"
-        app:textSize="12sp" />
+  <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:id="@+id/ccp"
+      android:gravity="end"
+      android:layout_gravity="center"
+      app:ccp_textSize="12sp"
+      />
 
 
 </LinearLayout>
@@ -209,7 +214,7 @@ android:background="@drawable/borderll"
                 android:layout_width="match_parent"
                 android:padding="8dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:id="@+id/savedata"
 
                 android:drawableTint="@color/White"
@@ -227,7 +232,7 @@ android:background="@drawable/borderll"
                 android:padding="8dp"
                 android:drawableTint="@color/White"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:id="@+id/whatsappbusiness"
                  android:textAllCaps="false"
                 android:background="@drawable/buttonall"
@@ -239,9 +244,9 @@ android:background="@drawable/borderll"
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                     android:id="@+id/generate"
                 android:backgroundTint="#BF46D2"
                 android:visibility="visible"
@@ -304,13 +309,33 @@ android:background="@drawable/borderll"
 
 
     </com.google.android.material.card.MaterialCardView>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:elevation="@dimen/google_1x"
+        android:layout_height="wrap_content">
+        <me.ibrahimsn.lib.SmoothBottomBar
+            android:id="@+id/bottomBar"
+            android:elevation="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:backgroundColor="@color/colorPrimary"
+            app:menu="@menu/menu"/>
+    </FrameLayout>
     
 
-</LinearLayout>
+</FrameLayout>
+
+        </FrameLayout>
+
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        app:itemBackground="@drawable/drawable_item_bg"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"

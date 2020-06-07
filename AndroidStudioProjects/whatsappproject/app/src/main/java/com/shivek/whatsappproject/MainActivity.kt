@@ -11,6 +11,7 @@ import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
@@ -22,13 +23,21 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
+import com.varunjohn1990.iosdialogs4android.IOSDialog
+
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.drawerlayout
+import kotlinx.android.synthetic.main.activity_main.menutry
+import kotlinx.android.synthetic.main.activity_main2.*
 import kotlin.text.Typography.section
 
-
+var defaultcc : String? = null
+var defaultcp : String? = null
 class MainActivity : AppCompatActivity() {
 
 
@@ -37,6 +46,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        val cccc = PreferenceManager.getDefaultSharedPreferences(this).getString("ccp" , "IN")
+        if (cccc != null) {
+            ccp.setDefaultCountryUsingNameCodeAndApply(cccc)
+        }
+
+
+   //
+
+        ccp.setOnCountryChangeListener {
+            number.setText(null)
+        }
 
         number.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -79,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Please enter 10 digits number", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                if (number.length() >= 8) {
+                if (number.length() >= 6) {
                     startActivity(i);
                     generate.visibility = View.VISIBLE
                     sharelink.visibility = View.GONE
@@ -120,7 +142,7 @@ class MainActivity : AppCompatActivity() {
                             .show()
                     }
                 } else {
-                    if (number.length() >= 8) {
+                    if (number.length() >= 6) {
                         if (isPackageInstalled("com.whatsapp", packageManager)) {
                             startActivity(intentt)
                         } else {
@@ -155,7 +177,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Please enter 10 digits number", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                if (number.length() >= 8) {
+                if (number.length() >= 6) {
                     Toast.makeText(this, "Copied", Toast.LENGTH_SHORT).show()
                     generate.visibility = View.VISIBLE
                     sharelink.visibility = View.GONE
@@ -196,7 +218,7 @@ class MainActivity : AppCompatActivity() {
                             .show()
                     }
                 } else {
-                    if (number.length() >= 8) {
+                    if (number.length() >= 6) {
                         if (isPackageInstalled("com.whatsapp.w4b", packageManager)) {
                             startActivity(intentt)
                         } else {
@@ -226,7 +248,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Please enter 10 digits number", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                if (number.length() >= 8) {
+                if (number.length() >= 6) {
                     sharelink.visibility = View.VISIBLE
                     copylink.visibility = View.VISIBLE
                     generate.visibility = View.GONE
@@ -243,11 +265,13 @@ class MainActivity : AppCompatActivity() {
         switchsend.setOnCheckedChangeListener { buttonView, isChecked ->
             buttonView.buttonTintList
             message.visibility = View.VISIBLE
+           // logo.visibility = View.GONE
 
             if (!isChecked) {
                 message.hideKeyboard()
                 message.visibility = View.GONE
                 message.text = null
+                //logo.visibility = View.VISIBLE
             }
         }
 
@@ -271,7 +295,7 @@ class MainActivity : AppCompatActivity() {
                        Toast.makeText(this@MainActivity, "Please enter 10 digits number", Toast.LENGTH_SHORT).show()
                    }
                } else {
-                   if (number.length() >= 8) {
+                   if (number.length() >= 6) {
                     return false
                    } else {
                        Toast.makeText(this@MainActivity, "Please enter phone number", Toast.LENGTH_SHORT).show()
@@ -283,6 +307,33 @@ class MainActivity : AppCompatActivity() {
            }
 
        })
+
+
+        defaultcc = ccp.defaultCountryNameCode
+        defaultcp = ccp.defaultCountryCodeWithPlus
+
+
+        navview.menu.getItem(1).setTitle("My Country - ${ccp.defaultCountryNameCode} (${ccp.defaultCountryCodeWithPlus})")
+
+        navview.menu.getItem(0).setChecked(true)
+        navview.setNavigationItemSelectedListener {
+            when(it.itemId)
+            {
+                R.id.nav_home ->
+                {
+                    drawerlayout.closeDrawer(Gravity.START )
+                    true
+                }
+                R.id.nav_gallery ->
+                {
+                    startActivity(Intent(this , MainActivity2::class.java))
+                    finish()
+                    false
+
+                }
+                else -> true
+            }
+        }
 
     }
 
@@ -323,8 +374,8 @@ class MainActivity : AppCompatActivity() {
                     switchsend.isChecked = false;
                 }
             } else {
-                number.limitLength(15)
-                if (number.text?.length!! >= 8) {
+                number.limitLength(13)
+                if (number.text?.length!! >= 6) {
                   //  message.visibility = View.VISIBLE
                     switchsend.isClickable = true;
 
@@ -360,7 +411,44 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+      /*  MaterialAlertDialogBuilder(this).apply {
+            setTitle("Whatsdirect")
+            setCancelable(false)
+            setMessage("Are you sure you want to exit the app?")
+            setPositiveButton("Yes" ,{ _ ,_ ->
 
+                finishAffinity()
+            })
+            setNegativeButton("No" , { dialog, which ->
+                dialog.dismiss()
+            })
+         create()
+            show()
+        }*/
+
+IOSDialog.Builder(this).apply {
+    title("WhatsDirect")
+    message("Are you sure you want to exit the app?")
+    positiveButtonText("YES")
+    negativeButtonText("NO")
+
+    positiveClickListener {
+             it.dismiss()
+             finishAffinity()
+
+    }
+    negativeClickListener { iosDialog ->
+
+        iosDialog.dismiss()
+    }
+    cancelable(false)
+
+
+}
+    .build()
+    .show()
+    }
 
 
 }

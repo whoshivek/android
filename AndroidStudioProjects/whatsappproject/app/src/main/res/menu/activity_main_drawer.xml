@@ -6,15 +6,45 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/whatsb"
-            android:title="Default" />
+            android:icon="@drawable/home"
+            android:title="Home" />
+
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/chat"
-            android:title="home" />
+            android:icon="@drawable/world"
+            android:title="Default Country"
+            />
+
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/chat"
-            android:title="hii" />
+            android:id="@+id/nav_status"
+            android:icon="@drawable/arrow"
+            android:title="Status Saver " />
+        <item
+            android:id="@+id/nav_chat"
+            android:icon="@drawable/clock"
+            android:title="Chat History " />
+        <item
+            android:id="@+id/nav_Templates"
+            android:icon="@drawable/template"
+            android:title="Templates " />
+
+        <item
+            android:id="@+id/nav_FAQ"
+            android:icon="@drawable/question"
+            android:title="FAQs" />
+        <item
+            android:id="@+id/nav_disclaimer"
+            android:icon="@drawable/lock"
+            android:title="Privacy Policy" />
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/contact"
+            android:title="Contact Us" />
+
+
+        <item
+            android:id="@+id/nav_"
+            android:icon="@drawable/logout"
+            android:title="Exit" />
     </group>
 </menu>
