@@ -1,6 +1,7 @@
 package com.shivek.whatsappproject
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -23,17 +24,21 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.gdacciaro.iOSDialog.iOSDialog
+import com.gdacciaro.iOSDialog.iOSDialogBuilder
+import com.gdacciaro.iOSDialog.iOSDialogClickListener
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
-import com.varunjohn1990.iosdialogs4android.IOSDialog
+
 
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.drawerlayout
 import kotlinx.android.synthetic.main.activity_main.menutry
 import kotlinx.android.synthetic.main.activity_main2.*
+import kotlin.system.exitProcess
 import kotlin.text.Typography.section
 
 var defaultcc : String? = null
@@ -313,6 +318,9 @@ class MainActivity : AppCompatActivity() {
         defaultcp = ccp.defaultCountryCodeWithPlus
 
 
+
+
+
         navview.menu.getItem(1).setTitle("My Country - ${ccp.defaultCountryNameCode} (${ccp.defaultCountryCodeWithPlus})")
 
         navview.menu.getItem(0).setChecked(true)
@@ -330,6 +338,17 @@ class MainActivity : AppCompatActivity() {
                     finish()
                     false
 
+                }
+                R.id.nav_exit ->
+                {
+                    drawerlayout.closeDrawer(Gravity.START , false)
+                    exitdialog()
+                    false
+                }
+                R.id.nav_FAQ ->
+                {
+                    startActivity(Intent(this , MainActivity3::class.java))
+                    false
                 }
                 else -> true
             }
@@ -412,7 +431,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-      /*  MaterialAlertDialogBuilder(this).apply {
+        /*  MaterialAlertDialogBuilder(this).apply {
             setTitle("Whatsdirect")
             setCancelable(false)
             setMessage("Are you sure you want to exit the app?")
@@ -427,30 +446,30 @@ class MainActivity : AppCompatActivity() {
             show()
         }*/
 
-IOSDialog.Builder(this).apply {
-    title("WhatsDirect")
-    message("Are you sure you want to exit the app?")
-    positiveButtonText("YES")
-    negativeButtonText("NO")
-
-    positiveClickListener {
-             it.dismiss()
-             finishAffinity()
-
-    }
-    negativeClickListener { iosDialog ->
-
-        iosDialog.dismiss()
-    }
-    cancelable(false)
-
-
-}
-    .build()
-    .show()
+        exitdialog()
     }
 
+    private fun exitdialog() {
+        iOSDialogBuilder(this).apply {
+            setTitle("WhatsDirect")
+            setSubtitle("Are you sure to exit the app?")
+            setBoldPositiveLabel(false)
+            setCancelable(false)
+          setPositiveListener("YES", iOSDialogClickListener {
+              finishAffinity()
+              it.dismiss()
+          })
+setNegativeListener("NO", iOSDialogClickListener {
+    it.dismiss()
+})
 
-}
+        }
+            .build()
+            .show()
+    }
+    }
+
+
+
 
 

@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">whatsappproject</string>
-
+    <string name="t1"><![CDATA[Instead of saving a number into contacts and then searching it in WhatsApp\'s list to be able to talk with it; open this app, write the number, and press open. WhatsApp\'s app will be opened directly on the chat page of that number (if it exists) without modifying your address book.]]></string>
+    <string name="t2"> 1. Go to WhatsApp or WhatsApp Business, Check desired status/story.\n
+    2. Come back to our app, Click on any image or video to view.\n
+    3. Click the save button and The desired image/video is instantly saved to your gallery.
+</string>
 
 </resources>

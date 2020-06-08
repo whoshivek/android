@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity3">
+
+
+    <LinearLayout
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="50dp">
+        >
+        <ImageButton
+            android:layout_width="32dp"
+            android:clickable="true"
+            android:layout_gravity="center"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:layout_height="18dp"
+            android:id="@+id/backexit"
+           android:layout_marginLeft="6dp"
+            android:src="@drawable/back"
+            android:background="@color/colorPrimary"
+            android:tint="@color/White"
+            android:drawableTint="@color/White"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="FAQs"
+            android:layout_marginRight="30dp"
+            android:textColor="@color/White"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+           />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_margin="4dp"
+        android:layout_height="wrap_content"
+        android:text="Get answers to the most common questions users usually have"
+        android:textSize="13dp"
+        android:gravity="center"
+        android:background="@drawable/drawable_item_bg"/>
+
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:verticalScrollbarPosition="right"
+        android:layout_height="match_parent"
+        android:id="@+id/expandable"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+

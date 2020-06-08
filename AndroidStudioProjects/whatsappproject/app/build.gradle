@@ -40,10 +40,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
-    implementation 'com.varunjohn1990.libraries:iosdialogs4android:2.0.1'
+    implementation 'com.gdacciaro:iosdialog:1.0.3'
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.6'
 
-
-    // Glide image library
 
 }
