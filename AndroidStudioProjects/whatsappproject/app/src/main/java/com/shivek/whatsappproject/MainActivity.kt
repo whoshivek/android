@@ -38,6 +38,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.drawerlayout
 import kotlinx.android.synthetic.main.activity_main.menutry
 import kotlinx.android.synthetic.main.activity_main2.*
+import me.ibrahimsn.lib.OnItemSelectedListener
 import kotlin.system.exitProcess
 import kotlin.text.Typography.section
 
@@ -318,6 +319,7 @@ class MainActivity : AppCompatActivity() {
         defaultcp = ccp.defaultCountryCodeWithPlus
 
 
+bottomBar.itemActiveIndex = 0
 
 
 
