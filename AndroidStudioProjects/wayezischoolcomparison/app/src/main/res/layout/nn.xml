@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="436dp"
+        android:layout_height="294dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bgg" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="5dp"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+
+        app:boxStrokeColor="#11A3F4"
+        app:hintTextColor="#11A3F4">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your Name"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColorHint="@color/Gray"
+            android:textSize="18sp"
+             />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="5dp"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+
+        app:boxStrokeColor="#11A3F4"
+        app:hintTextColor="#11A3F4">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="Enter your Username"
+
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColorHint="@color/Gray"
+            android:textSize="18sp"
+            />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="5dp"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+
+        app:boxStrokeColor="#11A3F4"
+        app:hintTextColor="#11A3F4">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="Enter your Email"
+
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColorHint="@color/Gray"
+            android:textSize="18sp"
+            />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="5dp"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+
+        app:boxStrokeColor="#11A3F4"
+        app:hintTextColor="#11A3F4">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="Enter your Password"
+
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColorHint="@color/Gray"
+            android:textSize="18sp"
+            />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+</LinearLayout>
