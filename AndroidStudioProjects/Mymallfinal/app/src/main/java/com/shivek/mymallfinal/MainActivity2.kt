@@ -1,7 +1,8 @@
-package com.shivek.aa.maincontent
+package com.shivek.mymallfinal
 
-import android.content.Intent
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -15,15 +16,15 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.google.firebase.auth.FirebaseAuth
-import com.shivek.aa.R
-import com.shivek.aa.loginwithemail.login
-import kotlinx.android.synthetic.main.content_main2.*
+import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.app_bar_main.*
 
-class Main2Activity : AppCompatActivity() {
+
+class MainActivity2 : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
@@ -31,49 +32,84 @@ class Main2Activity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
+
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.drawer_layout
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView.menu.getItem(0).setChecked(true)
-            navView.setNavigationItemSelectedListener {
-                when(it.itemId)
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId)
+            {
+                R.id.nav_mymall ->
                 {
-
-                    R.id.nav_signout ->{
-                        FirebaseAuth.getInstance().signOut()
-                        startActivity(Intent(this, login::class.java))
-                        true
-                    }
-                    R.id.nav_myreward ->{
-                        true
-                    }
-                    else -> false
+                    true
                 }
+                R.id.nav_myorder->
+                {
+                    true
+                }
+                R.id.nav_signout ->
+                {
+                    true
+                }
+                R.id.nav_myaccount ->
+                {
+                    true
+                }
+                R.id.nav_mycart->
+                {
+                    true
+                }
+
+                else ->
+                    false
+
+
             }
-        signout.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            startActivity(Intent(this, login::class.java))
         }
+      nav.setOnClickListener {
+          if (!drawerLayout?.isDrawerOpen(Gravity.START))
+          {
+              drawerLayout.openDrawer(Gravity.START)
+          }
+      }
+ loadfragment(HomeFragment())
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main2, menu)
+        menuInflater.inflate(R.menu.main_activity2, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId)
+        {
+            R.id.menu_bell ->
+            {
+
+            }
+            R.id.menu_cart ->{
+
+            }
+            R.id.menu_search ->
+            {
+
+            }
+
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -81,42 +117,12 @@ class Main2Activity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId)
-        {
-            R.id.men_cart->
-            {
-                FirebaseAuth.getInstance().signOut()
-                startActivity(Intent(this, login::class.java))
-            }
-            R.id.men_notification->
-            {
-
-            }
-            R.id.men_search->
-            {
-
-            }
-            R.id.nav_myaccount->
-            {
-
-            }
-            R.id.nav_slideshow->
-            {
-
-            }
-            R.id.nav_signout->
-            {
-                FirebaseAuth.getInstance().signOut()
-                startActivity(Intent(this, login::class.java))
-            }
-
-
-        }
-
-
-        return super.onOptionsItemSelected(item)
+    fun loadfragment(fragment : Fragment)
+    {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.nav_host_fragment , fragment)
+            .addToBackStack(null)
+            .commit()
     }
-
-
 }
