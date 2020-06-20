@@ -1,4 +1,4 @@
-package com.shivek.mymallfinal
+package com.shivek.mymallfinal.adapterandmodels
 
 data class categorymodel(
     val link : String? = null,
