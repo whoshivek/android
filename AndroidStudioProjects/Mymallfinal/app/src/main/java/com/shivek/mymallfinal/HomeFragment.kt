@@ -19,7 +19,12 @@ class HomeFragment : Fragment() {
     val vplist = arrayListOf<modelviewpager>()
     val dlist = arrayListOf<dealofthedaymodel>()
     val gadapter = gridadapter(dlist)
-    val dadapter = dealsadapter(dlist)
+    val dadapter = dealsadapter(dlist , {dealofthedaymodel ->cliicked(dealofthedaymodel)  })
+
+    private fun cliicked(dealofthedaymodel: dealofthedaymodel) {
+              startActivity(Intent(activity , productdetails::class.java))
+    }
+
     val vpadapter =
         viewpageradapter(vplist)
     val categoryadapter =

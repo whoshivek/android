@@ -17,7 +17,13 @@ class categoryactivity : AppCompatActivity() {
     val vplist = arrayListOf<modelviewpager>()
     val dlist = arrayListOf<dealofthedaymodel>()
     val gadapter = gridadapter(dlist)
-    val dadapter = dealsadapter(dlist)
+    val dadapter = dealsadapter(dlist ,{dealofthedaymodel ->clickk(dealofthedaymodel)  })
+
+    private fun clickk(dealofthedaymodel: dealofthedaymodel) {
+             finish()
+
+    }
+
     val vpadapter =
         viewpageradapter(vplist)
     @SuppressLint("WrongConstant")

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/productinfo"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <androidx.viewpager.widget.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/productview">
+        </androidx.viewpager.widget.ViewPager>
+      <com.chahinem.pageindicator.PageIndicator
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="5dp"
+          android:layout_alignParentBottom="true"
+          android:layout_centerHorizontal="true"
+          android:id="@+id/indicator"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:id="@+id/floatt"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:src="@drawable/navssssssssssss"
+            android:layout_alignParentEnd="true"
+            android:elevation="10dp"/>
+
+    </RelativeLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="IPHONE XR"
+    android:textSize="24dp"/>
+       <LinearLayout
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <LinearLayout
+               android:orientation="horizontal"
+               android:background="@color/colorPrimaryDark"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:text="4.5"/>
+
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               app:srcCompat="@android:drawable/btn_star_big_on"/>
+           </LinearLayout>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="(Total rating)"
+               android:layout_gravity="center"/>
+       </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="RS. 99999/-"
+                 android:textSize="24dp"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                      android:id="@+id/tv"
+                    android:text="  RS.1000000/-" />
+
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_alignLeft="@+id/tv"
+                   android:background="@color/colorPrimaryDark"
+                    android:layout_alignRight="@+id/tv"
+                    android:layout_height="1dp"
+                    android:layout_centerVertical="true"
+                  />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:tint="@color/colorPrimaryDark"
+            app:srcCompat="@android:drawable/ic_dialog_info" />
+
+    </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/colorAccent"
+            android:text="Check price after coupon redemption"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REDEEM"
+            android:background="@drawable/button"
+            android:textColor="@color/colorAccent"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

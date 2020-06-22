@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/gradient">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="45dp"
+            android:tint="#ffffff"
+            android:layout_height="45dp"
+
+            android:src="@drawable/navsss"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  REWARDS"
+            android:textColor="#ffffff"
+            android:textSize="30dp"/>
+
+
+    </LinearLayout>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="hjcsjc dsjsjbsj jsbjhujg jdwjhjh wjdhjdj wdnjddj djdj dbdbdb dbnbnnbjdvdhsvhvsvdvsdhsv"
+android:textColor="#ffffff"
+    android:textSize="15sp"/>
+</LinearLayout>
