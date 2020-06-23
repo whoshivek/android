@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".productdescription">
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="50dp"
+
+        android:text="hdhwhw dbwjbjw jwbcjwbc  jcnjc cjncj
+chbhcb
+wbchbc
+chbwhcbhc
+
+jbwjjc ncbwjbc jwbcjwbcj jcjwbcjwc jwcnjwbcjwbc  jcwjbcj jcbwjbcw jcbjwcb jwbcjwcbjbcj jcbjwjcb jcbw" />
+
+</androidx.core.widget.NestedScrollView>
+</FrameLayout>

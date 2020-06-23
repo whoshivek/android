@@ -1,5 +1,6 @@
 package com.shivek.mymallfinal
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.product_decription.*
 import kotlinx.android.synthetic.main.product_first.*
 
 class productdetails : AppCompatActivity() {
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_productdetails)
@@ -38,7 +40,7 @@ val list = arrayListOf<modelviewpager>()
         val fff = productsdetails_vp(supportFragmentManager , tab = 3)
         viewpagerproductdetails.adapter = fff
         tablayoutviewpager.setupWithViewPager(viewpagerproductdetails)
-
+  
         floatt.setOnClickListener {
             finish()
         }
