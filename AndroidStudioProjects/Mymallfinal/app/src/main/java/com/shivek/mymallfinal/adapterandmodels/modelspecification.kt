@@ -3,8 +3,8 @@ package com.shivek.mymallfinal.adapterandmodels
 import java.io.Serializable
 
 data class modelspecification(
-val heading : String? =null,
-val subdata :ArrayList<subheading>
+var heading : String? =null,
+var subdata :ArrayList<subheading>
 ) : Serializable
 
 data class subheading(

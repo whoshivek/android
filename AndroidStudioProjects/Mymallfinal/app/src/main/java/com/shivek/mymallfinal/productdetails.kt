@@ -1,20 +1,21 @@
 package com.shivek.mymallfinal
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
+import android.view.View
+import android.view.View.OnTouchListener
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
 import com.shivek.mymallfinal.adapterandmodels.modelviewpager
 import com.shivek.mymallfinal.adapterandmodels.productsdetails_vp
 import com.shivek.mymallfinal.adapterandmodels.productviwpager
-import com.shivek.mymallfinal.adapterandmodels.viewpageradapter
+import kotlinx.android.synthetic.main.activity_productdetails.*
 import kotlinx.android.synthetic.main.product_decription.*
 import kotlinx.android.synthetic.main.product_first.*
+
 
 class productdetails : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
@@ -24,6 +25,7 @@ class productdetails : AppCompatActivity() {
 
         val toolbar: Toolbar = findViewById(R.id.toolbar3)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
           supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 val list = arrayListOf<modelviewpager>()
@@ -40,7 +42,10 @@ val list = arrayListOf<modelviewpager>()
         val fff = productsdetails_vp(supportFragmentManager , tab = 3)
         viewpagerproductdetails.adapter = fff
         tablayoutviewpager.setupWithViewPager(viewpagerproductdetails)
-  
+       /////////////////////////
+
+
+        //////
         floatt.setOnClickListener {
             finish()
         }
@@ -74,6 +79,9 @@ val list = arrayListOf<modelviewpager>()
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onBackPressed() {
+        finish()
+    }
 }
 
 

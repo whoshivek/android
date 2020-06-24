@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Product details"
+    android:textSize="25dp"
+    android:background="#E1DFE6"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="hdhwhw dbwjbjw jwbcjwbc  jcnjc cjncj
+            chbhcb
+            wbchbc
+            chbwhcbhc
+
+            jbwjjc ncbwjbc jwbcjwbcj jcjwbcjwc jwcnjwbcjwbc  jcwjbcj jcbwjbcw jcbjwcb jwbcjwcbjbcj jcbjwjcb jcbw"
+            android:textSize="50dp"/>
+
+
+
+
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

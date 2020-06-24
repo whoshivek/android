@@ -20,21 +20,58 @@
 
     </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/mscrollview"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
 <include layout="@layout/product_first"/>
 <include layout="@layout/rewardlayout"/>
     <include layout="@layout/product_decription"/>
-            <include layout="@layout/rewardlayout"/>
+<include layout="@layout/productdetailsafter3tab"/>
+            <include layout="@layout/productrating"/>
         </LinearLayout>
+
     </ScrollView>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:elevation="40dp"
+            android:background="@color/colorAccent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Add to cart"
+                    />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="BUY NOW"
+                    />
+
+            </LinearLayout>
+
+
+
+        </FrameLayout>
+    </FrameLayout>
+
+
 
 </LinearLayout>

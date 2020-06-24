@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -17,13 +18,17 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.gdacciaro.iOSDialog.iOSDialogBuilder
+import com.gdacciaro.iOSDialog.iOSDialogClickListener
+import kotlinx.android.synthetic.main.activity_main2.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlin.properties.Delegates
 
 
 class MainActivity2 : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-
+private var current: Int?= null
     @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,10 +57,15 @@ class MainActivity2 : AppCompatActivity() {
             {
                 R.id.nav_mymall ->
                 {
+                    current=0
+                    invalidateOptionsMenu()
+                    loadfragment(HomeFragment())
+                    drawerLayout.closeDrawer(Gravity.START)
                     true
                 }
                 R.id.nav_myorder->
                 {
+
                     true
                 }
                 R.id.nav_signout ->
@@ -68,6 +78,11 @@ class MainActivity2 : AppCompatActivity() {
                 }
                 R.id.nav_mycart->
                 {
+                    current=1
+                    invalidateOptionsMenu()
+                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                    loadfragment(mycart())
+                    drawerLayout.closeDrawer(Gravity.START)
                     true
                 }
 
@@ -88,8 +103,13 @@ class MainActivity2 : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main_activity2, menu)
-        return true
+        if (current==1)
+        {
+          return  true
+        }
+                menuInflater.inflate(R.menu.main_activity2, menu)
+                return true
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -100,7 +120,10 @@ class MainActivity2 : AppCompatActivity() {
 
             }
             R.id.menu_cart ->{
-
+                invalidateOptionsMenu()
+          current = 1
+                nav_view.menu.getItem(2).setChecked(true)
+         loadfragment(mycart())
             }
             R.id.menu_search ->
             {
@@ -112,6 +135,8 @@ class MainActivity2 : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
@@ -119,10 +144,40 @@ class MainActivity2 : AppCompatActivity() {
 
     fun loadfragment(fragment : Fragment)
     {
+
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.nav_host_fragment , fragment)
             .addToBackStack(null)
             .commit()
+    }
+
+    override fun onBackPressed() {
+        if (current==1)
+        {
+           Toast.makeText(this , "no action" , Toast.LENGTH_SHORT).show()
+        }
+        else {
+
+            exitdialog()
+        }
+    }
+    private fun exitdialog() {
+        iOSDialogBuilder(this).apply {
+            setTitle("WhatsDirect")
+            setSubtitle("Are you sure to exit the app?")
+            setBoldPositiveLabel(false)
+            setCancelable(false)
+            setPositiveListener("YES", iOSDialogClickListener {
+                finishAffinity()
+                it.dismiss()
+            })
+            setNegativeListener("NO", iOSDialogClickListener {
+                it.dismiss()
+            })
+
+        }
+            .build()
+            .show()
     }
 }
