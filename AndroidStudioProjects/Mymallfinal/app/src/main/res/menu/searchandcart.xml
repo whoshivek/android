@@ -5,12 +5,15 @@
         android:id="@+id/menu_search3"
         android:orderInCategory="100"
         android:title=""
+        android:iconTint="#FFFFFF"
+
         android:icon="@drawable/search"
           app:showAsAction="always" />
     <item
         android:id="@+id/menu_cart3"
         android:orderInCategory="100"
         android:title=""
+        android:iconTint="#FFFFFF"
         android:icon="@drawable/cart"
         app:showAsAction="always" />
 

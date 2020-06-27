@@ -8,6 +8,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/home"
+        android:layout_gravity="center"
         android:id="@+id/dothdayimage"/>
     <TextView
         android:layout_width="match_parent"

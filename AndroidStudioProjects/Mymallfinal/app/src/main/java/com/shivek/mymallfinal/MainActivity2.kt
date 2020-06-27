@@ -5,9 +5,8 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -22,11 +21,10 @@ import com.gdacciaro.iOSDialog.iOSDialogBuilder
 import com.gdacciaro.iOSDialog.iOSDialogClickListener
 import kotlinx.android.synthetic.main.activity_main2.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlin.properties.Delegates
 
 
 class MainActivity2 : AppCompatActivity() {
-
+   private lateinit var  drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
 private var current: Int?= null
     @SuppressLint("WrongConstant")
@@ -38,7 +36,8 @@ private var current: Int?= null
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        drawerLayout = findViewById(R.id.drawer_layout)
+
         val navView: NavigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
@@ -59,13 +58,27 @@ private var current: Int?= null
                 {
                     current=0
                     invalidateOptionsMenu()
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    supportActionBar?.setDisplayShowTitleEnabled(false)
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+                    nav.visibility = View.VISIBLE
+                    navv.visibility = View.VISIBLE
                     loadfragment(HomeFragment())
                     drawerLayout.closeDrawer(Gravity.START)
                     true
                 }
                 R.id.nav_myorder->
                 {
-
+                    current=1
+                    invalidateOptionsMenu()
+                    nav.visibility = View.GONE
+                    navv.visibility = View.GONE
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                    loadfragment(myorderfragment())
+                    supportActionBar?.setDisplayShowTitleEnabled(true)
+                    supportActionBar?.setTitle("My Orders")
+                    drawerLayout.closeDrawer(Gravity.START)
                     true
                 }
                 R.id.nav_signout ->
@@ -73,7 +86,16 @@ private var current: Int?= null
                     true
                 }
                 R.id.nav_myaccount ->
-                {
+                {    current=1
+                    invalidateOptionsMenu()
+                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                    loadfragment(myaccount())
+                    supportActionBar?.setDisplayShowTitleEnabled(true)
+                    supportActionBar?.setTitle("My Account")
+                    drawerLayout.closeDrawer(Gravity.START)
+                    nav.visibility = View.GONE
+                    navv.visibility = View.GONE
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                     true
                 }
                 R.id.nav_mycart->
@@ -82,6 +104,38 @@ private var current: Int?= null
                     invalidateOptionsMenu()
                     supportActionBar?.setDisplayHomeAsUpEnabled(true)
                     loadfragment(mycart())
+                    supportActionBar?.setDisplayShowTitleEnabled(true)
+                    supportActionBar?.setTitle("My Cart")
+                    drawerLayout.closeDrawer(Gravity.START)
+                    nav.visibility = View.GONE
+                    navv.visibility = View.GONE
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                    true
+                }
+                R.id.nav_myfavorites->{
+                    current=1
+                    invalidateOptionsMenu()
+                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                    loadfragment(mywishlist())
+                    supportActionBar?.setDisplayShowTitleEnabled(true)
+                    nav.visibility = View.GONE
+                    navv.visibility = View.GONE
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                    supportActionBar?.setTitle("My Favorites")
+                    drawerLayout.closeDrawer(Gravity.START)
+                    true
+                }
+                R.id.nav_myrewards ->{
+
+                    current=1
+                    invalidateOptionsMenu()
+                    supportActionBar?.setDisplayShowTitleEnabled(true)
+                    supportActionBar?.setTitle("My Rewards")
+                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                    loadfragment(myrewards())
+                    nav.visibility = View.GONE
+                    navv.visibility = View.GONE
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                     drawerLayout.closeDrawer(Gravity.START)
                     true
                 }
@@ -122,14 +176,30 @@ private var current: Int?= null
             R.id.menu_cart ->{
                 invalidateOptionsMenu()
           current = 1
+                supportActionBar?.setDisplayShowTitleEnabled(true)
+                supportActionBar?.setTitle("My Cart")
+                nav.visibility = View.GONE
+                navv.visibility = View.GONE
                 nav_view.menu.getItem(2).setChecked(true)
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
          loadfragment(mycart())
             }
             R.id.menu_search ->
             {
 
             }
-
+     android.R.id.home ->{
+         current=0
+         invalidateOptionsMenu()
+         nav_view.menu.getItem(0).setChecked(true)
+         supportActionBar?.setDisplayShowTitleEnabled(false)
+         supportActionBar?.setDisplayHomeAsUpEnabled(false)
+         loadfragment(HomeFragment())
+         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+         nav.visibility = View.VISIBLE
+         navv.visibility = View.VISIBLE
+     }
 
         }
         return super.onOptionsItemSelected(item)
@@ -155,7 +225,15 @@ private var current: Int?= null
     override fun onBackPressed() {
         if (current==1)
         {
-           Toast.makeText(this , "no action" , Toast.LENGTH_SHORT).show()
+            current=0
+            nav_view.menu.getItem(0).setChecked(true)
+            invalidateOptionsMenu()
+            supportActionBar?.setDisplayShowTitleEnabled(false)
+            supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            loadfragment(HomeFragment())
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            nav.visibility = View.VISIBLE
+            navv.visibility = View.VISIBLE
         }
         else {
 

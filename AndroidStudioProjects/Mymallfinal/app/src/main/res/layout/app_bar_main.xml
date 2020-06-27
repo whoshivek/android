@@ -9,31 +9,40 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
+        android:elevation="4dp"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
+          android:elevation="@dimen/cardview_default_elevation"
+            android:outlineSpotShadowColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="#2196F3"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="≡"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_marginEnd="10dp"
+    android:textColor="#FFFFFF"
     android:id="@+id/nav"
-    android:textSize="40dp"/>
+    android:textSize="42dp"/>
 
-            <ImageView
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:src="@drawable/screenshot"
-                android:adjustViewBounds="true"/>
+                android:layout_height="wrap_content"
+                android:text="My Mall"
+
+                android:textColor="#FFFFFF"
+                android:id="@+id/navv"
+             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 
 
 
-        </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 

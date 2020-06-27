@@ -16,6 +16,7 @@
   <androidx.recyclerview.widget.RecyclerView
       android:layout_width="match_parent"
       android:id="@+id/category"
+      android:layout_margin="8dp"
       android:layout_height="wrap_content"/>
   
 <androidx.viewpager2.widget.ViewPager2
@@ -53,6 +54,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp"
         android:text="View all"
+        android:backgroundTint="#2196F3"
       android:layout_alignParentRight="true"/>
 
 

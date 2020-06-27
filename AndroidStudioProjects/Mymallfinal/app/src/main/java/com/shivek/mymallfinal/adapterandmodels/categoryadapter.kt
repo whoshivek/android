@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.shivek.mymallfinal.R
 import kotlinx.android.synthetic.main.rv_category.view.*
 
@@ -37,6 +38,7 @@ class categoryadapter(val list : List<categorymodel>, val clicklistener: (catego
         fun bind(categorymodel: categorymodel, clicklistener: (categorymodel) -> Unit) {
                with(itemView)
                {
+                   Glide.with(this).load(categorymodel.link).into(categoryimage)
                    categorytext.text = categorymodel.text
                    this.setOnClickListener { clicklistener(categorymodel) }
 

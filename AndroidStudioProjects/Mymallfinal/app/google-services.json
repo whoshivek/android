@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "150700947061",
+    "firebase_url": "https://mymallfinal.firebaseio.com",
+    "project_id": "mymallfinal",
+    "storage_bucket": "mymallfinal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150700947061:android:f44765f8bbfe0dac52aa3c",
+        "android_client_info": {
+          "package_name": "com.shivek.mymallfinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "150700947061-ok1kisf3jg12u5rqf213haarthbgt5lf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW9qVekIWC9PSUVn-JGLf9pmYMgeW6pDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "150700947061-ok1kisf3jg12u5rqf213haarthbgt5lf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

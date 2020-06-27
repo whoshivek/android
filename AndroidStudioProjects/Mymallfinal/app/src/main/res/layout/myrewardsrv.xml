@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@drawable/whiteborder"
+    android:layout_margin="8dp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+
+
+      <ImageView
+          android:layout_width="40dp"
+          android:layout_height="40dp"
+          android:tint="#FFFFFF"
+          android:layout_margin="8dp"
+          android:src="@drawable/navsss"/>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Cashback"
+          android:id="@+id/rewardstitle"
+          android:textColor="#FFFFFF"
+          android:textSize="25sp"
+          android:layout_gravity="center"
+          android:layout_marginStart="4dp"/>
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_gravity="center"
+    android:layout_height="wrap_content">
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="till, 2nd,june"
+          android:padding="4dp"
+          android:id="@+id/rewardsvalidity"
+          android:layout_alignParentEnd="true"
+          android:textColor="@color/colorPrimaryDark"
+          android:background="#FFFFFF"
+         />
+</RelativeLayout>
+
+
+  </LinearLayout>
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/rewardsdescription"
+    android:text="get 20 dkvmdkvmdk kmdkmv kvmkdv ece"
+    android:textColor="#FFFFFF"
+    android:layout_margin="8dp"
+    android:textSize="20dp"/>
+
+</LinearLayout>

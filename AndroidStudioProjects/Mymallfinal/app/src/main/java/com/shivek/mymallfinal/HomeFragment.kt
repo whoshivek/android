@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
+import com.google.firebase.firestore.FirebaseFirestore
 import com.shivek.mymallfinal.adapterandmodels.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.bannerslider
@@ -45,22 +46,25 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 val view = inflater.inflate(R.layout.fragment_home, container, false)
-        list.add(categorymodel(text = "Men"))
-        list.add(categorymodel(text = "Women"))
-        list.add(categorymodel(text = "hello"))
-        list.add(categorymodel(text = "hello"))
-        list.add(categorymodel(text = "hello"))
-        list.add(categorymodel(text = "hello"))
-        list.add(categorymodel(text = "hello"))
-        list.add(categorymodel(text = "hello"))
-        list.add(categorymodel(text = "hello"))
-        list.add(categorymodel(text = "hello"))
-        list.add(categorymodel(text = "hello"))
-        list.add(categorymodel(text = "hello"))
-        list.add(categorymodel(text = "hello"))
-        list.add(categorymodel(text = "hello"))
-        list.add(categorymodel(text = "hello"))
-        list.add(categorymodel(text = "hello"))
+        list.add(categorymodel(link = null , text = "home"))
+        FirebaseFirestore.getInstance().collection("category").orderBy("index").get()
+            .addOnCompleteListener {
+                if (it.isSuccessful)
+                {
+                         for (d in it.result!!){
+                             list.add(categorymodel(link = d.get("image") as String? ,
+                                text =  d.get("title") as String?
+                             ))
+                         }
+                    categoryadapter.notifyDataSetChanged()
+                }
+                else{
+                    val e = it.exception?.message
+                    Toast.makeText(activity,e ,Toast.LENGTH_SHORT).show()
+
+                }
+            }
+
                vplist.add(
                    modelviewpager(
                        banner = R.drawable.ic_launcher_background
