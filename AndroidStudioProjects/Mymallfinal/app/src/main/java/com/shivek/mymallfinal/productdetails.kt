@@ -15,6 +15,7 @@ import com.shivek.mymallfinal.adapterandmodels.productviwpager
 import kotlinx.android.synthetic.main.activity_productdetails.*
 import kotlinx.android.synthetic.main.product_decription.*
 import kotlinx.android.synthetic.main.product_first.*
+import kotlinx.android.synthetic.main.product_first.view.*
 
 
 class productdetails : AppCompatActivity() {
@@ -30,13 +31,14 @@ class productdetails : AppCompatActivity() {
 
 val list = arrayListOf<modelviewpager>()
         val adapter = productviwpager(list)
-        list.add(modelviewpager(banner = R.drawable.cart))
-        list.add(modelviewpager(banner = R.drawable.cart))
-        list.add(modelviewpager(banner = R.drawable.cart))
-        list.add(modelviewpager(banner = R.drawable.cart))
-        list.add(modelviewpager(banner = R.drawable.cart))
-
+        list.add(modelviewpager(banner = R.drawable.home))
+        list.add(modelviewpager(banner = R.drawable.home))
+        list.add(modelviewpager(banner = R.drawable.home))
+        list.add(modelviewpager(banner = R.drawable.home))
+        list.add(modelviewpager(banner = R.drawable.home))
+           
         productview.adapter = adapter
+
          indicator.attachTo(productview)
 
         val fff = productsdetails_vp(supportFragmentManager , tab = 3)

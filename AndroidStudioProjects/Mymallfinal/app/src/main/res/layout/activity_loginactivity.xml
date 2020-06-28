@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".adapterandmodels.loginactivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:elevation="50dp"
+        android:outlineSpotShadowColor="#000000"
+        android:outlineAmbientShadowColor="#000000"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:elevation="50dp"
+            android:outlineAmbientShadowColor="#000000"
+            android:outlineSpotShadowColor="#000000"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#FFFFFF"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login or Signup"
+
+                android:textColor="#000000"
+                android:id="@+id/navv"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+
+
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Discover Fashion!"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:text="You're just one step away from signing up"
+        android:layout_gravity="left"/>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:text="GOOGLE  "
+        android:id="@+id/google"
+      android:elevation="1dp"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:drawableStart="@drawable/brands"
+        android:paddingStart="15sp"
+
+        android:layout_marginTop="8dp"
+
+
+
+        android:background="@drawable/buttontwo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/or"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <com.shivek.mymallfinal.adapterandmodels.PrefixEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mobile No."
+        android:paddingStart="5dp"
+         android:tag="+91"
+        android:textSize="20sp"
+        android:inputType="number"
+        android:maxLength="10"
+        android:layout_marginBottom="4dp"
+        android:theme="@style/edittext"
+        android:drawablePadding="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:text="CONTINUE"
+        android:layout_gravity="center"
+        android:backgroundTint="#FFD835"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:elevation="1dp"
+        android:paddingStart="15sp"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+
+        android:background="@drawable/buttontwo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+
+
+</LinearLayout>

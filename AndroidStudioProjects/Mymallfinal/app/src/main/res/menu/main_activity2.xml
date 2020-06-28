@@ -5,14 +5,13 @@
         android:id="@+id/menu_search"
         android:orderInCategory="100"
         android:title=""
-        android:iconTint="#ffffff"
+        android:iconTint="#000000"
         android:icon="@drawable/search"
         app:showAsAction="always" />
     <item
         android:id="@+id/menu_cart"
         android:orderInCategory="100"
         android:title=""
-        android:iconTint="#FFFFFF"
 
         android:icon="@drawable/cart"
         app:showAsAction="always" />
@@ -20,7 +19,6 @@
         android:id="@+id/menu_bell"
         android:orderInCategory="100"
         android:icon="@drawable/notification"
-        android:iconTint="#FFFFFF"
 
         android:title="@string/action_settings"
         app:showAsAction="always" />

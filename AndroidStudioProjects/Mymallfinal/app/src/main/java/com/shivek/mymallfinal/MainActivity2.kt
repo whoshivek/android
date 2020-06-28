@@ -1,6 +1,7 @@
 package com.shivek.mymallfinal
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.Menu
@@ -17,10 +18,14 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.gdacciaro.iOSDialog.iOSDialogBuilder
 import com.gdacciaro.iOSDialog.iOSDialogClickListener
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.shivek.mymallfinal.adapterandmodels.loginactivity
 import kotlinx.android.synthetic.main.activity_main2.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 
 class MainActivity2 : AppCompatActivity() {
@@ -51,6 +56,8 @@ private var current: Int?= null
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView.menu.getItem(0).setChecked(true)
+
+
         navView.setNavigationItemSelectedListener {
             when(it.itemId)
             {
@@ -64,6 +71,7 @@ private var current: Int?= null
                     nav.visibility = View.VISIBLE
                     navv.visibility = View.VISIBLE
                     loadfragment(HomeFragment())
+
                     drawerLayout.closeDrawer(Gravity.START)
                     true
                 }
@@ -83,6 +91,7 @@ private var current: Int?= null
                 }
                 R.id.nav_signout ->
                 {
+                    startActivity(Intent(this, loginactivity::class.java))
                     true
                 }
                 R.id.nav_myaccount ->

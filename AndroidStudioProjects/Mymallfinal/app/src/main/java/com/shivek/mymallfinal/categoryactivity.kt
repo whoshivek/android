@@ -45,7 +45,7 @@ class categoryactivity : AppCompatActivity() {
         )
         vplist.add(modelviewpager(banner = R.drawable.ic_launcher_background))
         vplist.add(modelviewpager(banner = R.drawable.home))
-        vplist.add(modelviewpager(banner = R.drawable.cart))
+        vplist.add(modelviewpager(banner = R.drawable.home))
         vplist.add(modelviewpager(banner = R.drawable.ic_launcher_background))
 
         dlist.add(

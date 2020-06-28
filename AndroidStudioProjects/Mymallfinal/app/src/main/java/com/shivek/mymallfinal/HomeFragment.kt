@@ -10,8 +10,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
+import com.bumptech.glide.Glide
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.shivek.mymallfinal.adapterandmodels.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.bannerslider
 
@@ -46,7 +49,18 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 val view = inflater.inflate(R.layout.fragment_home, container, false)
-        list.add(categorymodel(link = null , text = "home"))
+
+       FirebaseFirestore.getInstance().collection("onead").document("ad").get()
+           .addOnCompleteListener {
+               if (it.isSuccessful)
+               {
+                  Glide.with(this).load(it.result?.get("image")).into(adsingle)
+               }
+               else{
+                   val e = it.exception?.message
+                   Toast.makeText(activity,e ,Toast.LENGTH_SHORT).show()
+               }
+           }
         FirebaseFirestore.getInstance().collection("category").orderBy("index").get()
             .addOnCompleteListener {
                 if (it.isSuccessful)
@@ -72,7 +86,7 @@ val view = inflater.inflate(R.layout.fragment_home, container, false)
                )
         vplist.add(modelviewpager(banner = R.drawable.ic_launcher_background))
         vplist.add(modelviewpager(banner = R.drawable.home))
-        vplist.add(modelviewpager(banner = R.drawable.cart))
+        vplist.add(modelviewpager(banner = R.drawable.home))
         vplist.add(modelviewpager(banner = R.drawable.ic_launcher_background))
 
         dlist.add(
@@ -143,7 +157,6 @@ val view = inflater.inflate(R.layout.fragment_home, container, false)
         view.category.layoutManager = LinearLayoutManager(activity , OrientationHelper.HORIZONTAL , false)
         view.category.adapter = categoryadapter
         categoryadapter.notifyDataSetChanged()
-
 
 
         return view
