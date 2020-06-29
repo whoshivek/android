@@ -10,14 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.shivek.mymallfinal.adapterandmodels.*
 import kotlinx.android.synthetic.main.activity_categoryactivity.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class categoryactivity : AppCompatActivity() {
     val list = arrayListOf<categorymodel>()
     val vplist = arrayListOf<modelviewpager>()
     val dlist = arrayListOf<dealofthedaymodel>()
     val gadapter = gridadapter(dlist)
-    val dadapter = dealsadapter(dlist ,{dealofthedaymodel ->clickk(dealofthedaymodel)  })
+    val dadapter = dealsadapter(dlist ,{ dealofthedaymodel ->clickk(dealofthedaymodel)  })
 
     private fun clickk(dealofthedaymodel: dealofthedaymodel) {
              finish()
@@ -115,8 +114,9 @@ class categoryactivity : AppCompatActivity() {
         vpadapter.notifyDataSetChanged()
 
 
+        
 
-    }
+}
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

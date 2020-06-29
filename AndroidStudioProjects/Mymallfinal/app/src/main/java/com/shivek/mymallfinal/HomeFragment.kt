@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.bumptech.glide.Glide
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.shivek.mymallfinal.adapterandmodels.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -23,7 +22,7 @@ class HomeFragment : Fragment() {
     val vplist = arrayListOf<modelviewpager>()
     val dlist = arrayListOf<dealofthedaymodel>()
     val gadapter = gridadapter(dlist)
-    val dadapter = dealsadapter(dlist , {dealofthedaymodel ->cliicked(dealofthedaymodel)  })
+    val dadapter = dealsadapter(dlist , { dealofthedaymodel ->cliicked(dealofthedaymodel)  })
 
     private fun cliicked(dealofthedaymodel: dealofthedaymodel) {
               startActivity(Intent(activity , productdetails::class.java))
@@ -157,6 +156,8 @@ val view = inflater.inflate(R.layout.fragment_home, container, false)
         view.category.layoutManager = LinearLayoutManager(activity , OrientationHelper.HORIZONTAL , false)
         view.category.adapter = categoryadapter
         categoryadapter.notifyDataSetChanged()
+
+
 
 
         return view

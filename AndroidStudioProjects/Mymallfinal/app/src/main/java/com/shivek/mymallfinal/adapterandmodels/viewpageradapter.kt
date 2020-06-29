@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shivek.mymallfinal.R
 import kotlinx.android.synthetic.main.vp_bannerslider.view.*
 
-class viewpageradapter(val list : List<modelviewpager>): RecyclerView.Adapter<viewpageradapter.viewholder>()
+class viewpageradapter(val list: ArrayList<modelviewpager>): RecyclerView.Adapter<viewpageradapter.viewholder>()
 {
 
 

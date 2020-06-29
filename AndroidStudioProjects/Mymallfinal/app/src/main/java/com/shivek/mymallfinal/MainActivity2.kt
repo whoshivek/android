@@ -26,6 +26,7 @@ import com.shivek.mymallfinal.adapterandmodels.loginactivity
 import kotlinx.android.synthetic.main.activity_main2.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
 class MainActivity2 : AppCompatActivity() {
@@ -162,6 +163,14 @@ private var current: Int?= null
           }
       }
  loadfragment(HomeFragment())
+        val v = navView.getHeaderView(0)
+        val act = GoogleSignIn.getLastSignedInAccount(this)
+        if (act!=null)
+        {
+            v.texxt.text = "Hello ,${act.givenName}"
+            Glide.with(this).load(act.photoUrl).into(v.imageprofile)
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

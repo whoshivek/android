@@ -32,6 +32,7 @@ class mycart : Fragment() {
         list.add(mycartmodel(type = 1, name = "MI 5", image = R.drawable.home ,price = "Rs.78999/-", delivert = "paid",totalamount = "544/-"))
 
         val adapter = context?.let { mycartadapter(it,list) }
+
 v.rvmycart.layoutManager = LinearLayoutManager(activity)
         v.rvmycart.adapter =adapter
         return v

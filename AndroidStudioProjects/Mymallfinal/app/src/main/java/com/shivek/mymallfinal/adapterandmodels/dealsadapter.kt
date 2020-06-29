@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shivek.mymallfinal.R
 import kotlinx.android.synthetic.main.dealoftheday_rv.view.*
 
-class dealsadapter(val list : List<dealofthedaymodel> , val clicklstener : (dealofthedaymodel)->Unit) : RecyclerView.Adapter<dealsadapter.dholder>()
+class dealsadapter(val list : List<dealofthedaymodel>, val clicklstener : (dealofthedaymodel)->Unit) : RecyclerView.Adapter<dealsadapter.dholder>()
 {
     class dholder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         fun bind(dealofthedaymodel: dealofthedaymodel , clicklistener: (dealofthedaymodel) -> Unit) {
