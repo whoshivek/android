@@ -4,18 +4,13 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.MotionEvent
-import android.view.View
-import android.view.View.OnTouchListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.shivek.mymallfinal.adapterandmodels.modelviewpager
+import com.shivek.mymallfinal.adapterandmodels.viewpagermodel
 import com.shivek.mymallfinal.adapterandmodels.productsdetails_vp
 import com.shivek.mymallfinal.adapterandmodels.productviwpager
-import kotlinx.android.synthetic.main.activity_productdetails.*
 import kotlinx.android.synthetic.main.product_decription.*
 import kotlinx.android.synthetic.main.product_first.*
-import kotlinx.android.synthetic.main.product_first.view.*
 
 
 class productdetails : AppCompatActivity() {
@@ -29,13 +24,13 @@ class productdetails : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
           supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-val list = arrayListOf<modelviewpager>()
+val list = arrayListOf<viewpagermodel>()
         val adapter = productviwpager(list)
-        list.add(modelviewpager(banner = R.drawable.home))
-        list.add(modelviewpager(banner = R.drawable.home))
-        list.add(modelviewpager(banner = R.drawable.home))
-        list.add(modelviewpager(banner = R.drawable.home))
-        list.add(modelviewpager(banner = R.drawable.home))
+        list.add(viewpagermodel(banner = R.drawable.home))
+        list.add(viewpagermodel(banner = R.drawable.home))
+        list.add(viewpagermodel(banner = R.drawable.home))
+        list.add(viewpagermodel(banner = R.drawable.home))
+        list.add(viewpagermodel(banner = R.drawable.home))
            
         productview.adapter = adapter
 

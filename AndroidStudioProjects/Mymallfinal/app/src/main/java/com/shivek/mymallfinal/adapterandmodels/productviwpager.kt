@@ -7,7 +7,7 @@ import androidx.viewpager.widget.PagerAdapter
 
 
 
-class productviwpager(val list : List<modelviewpager>) : PagerAdapter() {
+class productviwpager(val list : List<viewpagermodel>) : PagerAdapter() {
 
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {

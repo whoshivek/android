@@ -1,6 +1,6 @@
 package com.shivek.mymallfinal.adapterandmodels
 
-data class modelviewpager
+data class viewpagermodel
     (
 
     val banner : Int? = null

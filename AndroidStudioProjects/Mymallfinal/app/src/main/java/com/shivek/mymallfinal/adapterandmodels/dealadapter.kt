@@ -5,19 +5,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shivek.mymallfinal.R
-import kotlinx.android.synthetic.main.dealoftheday_rv.view.*
+import kotlinx.android.synthetic.main.rvmaterial.view.*
 
-class dealsadapter(val list : List<dealofthedaymodel>, val clicklstener : (dealofthedaymodel)->Unit) : RecyclerView.Adapter<dealsadapter.dholder>()
+class dealadapter(val list : List<commonmodel>) : RecyclerView.Adapter<dealadapter.dholder>()
 {
     class dholder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(dealofthedaymodel: dealofthedaymodel , clicklistener: (dealofthedaymodel) -> Unit) {
+        fun bind(commonmodel: commonmodel) {
                       with(itemView)
                       {
-                          dealofthedaymodel.image?.let { dothdayimage.setImageResource(it) }
-                          dealtext1.text = dealofthedaymodel.text1
-                          dealtext2.text = dealofthedaymodel.text2
-                          dealtext3.text = dealofthedaymodel.text3
-                          this.setOnClickListener { clicklistener(dealofthedaymodel) }
+                          commonmodel.image?.let { dothdayimage.setImageResource(it) }
+                          dealtext1.text = commonmodel.text1
+                          dealtext2.text = commonmodel.text2
+                          dealtext3.text = commonmodel.text3
                       }
         }
 
@@ -26,7 +25,7 @@ class dealsadapter(val list : List<dealofthedaymodel>, val clicklstener : (dealo
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): dholder {
         return dholder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.dealoftheday_rv,
+                R.layout.rvmaterial,
                 parent,
                 false
             )
@@ -38,7 +37,7 @@ class dealsadapter(val list : List<dealofthedaymodel>, val clicklstener : (dealo
     }
 
     override fun onBindViewHolder(holder: dholder, position: Int) {
-        holder.bind(list[position] , clicklstener)
+        holder.bind(list[position])
     }
 
 

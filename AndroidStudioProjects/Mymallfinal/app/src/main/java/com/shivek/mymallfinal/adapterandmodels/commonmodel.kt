@@ -1,6 +1,6 @@
 package com.shivek.mymallfinal.adapterandmodels
 
-data class dealofthedaymodel(
+data class commonmodel(
 
 
     val text1 : String? = null,

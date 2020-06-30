@@ -1,11 +1,12 @@
-package com.shivek.multipleview;
+package com.shivek.mymallfinal.adapterandmodels;
+
 
 import java.util.List;
 
 public class homepagemodel {
     public static final int GRID_LAYOUT =0;
     public static final int DEAL_Layout =1;
-     public static final int VIEWPAGER_LAYOUT =2;
+    public static final int VIEWPAGER_LAYOUT =2;
     public static final int ADBANNERPAGER_LAYOUT =3;
 
     private int type;
@@ -48,7 +49,7 @@ public class homepagemodel {
 
     /////////////////////////////////////////
 
-private List<viewpagermodel> viewpagerlist ;
+    private List<viewpagermodel> viewpagerlist ;
 
     public homepagemodel(int type, List<viewpagermodel> viewpagerlist) {
         this.type = type;

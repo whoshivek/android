@@ -13,12 +13,12 @@ import kotlinx.android.synthetic.main.activity_categoryactivity.*
 
 class categoryactivity : AppCompatActivity() {
     val list = arrayListOf<categorymodel>()
-    val vplist = arrayListOf<modelviewpager>()
-    val dlist = arrayListOf<dealofthedaymodel>()
+    val vplist = arrayListOf<viewpagermodel>()
+    val dlist = arrayListOf<commonmodel>()
     val gadapter = gridadapter(dlist)
-    val dadapter = dealsadapter(dlist ,{ dealofthedaymodel ->clickk(dealofthedaymodel)  })
+    val dadapter = dealadapter(dlist )
 
-    private fun clickk(dealofthedaymodel: dealofthedaymodel) {
+    private fun clickk(commonmodel: commonmodel) {
              finish()
 
     }
@@ -38,66 +38,66 @@ class categoryactivity : AppCompatActivity() {
 
 
         vplist.add(
-            modelviewpager(
+            viewpagermodel(
                 banner = R.drawable.ic_launcher_background
             )
         )
-        vplist.add(modelviewpager(banner = R.drawable.ic_launcher_background))
-        vplist.add(modelviewpager(banner = R.drawable.home))
-        vplist.add(modelviewpager(banner = R.drawable.home))
-        vplist.add(modelviewpager(banner = R.drawable.ic_launcher_background))
+        vplist.add(viewpagermodel(banner = R.drawable.ic_launcher_background))
+        vplist.add(viewpagermodel(banner = R.drawable.home))
+        vplist.add(viewpagermodel(banner = R.drawable.home))
+        vplist.add(viewpagermodel(banner = R.drawable.ic_launcher_background))
 
         dlist.add(
-            dealofthedaymodel(
+            commonmodel(
                 text1 = "hi",
                 text2 = "bye",
                 text3 = "gg"
             )
         )
         dlist.add(
-            dealofthedaymodel(
+            commonmodel(
                 text1 = "hi2",
                 text2 = "bye2",
                 text3 = "gg2"
             )
         )
         dlist.add(
-            dealofthedaymodel(
+            commonmodel(
                 text1 = "hi",
                 text2 = "bye",
                 text3 = "gg"
             )
         )
         dlist.add(
-            dealofthedaymodel(
+            commonmodel(
                 text1 = "hi5",
                 text2 = "bye5",
                 text3 = "gg5"
             )
         )
         dlist.add(
-            dealofthedaymodel(
+            commonmodel(
                 text1 = "hi",
                 text2 = "bye",
                 text3 = "gg"
             )
         )
         dlist.add(
-            dealofthedaymodel(
+            commonmodel(
                 text1 = "hi2",
                 text2 = "bye2",
                 text3 = "gg2"
             )
         )
         dlist.add(
-            dealofthedaymodel(
+            commonmodel(
                 text1 = "hi",
                 text2 = "bye",
                 text3 = "gg"
             )
         )
         dlist.add(
-            dealofthedaymodel(
+            commonmodel(
                 text1 = "hi5",
                 text2 = "bye5",
                 text3 = "gg5"

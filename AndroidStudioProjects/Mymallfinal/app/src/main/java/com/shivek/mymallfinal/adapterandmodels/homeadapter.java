@@ -1,4 +1,5 @@
-package com.shivek.multipleview;
+package com.shivek.mymallfinal.adapterandmodels;
+
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.shivek.mymallfinal.R;
+
 import java.util.List;
 
 public class homeadapter extends RecyclerView.Adapter {
 
-private List<homepagemodel> homepagemoddellist;
+    private List<homepagemodel> homepagemoddellist;
 
     public homeadapter(List<homepagemodel> homepagemoddellist) {
         this.homepagemoddellist = homepagemoddellist;
@@ -40,50 +43,50 @@ private List<homepagemodel> homepagemoddellist;
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-      switch (viewType){
-          case homepagemodel.GRID_LAYOUT:
-              View grid = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid , parent,false);
-                  return new griddd(grid);
-           case homepagemodel.DEAL_Layout:
-                 View deal = LayoutInflater.from(parent.getContext()).inflate(R.layout.deall , parent,false);
-                  return new dealll(deal);
-           case homepagemodel.VIEWPAGER_LAYOUT:
+        switch (viewType){
+            case homepagemodel.GRID_LAYOUT:
+                View grid = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid , parent,false);
+                return new griddd(grid);
+            case homepagemodel.DEAL_Layout:
+                View deal = LayoutInflater.from(parent.getContext()).inflate(R.layout.deall , parent,false);
+                return new dealll(deal);
+            case homepagemodel.VIEWPAGER_LAYOUT:
                 View vpager = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewpager,parent,false);
-                    return new viewppp(vpager);
-             case homepagemodel.ADBANNERPAGER_LAYOUT:
-                      View adbanner = LayoutInflater.from(parent.getContext()).inflate(R.layout.adbanner,parent,false);
-                              return new adbanerrr(adbanner);
-                  default:
-                     return null;
+                return new viewppp(vpager);
+            case homepagemodel.ADBANNERPAGER_LAYOUT:
+                View adbanner = LayoutInflater.from(parent.getContext()).inflate(R.layout.adbanner,parent,false);
+                return new adbanerrr(adbanner);
+            default:
+                return null;
 
-      }
+        }
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-             switch (homepagemoddellist.get(position).getType()){
-                 case homepagemodel.GRID_LAYOUT:
-                     String title = homepagemoddellist.get(position).getTitle();
-                     List<commonmodel> a = homepagemoddellist.get(position).getModelist();
-                     ((griddd)holder).setgridlayout(a,title);
-                     break;
-                     case homepagemodel.DEAL_Layout:
-                         String titttle = homepagemoddellist.get(position).getTitle();
-                         List<commonmodel> b = homepagemoddellist.get(position).getModelist();
-                         ((dealll)holder).setdeallayout(b,titttle);
-                         break;
+        switch (homepagemoddellist.get(position).getType()){
+            case homepagemodel.GRID_LAYOUT:
+                String title = homepagemoddellist.get(position).getTitle();
+                List<commonmodel> a = homepagemoddellist.get(position).getModelist();
+                ((griddd)holder).setgridlayout(a,title);
+                break;
+            case homepagemodel.DEAL_Layout:
+                String titttle = homepagemoddellist.get(position).getTitle();
+                List<commonmodel> b = homepagemoddellist.get(position).getModelist();
+                ((dealll)holder).setdeallayout(b,titttle);
+                break;
 
-                 case homepagemodel.VIEWPAGER_LAYOUT:
-                     List<viewpagermodel> c = homepagemoddellist.get(position).getViewpagerlist();
-                     ((viewppp)holder).setviewpagerlayout(c);
-                     break;
+            case homepagemodel.VIEWPAGER_LAYOUT:
+                List<viewpagermodel> c = homepagemoddellist.get(position).getViewpagerlist();
+                ((viewppp)holder).setviewpagerlayout(c);
+                break;
 
-                     case homepagemodel.ADBANNERPAGER_LAYOUT:
-                         List<viewpagermodel> d = homepagemoddellist.get(position).getViewpagerlist();
-                         ((adbanerrr)holder).setadlayout(d);
-                         break;
-                 default:return;
-             }
+            case homepagemodel.ADBANNERPAGER_LAYOUT:
+                List<viewpagermodel> d = homepagemoddellist.get(position).getViewpagerlist();
+                ((adbanerrr)holder).setadlayout(d);
+                break;
+            default:return;
+        }
     }
 
     @Override
@@ -105,9 +108,9 @@ private List<homepagemodel> homepagemoddellist;
         }
         private void setgridlayout(List<commonmodel> a, String title){
             gridtitle.setText(title);
-      gridadapter g = new gridadapter(a);
-      gridView.setAdapter(g);
-      g.notifyDataSetChanged();
+            gridadapter g = new gridadapter(a);
+            gridView.setAdapter(g);
+            g.notifyDataSetChanged();
 
         }
     }
@@ -124,7 +127,7 @@ private List<homepagemodel> homepagemoddellist;
             dealtext = itemView.findViewById(R.id.dealtext);
             dealrv = itemView.findViewById(R.id.dealrv);
         }
-        private void setdeallayout(List<commonmodel> b,String title){
+        private void setdeallayout(List<commonmodel> b,String title ){
 
             dealtext.setText(title);
             dealadapter d = new dealadapter(b);
@@ -138,7 +141,7 @@ private List<homepagemodel> homepagemoddellist;
     }
 
     public class viewppp extends RecyclerView.ViewHolder{
-                private ViewPager2 viewPager2;
+        private ViewPager2 viewPager2;
         public viewppp(@NonNull View itemView) {
             super(itemView);
             viewPager2 = itemView.findViewById(R.id.viewpagerrv);
@@ -153,13 +156,13 @@ private List<homepagemodel> homepagemoddellist;
 
     public class adbanerrr extends RecyclerView.ViewHolder{
 
-               private RecyclerView adrecyv;
+        private RecyclerView adrecyv;
         public adbanerrr(@NonNull View itemView) {
             super(itemView);
             adrecyv = itemView.findViewById(R.id.adbannerrv);
         }
         private void setadlayout(List<viewpagermodel> d){
-            adbaneeradapter ad = new adbaneeradapter(d);
+            viewpageradapter ad = new viewpageradapter(d);
             LinearLayoutManager layoutManager =new LinearLayoutManager(itemView.getContext());
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             adrecyv.setLayoutManager(layoutManager);
