@@ -6,26 +6,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AbsListView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
-import com.bumptech.glide.Glide
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.shivek.mymallfinal.adapterandmodels.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.rvmaterial.*
+import kotlinx.android.synthetic.main.rvmaterial.view.*
+
 
 class HomeFragment : Fragment() {
     val list = arrayListOf<categorymodel>()
     val vplist = arrayListOf<viewpagermodel>()
     val dlist = arrayListOf<commonmodel>()
-    val gadapter = gridadapter(dlist)
-    val dadapter = dealadapter(dlist )
+    val gridlist = arrayListOf<commonmodel>()
+    val testlist = arrayListOf<homepagemodel>()
     val adlist = arrayListOf<viewpagermodel>()
-
-    val vpadapter =
-        viewpageradapter(vplist)
+    val testadapter = homeadapter(testlist)
     val categoryadapter =
         com.shivek.mymallfinal.adapterandmodels.categoryadapter(
             list,
@@ -45,19 +46,6 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
 val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        FirebaseFirestore.getInstance().collection("onead").document("ad").get()
-           .addOnCompleteListener {
-               if (it.isSuccessful)
-               {
-                  Glide.with(this).load(it.result?.get("image")).into(adsingle)
-
-               }
-               else{
-                   val e = it.exception?.message
-                   Toast.makeText(activity,e ,Toast.LENGTH_SHORT).show()
-
-               }
-           }
         FirebaseFirestore.getInstance().collection("category").orderBy("index").get()
             .addOnCompleteListener {
                 if (it.isSuccessful)
@@ -78,86 +66,6 @@ val view = inflater.inflate(R.layout.fragment_home, container, false)
                 }
 
             }
-
-               vplist.add(
-                   viewpagermodel(
-                       banner = R.drawable.ic_launcher_background
-                   )
-               )
-        vplist.add(viewpagermodel(banner = R.drawable.ic_launcher_background))
-        vplist.add(viewpagermodel(banner = R.drawable.home))
-        vplist.add(viewpagermodel(banner = R.drawable.home))
-        vplist.add(viewpagermodel(banner = R.drawable.ic_launcher_background))
-
-        dlist.add(
-            commonmodel(
-                text1 = "hi",
-                text2 = "bye",
-                text3 = "gg"
-            )
-        )
-        dlist.add(
-            commonmodel(
-                text1 = "hi2",
-                text2 = "bye2",
-                text3 = "gg2"
-            )
-        )
-        dlist.add(
-            commonmodel(
-                text1 = "hi",
-                text2 = "bye",
-                text3 = "gg"
-            )
-        )
-        dlist.add(
-            commonmodel(
-                text1 = "hi5",
-                text2 = "bye5",
-                text3 = "gg5"
-            )
-        )
-        dlist.add(
-            commonmodel(
-                text1 = "hi",
-                text2 = "bye",
-                text3 = "gg"
-            )
-        )
-        dlist.add(
-            commonmodel(
-                text1 = "hi2",
-                text2 = "bye2",
-                text3 = "gg2"
-            )
-        )
-        dlist.add(
-            commonmodel(
-                text1 = "hi",
-                text2 = "bye",
-                text3 = "gg"
-            )
-        )
-        dlist.add(
-            commonmodel(
-                text1 = "hi5",
-                text2 = "bye5",
-                text3 = "gg5"
-            )
-        )
-
-        view.gridlayout.adapter = gadapter
-        gadapter.notifyDataSetChanged()
-        view.dealsoftheday.layoutManager = LinearLayoutManager(activity , OrientationHelper.HORIZONTAL ,false)
-        view.dealsoftheday.adapter = dadapter
-        dadapter.notifyDataSetChanged()
-        view.bannerslider.adapter = vpadapter
-        view.bannerslider.beginFakeDrag()
-        vpadapter.notifyDataSetChanged()
-        view.category.layoutManager = LinearLayoutManager(activity , OrientationHelper.HORIZONTAL , false)
-        view.category.adapter = categoryadapter
-        categoryadapter.notifyDataSetChanged()
-          adlist.add(viewpagermodel(R.drawable.home))
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
        // val GRID_LAYOUT = 0
@@ -166,21 +74,75 @@ val view = inflater.inflate(R.layout.fragment_home, container, false)
         //val ADBANNERPAGER_LAYOUT = 3
 
 
-        val testlist = arrayListOf<homepagemodel>()
-        testlist.add(homepagemodel(2, vplist))
-        testlist.add(homepagemodel(1,"deal of the year",dlist))
-        testlist.add(homepagemodel(0,"#trending",dlist))
-        testlist.add(homepagemodel(3, adlist))
+        FirebaseFirestore.getInstance().collection("home").orderBy("index").get()
+            .addOnCompleteListener {
+                if (it.isSuccessful)
+                {
+                    for (d in it.result!!)
+                    {
+                        testadapter.notifyDataSetChanged()
 
-        val testadapter = homeadapter(testlist)
+                        val c =   d.get("view") as Long
+                        if (c == 0L)
+                        {
+                                           for (i in 1L..4L)
+                                           {
+                                               gridlist.add(commonmodel(null,null,null,image = d.get("timage" + i).toString()))
+                                           }
+                            testlist.add(homepagemodel(0, d.get("title").toString(), gridlist))
+                            testadapter.notifyDataSetChanged()
+                        }
+                        else if (c == 1L)
+                        {
+                             val no = d.get("deal_no") as Long
+                            for (i in 1L..no)
+                            {
+                                dlist.add(commonmodel(image = d.get("dimage"+i).toString()))
+                            }
+                            testlist.add(homepagemodel(1, d.get("dtitle").toString(),dlist))
+                            testadapter.notifyDataSetChanged()
+                        }
+                        else if (c== 2L)
+                        {
+                            val no = d.get("banner_no") as Long
+                            for (i in 1L..no)
+                            {
+                                vplist.add(viewpagermodel( banner = d.get("banner" +i).toString()))
+
+                            }
+                            testlist.add(homepagemodel(2 , vplist))
+                            testadapter.notifyDataSetChanged()
+                        }
+                        else if (c == 3L)
+                        {
+                               adlist.add(viewpagermodel(banner = d.get("adimage").toString()))
+                            testlist.add(homepagemodel(3,adlist))
+                            testadapter.notifyDataSetChanged()
+                        }
+
+                    }
+                }
+                else
+                {
+                    val e = it.exception?.message
+                    Toast.makeText(activity,e ,Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+
+        view.category.layoutManager = LinearLayoutManager(activity , OrientationHelper.HORIZONTAL , false)
+        view.category.adapter = categoryadapter
+
+
+
 
         view.test.layoutManager = LinearLayoutManager(activity)
         view.test.adapter = testadapter
+
         testadapter.notifyDataSetChanged()
 
-
-
-
+        categoryadapter.notifyDataSetChanged()
 
 
 

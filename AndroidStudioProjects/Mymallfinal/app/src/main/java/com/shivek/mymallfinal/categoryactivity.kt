@@ -37,15 +37,7 @@ class categoryactivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
-        vplist.add(
-            viewpagermodel(
-                banner = R.drawable.ic_launcher_background
-            )
-        )
-        vplist.add(viewpagermodel(banner = R.drawable.ic_launcher_background))
-        vplist.add(viewpagermodel(banner = R.drawable.home))
-        vplist.add(viewpagermodel(banner = R.drawable.home))
-        vplist.add(viewpagermodel(banner = R.drawable.ic_launcher_background))
+vplist.add(viewpagermodel(banner = "https://firebasestorage.googleapis.com/v0/b/mymallfinal.appspot.com/o/banners%2Fd764f77c-f703-4a1d-ae4b-2359cd57bb941593175356429-Biba_App.jpg?alt=media&token=ed6f7675-b87a-4b98-b3d5-65d8c15a15e8"))
 
         dlist.add(
             commonmodel(
@@ -109,7 +101,7 @@ class categoryactivity : AppCompatActivity() {
         dealsoftheday2.layoutManager = LinearLayoutManager(this , OrientationHelper.HORIZONTAL ,false)
         dealsoftheday2.adapter = dadapter
         dadapter.notifyDataSetChanged()
-        bannerslider2.adapter = vpadapter
+       // bannerslider2.adapter = vpadapter
         bannerslider2.beginFakeDrag()
         vpadapter.notifyDataSetChanged()
 

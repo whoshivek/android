@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "145740609362",
+    "firebase_url": "https://twilightscans-9660c.firebaseio.com",
+    "project_id": "twilightscans-9660c",
+    "storage_bucket": "twilightscans-9660c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145740609362:android:211ee8d9c1d6c842c2ac8b",
+        "android_client_info": {
+          "package_name": "com.shivek.ttt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "145740609362-gsecsr79uiqnr14mh5djp4lg20uoat8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxWPtfNwNDOieXOsKeuS-jeccA6JH_kfs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "145740609362-gsecsr79uiqnr14mh5djp4lg20uoat8g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -24,15 +24,15 @@ import com.gdacciaro.iOSDialog.iOSDialogClickListener
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.shivek.mymallfinal.adapterandmodels.loginactivity
 import kotlinx.android.synthetic.main.activity_main2.*
-import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
 class MainActivity2 : AppCompatActivity() {
    private lateinit var  drawerLayout: DrawerLayout
-    private lateinit var appBarConfiguration: AppBarConfiguration
 private var current: Int?= null
+
+
     @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,16 +46,10 @@ private var current: Int?= null
 
         val navView: NavigationView = findViewById(R.id.nav_view)
 
-        val navController = findNavController(R.id.nav_host_fragment)
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.drawer_layout
-            ), drawerLayout
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+    
         navView.menu.getItem(0).setChecked(true)
 
 
@@ -225,17 +219,13 @@ private var current: Int?= null
 
 
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
 
     fun loadfragment(fragment : Fragment)
     {
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.nav_host_fragment , fragment)
+            .replace(R.id.container , fragment)
             .addToBackStack(null)
             .commit()
     }

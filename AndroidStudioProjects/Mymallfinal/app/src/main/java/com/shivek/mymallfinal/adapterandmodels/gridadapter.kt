@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import com.bumptech.glide.Glide
 import com.shivek.mymallfinal.R
 import kotlinx.android.synthetic.main.rvmaterial.view.*
 
@@ -15,7 +16,7 @@ class gridadapter(val list: List<commonmodel>) : BaseAdapter(){
             View = LayoutInflater.from(parent?.context).inflate(R.layout.rvmaterial, null)
              View.dealtext3.text = list[position].text1
           View.dealtext2.text = list[position].text2
-          list[position].image?.let { View?.dothdayimage?.setImageResource(it) }
+          Glide.with(View).load(list[position].image).into(View.dothdayimage)
           View.dealtext1.text = list[position].text1
 
       }

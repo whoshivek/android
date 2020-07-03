@@ -6,15 +6,20 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <androidx.viewpager2.widget.ViewPager2
-            android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:layout_marginTop="8dp"
-            android:scrollIndicators="bottom"
-            android:id="@+id/viewpagerrv"
-            >
-        </androidx.viewpager2.widget.ViewPager2>
+<androidx.viewpager2.widget.ViewPager2
+    android:layout_width="match_parent"
+    android:layout_height="320dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:background="#FFFFFF"
+    android:id="@+id/viewpagerrv"/>
 
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/indicator"
+            android:elevation="4dp"
+            android:layout_alignBottom="@+id/viewpagerrv"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"/>
 
 
 

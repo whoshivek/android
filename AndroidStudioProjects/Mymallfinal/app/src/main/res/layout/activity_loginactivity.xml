@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar6"
             android:elevation="50dp"
             android:outlineAmbientShadowColor="#000000"
             android:outlineSpotShadowColor="#000000"

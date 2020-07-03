@@ -1,6 +1,7 @@
 package com.shivek.mymallfinal.adapterandmodels;
 
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +11,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.CompositePageTransformer;
+import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.shivek.mymallfinal.R;
 
 import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator;
+import me.relex.circleindicator.CircleIndicator3;
 
 public class homeadapter extends RecyclerView.Adapter {
 
@@ -141,15 +148,33 @@ public class homeadapter extends RecyclerView.Adapter {
     }
 
     public class viewppp extends RecyclerView.ViewHolder{
-        private ViewPager2 viewPager2;
+        private ViewPager2 viewPager;
+        private CircleIndicator3 circle;
         public viewppp(@NonNull View itemView) {
             super(itemView);
-            viewPager2 = itemView.findViewById(R.id.viewpagerrv);
+            viewPager = itemView.findViewById(R.id.viewpagerrv);
+            circle = itemView.findViewById(R.id.indicator);
         }
-        private void setviewpagerlayout(List<viewpagermodel> c){
-            viewpageradapter gg = new viewpageradapter(c);
-            viewPager2.setAdapter(gg);
+        private void setviewpagerlayout(List<viewpagermodel> c ){
+           viewpageradapter gg = new viewpageradapter(c);
+           viewPager.setAdapter(gg);
+              circle.setViewPager(viewPager);
+            gg.notifyDataSetChanged();
+            gg.registerAdapterDataObserver(circle.getAdapterDataObserver());
+            viewPager.setClipToPadding(false);
+            viewPager.setClipChildren(false);
+            viewPager.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+            CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
+            compositePageTransformer.addTransformer(new MarginPageTransformer(40));
+            compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
+                @Override
+                public void transformPage(@NonNull View page, float position) {
+                    float r= 1- Math.abs(position);
+                            page.setScaleY(0.85f + r*0.15f);
 
+                }
+            });
+            viewPager.setPageTransformer(compositePageTransformer);
         }
     }
 
@@ -162,11 +187,13 @@ public class homeadapter extends RecyclerView.Adapter {
             adrecyv = itemView.findViewById(R.id.adbannerrv);
         }
         private void setadlayout(List<viewpagermodel> d){
-            viewpageradapter ad = new viewpageradapter(d);
-            LinearLayoutManager layoutManager =new LinearLayoutManager(itemView.getContext());
-            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-            adrecyv.setLayoutManager(layoutManager);
-            adrecyv.setAdapter(ad);
+           viewpageradapter ad = new viewpageradapter(d);
+           LinearLayoutManager l = new LinearLayoutManager(itemView.getContext());
+           l.setOrientation(LinearLayoutManager.HORIZONTAL);
+           adrecyv.setLayoutManager(l);
+           adrecyv.setAdapter(ad);
+
+
 
         }
     }

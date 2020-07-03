@@ -26,11 +26,7 @@ class productdetails : AppCompatActivity() {
 
 val list = arrayListOf<viewpagermodel>()
         val adapter = productviwpager(list)
-        list.add(viewpagermodel(banner = R.drawable.home))
-        list.add(viewpagermodel(banner = R.drawable.home))
-        list.add(viewpagermodel(banner = R.drawable.home))
-        list.add(viewpagermodel(banner = R.drawable.home))
-        list.add(viewpagermodel(banner = R.drawable.home))
+
            
         productview.adapter = adapter
 

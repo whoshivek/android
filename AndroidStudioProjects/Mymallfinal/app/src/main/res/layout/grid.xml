@@ -2,11 +2,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_margin="4dp"
-    android:paddingBottom="8dp"
-    android:paddingTop="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="4dp"
     android:elevation="1dp"
-    android:background="@drawable/buttontwo"
+    android:background="@drawable/bgg"
     android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,24 +19,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
+            android:gravity="bottom"
             android:id="@+id/gridtext"
+
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+
             android:fontFamily="monospace"
             android:text="#TRENDING"
 
             android:textColor="#000000"
-            android:textSize="15sp" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="0dp"
-            android:backgroundTint="#FFD835"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="0dp"
-            android:text="View all"
-            android:layout_alignParentEnd="true"
+            android:textSize="20dp" />
 
-            android:layout_alignParentRight="true"/>
 
 
 
@@ -43,7 +39,8 @@
     <GridView
         android:id="@+id/gridrv"
         android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:layout_height="300dp"
+        android:scrollbarSize="0dp"
         android:isScrollContainer="false"
         android:numColumns="2" />
 
