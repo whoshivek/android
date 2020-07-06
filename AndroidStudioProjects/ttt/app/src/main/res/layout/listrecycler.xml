@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_margin="4dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:src="@drawable/comicbook"
+        android:id="@+id/listimage"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+    
+    
+    <LinearLayout
+        android:layout_width="0dp"
+         android:layout_marginLeft="4dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_weight="2">
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ltitle"
+
+        android:text="hg hghgh hhv hvhv hvhv "
+        android:textSize="19sp"
+        android:textColor="#000000"
+        android:maxLines="3"
+        android:ellipsize="end"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_marginEnd="8dp"
+                android:id="@+id/lbutton1"
+                android:textColor="#464549"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:background="@drawable/buttonthree"
+                android:layout_height="20dp"
+                android:text="chapter1"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:textSize="12sp"
+                android:id="@+id/ldate1"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="20 , july 2000"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_marginTop="4dp"
+                android:id="@+id/lbutton2"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:textColor="#464549"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/buttonthree"
+                android:layout_height="20dp"
+                android:text="chapter1"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:textSize="12sp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:id="@+id/ldate2"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="20 , july 2000"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    
+</LinearLayout>

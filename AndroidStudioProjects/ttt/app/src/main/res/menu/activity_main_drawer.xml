@@ -5,26 +5,26 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_mymall"
+            android:id="@+id/nav_home"
             android:icon="@drawable/home"
             android:title="Home" />
     </group>
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_myorder"
-            android:icon="@drawable/comicbook"
-            android:title="Comics" />
+            android:id="@+id/nav_comicbook"
+            android:icon="@drawable/money"
+            android:title="Add Coins" />
     </group>
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_mycart"
+            android:id="@+id/nav_aboutus"
             android:icon="@drawable/help"
             android:title="About us" />
     </group>
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_myrewards"
+            android:id="@+id/nav_contactus"
             android:icon="@drawable/contactus"
             android:title= "Contact Us" />
     </group>

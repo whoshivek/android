@@ -163,7 +163,7 @@ public class homeadapter extends RecyclerView.Adapter {
             gg.registerAdapterDataObserver(circle.getAdapterDataObserver());
             viewPager.setClipToPadding(false);
             viewPager.setClipChildren(false);
-            viewPager.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+            viewPager.setOffscreenPageLimit(c.size());
             CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
             compositePageTransformer.addTransformer(new MarginPageTransformer(40));
             compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {

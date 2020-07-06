@@ -39,7 +39,7 @@ class categoryadapter(val list : List<categorymodel>, val clicklistener: (catego
         fun bind(categorymodel: categorymodel, clicklistener: (categorymodel) -> Unit) {
                with(itemView)
                {
-                   Glide.with(this).load(categorymodel.link).into(categoryimage)
+                   Glide.with(this).load(categorymodel.link).placeholder(R.drawable.loader).into(categoryimage)
                    categorytext.text = categorymodel.text
                    this.setOnClickListener { clicklistener(categorymodel) }
 
