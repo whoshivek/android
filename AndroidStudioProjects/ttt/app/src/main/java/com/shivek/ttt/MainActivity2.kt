@@ -1,8 +1,12 @@
 package com.shivek.ttt
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.shapes.Shape
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Size
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
@@ -14,13 +18,23 @@ import com.gdacciaro.iOSDialog.iOSDialogClickListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.reward.RewardedVideoAd
+import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.google.android.material.navigation.NavigationView
+import com.shivek.ttt.chapter.Companion.coins
 
 import kotlinx.android.synthetic.main.activity_main2.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 class MainActivity2 : AppCompatActivity() {
     private var current: Int?= null
     private lateinit var mAdView: AdView
+    var c = 1
+
+    private lateinit var rewardedAd: RewardedAd
+
+    private lateinit var mRewardedVideoAd: RewardedVideoAd
 
     private val mAppUnitId: String by lazy {
 
@@ -36,7 +50,17 @@ class MainActivity2 : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         drawerLayout = findViewById(R.id.drawer)
 
+        rewardedAd = RewardedAd(this,
+            "ca-app-pub-3940256099942544/5224354917")
+        val adLoadCallback = object: RewardedAdLoadCallback() {
+            override fun onRewardedAdLoaded() {
 
+            }
+            override fun onRewardedAdFailedToLoad(errorCode: Int) {
+
+            }
+        }
+        rewardedAd.loadAd(AdRequest.Builder().build(), adLoadCallback)
 
         mAdView = findViewById(R.id.adView)
 
@@ -67,17 +91,65 @@ navView.setNavigationItemSelectedListener {
         }
         R.id.nav_home ->{
             navv.text = "Twilight Scans"
+            c=1
             loadfragment(home())
             drawerLayout.closeDrawer(Gravity.START)
             true
         }
-
+R.id.nav_comicbook ->{
+    current=1
+    navv.text = "Add Coins"
+    loadfragment(addcoin())
+    drawerLayout.closeDrawer(Gravity.START)
+    true
+}
 
         else ->
             false
     }
 }
-        loadfragment(home())
+          val g = getSharedPreferences("sp",Context.MODE_PRIVATE)
+        val ggg = g.getInt("coin",0)
+
+        val v = navView.getHeaderView(0)
+        v.headerm.text = "COINS:${ggg}"
+
+
+        if (c==1) {
+            current=0
+            loadfragment(home())
+            navView.menu.getItem(0).setChecked(true)
+        }
+
+        c= intent.getIntExtra("codee",1)
+if (c==25) {
+    current=1
+    c=1
+    kk.build()
+        .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+        .setDirection(0.0, 359.0)
+        .setSpeed(1f, 5f)
+        .setFadeOutEnabled(true)
+        .setTimeToLive(2000L)
+        .addShapes(
+            nl.dionsegijn.konfetti.models.Shape.Square,
+            nl.dionsegijn.konfetti.models.Shape.Circle
+        )
+        .addSizes(nl.dionsegijn.konfetti.models.Size(12))
+        .setPosition(-50f, kk.width + 50f, -50f, -50f)
+        .streamFor(300, 5000L)
+    navView.menu.getItem(1).setChecked(true)
+    loadfragment(addcoin())
+}
+
+        c = intent.getIntExtra("code" ,1)
+        if (c==0)
+        {
+            current=1
+            c=1
+            loadfragment(addcoin())
+            navView.menu.getItem(1).setChecked(true)
+        }
     }
 
     private fun initializeBannerAd(mAppUnitId: String) {

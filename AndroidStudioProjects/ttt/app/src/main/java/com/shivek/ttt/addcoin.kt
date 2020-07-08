@@ -1,59 +1,108 @@
 package com.shivek.ttt
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.NonNull
+import androidx.core.os.postDelayed
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.reward.RewardedVideoAd
+import com.google.android.gms.ads.rewarded.RewardItem
+import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.gms.ads.rewarded.RewardedAdCallback
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
+import es.dmoral.toasty.Toasty
+import kotlinx.android.synthetic.main.fragment_addcoin.*
+import kotlinx.android.synthetic.main.fragment_addcoin.view.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [addcoin.newInstance] factory method to
- * create an instance of this fragment.
- */
 class addcoin : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+
+    private lateinit var rewardedAd: RewardedAd
+
+    private lateinit var mRewardedVideoAd: RewardedVideoAd
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_addcoin, container, false)
+       val v= inflater.inflate(R.layout.fragment_addcoin, container, false)
+        rewardedAd = RewardedAd(activity,
+            "ca-app-pub-3940256099942544/5224354917")
+        val adLoadCallback = object: RewardedAdLoadCallback() {
+            override fun onRewardedAdLoaded() {
+
+            }
+            override fun onRewardedAdFailedToLoad(errorCode: Int) {
+
+            }
+        }
+        rewardedAd.loadAd(AdRequest.Builder().build(), adLoadCallback)
+
+        v.add.setOnClickListener {
+            if (rewardedAd.isLoaded) {
+                val activityContext: Activity = this.requireActivity()
+                val adCallback = object: RewardedAdCallback() {
+                    override fun onRewardedAdOpened() {
+
+                    }
+                    override fun onRewardedAdClosed() {
+                        startActivity(Intent(activityContext , MainActivity2::class.java))
+                        rewardedAd.loadAd(AdRequest.Builder().build(), adLoadCallback)
+                        v.how.visibility = View.GONE
+                    }
+                    override fun onUserEarnedReward(@NonNull reward: RewardItem) {
+                        val g = this@addcoin.activity?.getSharedPreferences("sp", Context.MODE_PRIVATE)
+                        val edit = g?.edit()
+                        chapter.coins = chapter.coins + 50
+                        edit?.putInt("coin", chapter.coins)
+                        edit?.apply()
+                         Toasty.success(activityContext , "Bravo,50 Coins Added", Toast.LENGTH_LONG , true).show()
+                        startActivity(Intent(activityContext , MainActivity2::class.java).putExtra("codee",25))
+                           activity?.finish()
+
+                    }
+                    override fun onRewardedAdFailedToShow(errorCode: Int) {
+                        rewardedAd.loadAd(AdRequest.Builder().build(), adLoadCallback)
+                    }
+                }
+                rewardedAd.show(activityContext, adCallback)
+            }
+            else {
+             Toasty.error(requireContext(),"try after some time" , Toast.LENGTH_SHORT , true).show()
+                rewardedAd.loadAd(AdRequest.Builder().build(), adLoadCallback)
+             v.how.visibility = View.VISIBLE
+            }
+
+        }
+        val g = this.activity?.getSharedPreferences("sp", Context.MODE_PRIVATE)
+        val ggg = g?.getInt("coin",0)
+        v.balance.text = ggg.toString()
+
+
+
+
+
+
+
+
+
+
+        return v
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment addcoin.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            addcoin().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
     }
-}
+
+
+

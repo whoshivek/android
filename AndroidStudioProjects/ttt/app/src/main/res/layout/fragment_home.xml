@@ -37,12 +37,12 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="75dp"
+            android:layout_height="40dp"
             android:src="@drawable/discord"/>
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/dlogo"
 
             android:layout_gravity="center_horizontal"/>
@@ -54,7 +54,7 @@
             android:background="#000000"/>
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="75dp"
+            android:layout_height="40dp"
             android:src="@drawable/supportus"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,12 +63,12 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/patreon"/>
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/paypal"/>
         </LinearLayout>
     </LinearLayout>

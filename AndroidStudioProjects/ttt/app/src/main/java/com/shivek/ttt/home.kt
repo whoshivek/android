@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.shivek.mymallfinal.adapterandmodels.categoryadapter
 import com.shivek.mymallfinal.adapterandmodels.categorymodel
 import com.shivek.mymallfinal.adapterandmodels.viewpageradapter
@@ -45,8 +47,9 @@ val categorylist = arrayListOf<categorymodel>()
 
     private fun clickk(viewpagermodel: viewpagermodel) {
 
-
-              startActivity(Intent(activity , chapter::class.java))
+                        val k = viewpagermodel.vname
+        val j = viewpagermodel.b1
+              startActivity(Intent(activity , chapter::class.java).putExtra("namee",k).putExtra("kame",j))
     }
 
     @SuppressLint("WrongConstant")
@@ -57,27 +60,17 @@ val categorylist = arrayListOf<categorymodel>()
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_home, container, false)
 
-        FirebaseFirestore.getInstance().collection("category").orderBy("index").get()
-            .addOnCompleteListener {
-                if (it.isSuccessful)
-                {
-                    for (d in it.result!!){
-                        categorylist.add(categorymodel(link = d.get("cimage") as String? ,
-                            text =  d.get("name") as String?
-                        ))
-                        categoryadapter.notifyDataSetChanged()
+       categorylist.add(categorymodel(text = "Romance" , images = R.drawable.romance))
+        categorylist.add(categorymodel(text = "Comedy" , images =R.drawable.comedy ))
+        categorylist.add(categorymodel(text = "Shoujo", images = R.drawable.source))
+        categorylist.add(categorymodel(text = "Drama",images = R.drawable.drama))
+       categorylist.add(categorymodel(text = "School life",images = R.drawable.schoollife))
+        categorylist.add(categorymodel(text = "Shounen",images = R.drawable.giphy))
+        categorylist.add(categorymodel(text = "Action",images = R.drawable.action))
 
-                    }
-                    categoryadapter.notifyDataSetChanged()
+        categoryadapter.notifyDataSetChanged()
 
-                }
-                else{
-                    val e = it.exception?.message
-                    Toast.makeText(activity,e ,Toast.LENGTH_SHORT).show()
 
-                }
-
-            }
 
         FirebaseFirestore.getInstance().collection("viewpagerrr").orderBy("index").get()
             .addOnCompleteListener {
