@@ -9,12 +9,15 @@ import com.shivek.mymallfinal.adapterandmodels.viewpagermodel
 import com.shivek.ttt.R
 import kotlinx.android.synthetic.main.listrecycler.view.*
 
-class listrecycle(val list : List<viewpagermodel> , val click : (viewpagermodel)->Unit) : RecyclerView.Adapter<listrecycle.lholder>()
+class listrecycle(val list : List<viewpagermodel> , val click : (viewpagermodel)->Unit , val clickkk : (viewpagermodel)->Unit
+,val clickkkk: (viewpagermodel) -> Unit) : RecyclerView.Adapter<listrecycle.lholder>()
 {
     class lholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(
             viewpagermodel: viewpagermodel,
-            click: (viewpagermodel) -> Unit
+            click: (viewpagermodel) -> Unit,
+            clickkk: (viewpagermodel) -> Unit,
+            clickkkk: (viewpagermodel) -> Unit
         ) {
            with(itemView)
            {
@@ -22,11 +25,23 @@ class listrecycle(val list : List<viewpagermodel> , val click : (viewpagermodel)
                ltitle.text = viewpagermodel.vname
                lbutton1.setText(viewpagermodel.b1)
                lbutton2.setText(viewpagermodel.b2)
-               ldate1.text = viewpagermodel.b1date
-               ldate2.text = viewpagermodel.b2date
+               if (lbutton2.text.isNullOrBlank())
+               {
+                   lbutton2.visibility = View.GONE
+               }
+               if (ltitle.text.isNullOrBlank())
+               {
+                   mainn.visibility = View.GONE
+               }
              lbutton1.setOnClickListener {
                  click(viewpagermodel)
              }
+               lbutton2.setOnClickListener {
+                   clickkk(viewpagermodel)
+               }
+               itemView.setOnClickListener {
+                   clickkkk(viewpagermodel)
+               }
            }
         }
     }
@@ -40,7 +55,7 @@ class listrecycle(val list : List<viewpagermodel> , val click : (viewpagermodel)
     }
 
     override fun onBindViewHolder(holder: listrecycle.lholder, position: Int) {
-        holder.bind(list[position] , click)
+        holder.bind(list[position] , click , clickkk , clickkkk)
     }
 
 

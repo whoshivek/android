@@ -51,7 +51,7 @@ class MainActivity2 : AppCompatActivity() {
         drawerLayout = findViewById(R.id.drawer)
 
         rewardedAd = RewardedAd(this,
-            "ca-app-pub-3940256099942544/5224354917")
+            "ca-app-pub-7686984213722052/5266706419")
         val adLoadCallback = object: RewardedAdLoadCallback() {
             override fun onRewardedAdLoaded() {
 
@@ -86,27 +86,37 @@ navView.setNavigationItemSelectedListener {
             current = 1
             navv.text = "About Us"
                     loadfragment(Aboutus())
-            drawerLayout.closeDrawer(Gravity.START)
+
             true
         }
         R.id.nav_home ->{
             navv.text = "Twilight Scans"
             c=1
+            current=0
             loadfragment(home())
-            drawerLayout.closeDrawer(Gravity.START)
+
             true
         }
 R.id.nav_comicbook ->{
     current=1
     navv.text = "Add Coins"
     loadfragment(addcoin())
-    drawerLayout.closeDrawer(Gravity.START)
+
     true
 }
+        R.id.nav_contactus ->{
+            current=1
+            navv.text = "Contact Us"
+            loadfragment(contactus())
+
+            true
+        }
 
         else ->
             false
     }
+    drawerLayout.closeDrawer(Gravity.START)
+    return@setNavigationItemSelectedListener true
 }
           val g = getSharedPreferences("sp",Context.MODE_PRIVATE)
         val ggg = g.getInt("coin",0)
@@ -162,27 +172,33 @@ if (c==25) {
     }
 
     private fun loadfragment(home: Fragment) {
-          supportFragmentManager
-              .beginTransaction()
-              .replace(R.id.container , home)
-              .addToBackStack(null)
-              .commit()
+        if(supportFragmentManager.findFragmentById(R.id.container) != null) {
+            supportFragmentManager
+                .beginTransaction().
+                remove(supportFragmentManager.findFragmentById(R.id.container)!!).commit();
+        }
+                supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, home)
+            .commit();
     }
 
 
     override fun onBackPressed() {
         if (current==1)
         {
-navv.text = "Twilight Scans"
+            navv.text = "Twilight Scans"
             nav_view.menu.getItem(0).setChecked(true)
-
             current=0
-     loadfragment(home())
-            }
+            loadfragment(home())
+        }
         else
         {
+
+
             exitdilaog()
         }
+
     }
 
 
@@ -207,7 +223,18 @@ navv.text = "Twilight Scans"
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.search,menu)
+
         return true
     }
 
+    override fun onResume() {
+        super.onResume()
+        val g = getSharedPreferences("sp",Context.MODE_PRIVATE)
+        val ggg = g.getInt("coin",0)
+
+        val v = nav_view.getHeaderView(0)
+        v.headerm.text = "COINS:${ggg}"
+
+
+    }
 }

@@ -29,6 +29,8 @@
         android:theme="@style/AppTheme.AppBarOverlay"
         tools:targetApi="p">
 
+
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:elevation="50dp"
@@ -38,6 +40,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/toolbar"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -65,6 +69,7 @@
 
 <FrameLayout
     android:layout_width="match_parent"
+    android:elevation="0dp"
     android:layout_height="match_parent"
     android:id="@+id/container"/>
 
@@ -73,7 +78,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:elevation="50dp"
+        android:elevation="5dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom">
 
@@ -84,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+            ads:adUnitId="ca-app-pub-7686984213722052/9670460633">
         </com.google.android.gms.ads.AdView>
 
 

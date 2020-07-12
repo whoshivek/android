@@ -2,7 +2,10 @@
 <LinearLayout
     android:orientation="horizontal"
     android:layout_margin="4dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     android:background="#FFFFFF"
+    android:id="@+id/mainn"
     android:elevation="5dp"
     android:padding="5dp"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
@@ -60,7 +63,7 @@
                 android:ellipsize="end"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="20 , july 2000"/>
+                android:text=""/>
 
 
         </LinearLayout>
@@ -91,7 +94,7 @@
                 android:id="@+id/ldate2"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="20 , july 2000"/>
+                android:text=""/>
 
 
         </LinearLayout>

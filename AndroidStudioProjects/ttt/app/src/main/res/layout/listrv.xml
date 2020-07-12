@@ -8,18 +8,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="4dp"
+    android:gravity="center"
     android:orientation="horizontal">
 
     <ImageView
-        android:layout_width="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_height="70dp"
+        android:layout_width="50dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="2dp"
+        android:layout_height="50dp"
         android:src="@drawable/union"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="APP EXCLUSIVE CONTENT"
-        android:textSize="22dp"
+        android:text="COLLECTIONS"
+        android:textSize="21dp"
         android:id="@+id/listtext"
         android:maxLines="1"
         android:ellipsize="end"
@@ -32,10 +34,15 @@
         android:layout_height="1dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:background="#000000"/>
+        android:background="#40000000"/>
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+
         android:layout_height="match_parent"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"

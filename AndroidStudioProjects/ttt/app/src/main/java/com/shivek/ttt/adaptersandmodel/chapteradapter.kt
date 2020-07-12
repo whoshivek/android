@@ -1,18 +1,23 @@
 package com.shivek.ttt.adaptersandmodel
 
+import android.graphics.Bitmap
+import android.transition.Transition
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.target.SimpleTarget
 import com.google.firebase.storage.FirebaseStorage
 import com.shivek.mymallfinal.adapterandmodels.categorymodel
 import com.shivek.ttt.R
 import kotlinx.android.synthetic.main.chapterrv.*
 import kotlinx.android.synthetic.main.chapterrv.view.*
 import kotlinx.android.synthetic.main.rv_category.view.*
+import kotlinx.android.synthetic.main.viewpagerrv.view.*
 
 class chapteradapter(val list : List<categorymodel>) : RecyclerView.Adapter<chapteradapter.AdapterHolder>()
 {
@@ -53,7 +58,9 @@ class chapteradapter(val list : List<categorymodel>) : RecyclerView.Adapter<chap
                         it
                     )
                 }
-                GlideApp.with(this).asBitmap().diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).override(1600 ,30000).placeholder(circularProgressDrawable).load(f).into(container)
+               GlideApp.with(this).asBitmap().diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).load(f).override(1600,10000 ).placeholder(circularProgressDrawable).into(container)
+
+
 
 
 

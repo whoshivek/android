@@ -33,7 +33,7 @@
     android:layout_width="match_parent"
     android:layout_height="1dp"
     android:layout_margin="8dp"
-    android:background="#000000"/>
+    android:background="#40000000"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_margin="8dp"
-        android:background="#000000"/>
+        android:background="#40000000"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,7 +80,7 @@ At last, We are doing this because many Chinese, Korean, and Japanese comics are
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_margin="8dp"
-        android:background="#000000"/>
+        android:background="#40000000"/>
 
      <LinearLayout
          android:layout_width="match_parent"
@@ -95,6 +95,7 @@ At last, We are doing this because many Chinese, Korean, and Japanese comics are
 <ImageView
     android:layout_width="50dp"
     android:layout_height="50dp"
+    android:id="@+id/discord"
     android:src="@drawable/dlogo"
 
     android:layout_gravity="center_horizontal"/>
@@ -103,7 +104,7 @@ At last, We are doing this because many Chinese, Korean, and Japanese comics are
              android:layout_height="1dp"
              android:layout_marginBottom="10dp"
              android:layout_margin="8dp"
-             android:background="#000000"/>
+             android:background="#40000000"/>
 <ImageView
     android:layout_width="wrap_content"
     android:layout_height="40dp"
@@ -117,10 +118,12 @@ At last, We are doing this because many Chinese, Korean, and Japanese comics are
          <ImageView
              android:layout_width="50dp"
              android:layout_height="50dp"
+             android:id="@+id/patreon"
              android:src="@drawable/patreon"/>
              <ImageView
                  android:layout_width="50dp"
                  android:layout_height="50dp"
+                 android:id="@+id/paypal"
                  android:src="@drawable/paypal"/>
          </LinearLayout>
      </LinearLayout>
