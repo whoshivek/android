@@ -4,13 +4,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.shivek.ttt.R
-import kotlinx.android.synthetic.main.listrecycler.view.*
+import com.wangpeiyuan.cycleviewpager2.adapter.CyclePagerAdapter
+import kotlinx.android.synthetic.main.viewpager.*
 
 import kotlinx.android.synthetic.main.viewpagerrv.view.*
 
-class viewpageradapter(val list : List<viewpagermodel>,val click : (viewpagermodel)->Unit , val clickkk : (viewpagermodel)->Unit): RecyclerView.Adapter<viewpageradapter.viewholder>()
+class viewpageradapter(val list : ArrayList<viewpagermodel>,val click : (viewpagermodel)->Unit , val clickkk : (viewpagermodel)->Unit
+,val vclick : (viewpagermodel)->Unit ): CyclePagerAdapter<viewpageradapter.viewholder>()
 {
 
 
@@ -23,8 +26,8 @@ class viewpageradapter(val list : List<viewpagermodel>,val click : (viewpagermod
             )
         )
     }
-private val limit = 4
-    override fun getItemCount(): Int {
+private val limit = 6
+    override fun getRealItemCount(): Int {
         if(list.size > limit){
             return limit;
         }
@@ -35,14 +38,16 @@ private val limit = 4
     }
 
 
-    override fun onBindViewHolder(holder: viewholder, position: Int) {
-        holder.bind(list[position] , click,clickkk)
+    override fun onBindRealViewHolder(holder: viewholder, position: Int) {
+        holder.bind(list[position] , click,clickkk,vclick)
+
     }
     class viewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(
             modelviewpager: viewpagermodel,
             click: (viewpagermodel) -> Unit,
-            clickkk: (viewpagermodel) -> Unit
+            clickkk: (viewpagermodel) -> Unit,
+            vclick: (viewpagermodel) -> Unit
         ) {
             with(itemView)
             {
@@ -57,11 +62,22 @@ private val limit = 4
                 bbb.setOnClickListener {
                     clickkk(modelviewpager)
                 }
-
+                if (bbb.text.isNullOrBlank())
+                {
+                    bbb.visibility = View.GONE
+                }
+                  imageviewpager.setOnClickListener {
+                      vclick(modelviewpager)
+                  }
+                vname.setOnClickListener {
+                    vclick(modelviewpager)
+                }
             }
         }
 
     }
+
+
 
 }
 

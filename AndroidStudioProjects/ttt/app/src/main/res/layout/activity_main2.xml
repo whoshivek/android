@@ -10,11 +10,7 @@
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<nl.dionsegijn.konfetti.KonfettiView
-    android:layout_width="match_parent"
-    android:id="@+id/kk"
-    android:elevation="10dp"
-    android:layout_height="match_parent"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-7686984213722052/9670460633">
+            ads:adUnitId="ca-app-pub-8822526167094562/9328491929">
         </com.google.android.gms.ads.AdView>
 
 

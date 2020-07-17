@@ -13,6 +13,8 @@
     <ImageView
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         android:layout_gravity="center_horizontal"
         android:id="@+id/imageviewpager"
         android:layout_height="match_parent"
@@ -35,6 +37,8 @@
             android:fontFamily="sans-serif-black"
             android:gravity="center_horizontal"
             android:maxLines="2"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:text="Spicy female boss hi hjhi hihinjhhi ujhu jhu uh"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />

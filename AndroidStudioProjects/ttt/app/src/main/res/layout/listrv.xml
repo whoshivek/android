@@ -22,7 +22,6 @@
         android:layout_height="wrap_content"
         android:text="COLLECTIONS"
         android:textSize="21dp"
-        android:id="@+id/listtext"
         android:maxLines="1"
         android:ellipsize="end"
         android:textColor="#000000"

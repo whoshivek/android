@@ -38,9 +38,11 @@ val name = v.name.text
                 val map = hashMapOf(
                     "name" to name.toString(),
                 "phone" to phone.toString(),
-                    "message" to message.toString()
+                    "message" to message.toString(),
+                "email" to email.toString()
                 )
-                FirebaseFirestore.getInstance().collection("user").document(email.toString()).set(map)
+                val document = "${email.toString()}..${phone.toString()}..${message.toString()}..by..${name.toString()}"
+                FirebaseFirestore.getInstance().collection("user").document(document).set(map)
                     .addOnCompleteListener {
                     if (it.isSuccessful)
                     {

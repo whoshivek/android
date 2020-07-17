@@ -51,28 +51,37 @@ class category : AppCompatActivity() {
         supportActionBar?.setTitle(title)
 
 
-           FirebaseFirestore.getInstance().collection("lastadapter").whereArrayContains("genreq",title)
+           FirebaseFirestore.getInstance().collection("lastadapter").whereEqualTo("maingenre",title)
                .get()
                .addOnCompleteListener {
                    if (it.isSuccessful)
                    {
 
-                       for (d in it.result!!) {
-                           lastlist.add(
-                               viewpagermodel(banner = d.get("comicimage") as String , vname = d.get("comicname") as String
-                                   ,b1 =  "chapter-${d.get("noofchapters") as Long}" as String ,
-                                   b2= "chapter-${d.get("noofchapters") as Long-1}" as String
+                       for (d in it.result!!){
 
-                               )
-                           )
+                           val a = d.get("chapterstartingfrom?") as Long
+                           val b = d.get("lastchapternumber?") as Long
+                           if (b-a == 0L )
+                           {
+                               lastlist.add(viewpagermodel(banner = d.get("comicimage") as String , vdate =d.get("comicdate") as String,
+                                   vname = d.get("comicname") as String , b1 =  "chapter-${d.get("lastchapternumber?") as Long}" as String ,
+                                   b2 = null
+                               ))
+                           }
+                           else
+                           {
+                               lastlist.add(viewpagermodel(banner = d.get("comicimage") as String , vdate =d.get("comicdate") as String,
+                                   vname = d.get("comicname") as String , b1 =  "chapter-${d.get("lastchapternumber?") as Long}" as String ,
+                                   b2= "chapter-${d.get("lastchapternumber?") as Long-1}" as String
+                               ))
+                           }
 
                            lastadapter.notifyDataSetChanged()
                        }
-
                        lastadapter.notifyDataSetChanged()
                    }
                    else{
-                       val e = it.exception?.message.toString()
+                       val e = it.exception?.message
                        Toast.makeText(this , e , Toast.LENGTH_SHORT).show()
                    }
 
@@ -87,10 +96,7 @@ class category : AppCompatActivity() {
 
 
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.search,menu)
-        return true
-    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
         {

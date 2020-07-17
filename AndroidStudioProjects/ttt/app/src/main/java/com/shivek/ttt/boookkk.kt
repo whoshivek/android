@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import com.bumptech.glide.Glide
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import com.shivek.ttt.adaptersandmodel.productviewpager_vp
@@ -36,7 +37,8 @@ val ct : CollapsingToolbarLayout = findViewById(R.id.toolbar_layout)
                 .addOnCompleteListener {
                     if (it.isSuccessful)
                     {
-                                val bookchapter = it.result.get("noofchapters")
+                        Glide.with(this).load(it.result.get("comichalfcover")).into(halfimage)
+                                val bookchapter = it.result.get("lastchapternumber?")
                         val image = it.result.get("comicimage") as String
                         readlatest.setOnClickListener {
                             startActivity(Intent(this,chapter::class.java).putExtra("hii",c)

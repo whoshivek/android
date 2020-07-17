@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.core.os.postDelayed
@@ -25,6 +26,7 @@ import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.shivek.mymallfinal.adapterandmodels.viewpagermodel
 import com.shivek.ttt.adaptersandmodel.listrecycle
 import es.dmoral.toasty.Toasty
+import kotlinx.android.synthetic.main.activity_main2.*
 import kotlinx.android.synthetic.main.fragment_addcoin.*
 import kotlinx.android.synthetic.main.fragment_addcoin.view.*
 import kotlinx.android.synthetic.main.fragment_addcoin.view.discord
@@ -36,6 +38,7 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 class addcoin : Fragment() {
 
 
+    private lateinit var text : TextView
     private lateinit var rewardedAd: RewardedAd
 
     private lateinit var mRewardedVideoAd: RewardedVideoAd
@@ -46,7 +49,7 @@ class addcoin : Fragment() {
     ): View? {
        val v= inflater.inflate(R.layout.fragment_addcoin, container, false)
         rewardedAd = RewardedAd(activity,
-            "ca-app-pub-7686984213722052/5266706419")
+            "ca-app-pub-8822526167094562/5006103533")
         val adLoadCallback = object: RewardedAdLoadCallback() {
             override fun onRewardedAdLoaded() {
 
@@ -65,7 +68,6 @@ class addcoin : Fragment() {
 
                     }
                     override fun onRewardedAdClosed() {
-                        startActivity(Intent(activityContext , MainActivity2::class.java))
                         rewardedAd.loadAd(AdRequest.Builder().build(), adLoadCallback)
                         v.how.visibility = View.GONE
                     }
@@ -73,21 +75,14 @@ class addcoin : Fragment() {
                         val g = this@addcoin.activity?.getSharedPreferences("sp", Context.MODE_PRIVATE)
                         val edit = g?.edit()
 
-                        val comicname =activity?.intent?.getStringExtra("comicname")
-                        val imagelink =activity?.intent?.getStringExtra("imagelink")
-
-                        val chaptername =activity?.intent?.getStringExtra("chaptername")
                         chapter.coins = chapter.coins + 100
                         edit?.putInt("coin", chapter.coins)
                         edit?.apply()
                          Toasty.success(activityContext , "Bravo,100 Coins Added", Toast.LENGTH_LONG , true).show()
-                        startActivity(Intent(activityContext , MainActivity2::class.java).putExtra("codee",25)
-                            .putExtra("comicname",comicname)
-                            .putExtra("chaptername",chaptername)
-                            .putExtra("imagelink",imagelink)
 
-                        )
-                        activity?.finish()
+
+
+
 
 
 
@@ -107,6 +102,7 @@ class addcoin : Fragment() {
         }
         val g = this.activity?.getSharedPreferences("sp", Context.MODE_PRIVATE)
         val ggg = g?.getInt("coin",0)
+        text = v.balance
         v.balance.text = ggg.toString()
 
 
@@ -174,7 +170,43 @@ val list = arrayListOf<viewpagermodel>()
 
 
     private fun clickkk(viewpagermodel: viewpagermodel) {
-        startActivity(Intent(activity,boookkk::class.java))
+        val k = viewpagermodel.vname
+        val j = viewpagermodel.b1
+        startActivity(Intent(activity , chapter::class.java).putExtra("hii",k).putExtra("hi",j).putExtra("image",viewpagermodel.banner))
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        rewardedAd = RewardedAd(activity,
+            "ca-app-pub-8822526167094562/5006103533")
+        val adLoadCallback = object: RewardedAdLoadCallback() {
+            override fun onRewardedAdLoaded() {
+
+            }
+            override fun onRewardedAdFailedToLoad(errorCode: Int) {
+
+            }
+        }
+        rewardedAd.loadAd(AdRequest.Builder().build(), adLoadCallback)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        rewardedAd = RewardedAd(activity,
+            "ca-app-pub-8822526167094562/5006103533")
+        val adLoadCallback = object: RewardedAdLoadCallback() {
+            override fun onRewardedAdLoaded() {
+
+            }
+            override fun onRewardedAdFailedToLoad(errorCode: Int) {
+
+            }
+        }
+        rewardedAd.loadAd(AdRequest.Builder().build(), adLoadCallback)
+        val g = this.activity?.getSharedPreferences("sp", Context.MODE_PRIVATE)
+        val ggg = g?.getInt("coin",0)
+        text.text = ggg.toString()
     }
 
 

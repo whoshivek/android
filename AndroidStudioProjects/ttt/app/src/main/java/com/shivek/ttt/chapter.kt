@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.gdacciaro.iOSDialog.iOSDialogBuilder
 import com.gdacciaro.iOSDialog.iOSDialogClickListener
+import com.google.firebase.firestore.FirebaseFirestore
 
 import com.google.firebase.storage.FirebaseStorage
 import com.shivek.mymallfinal.adapterandmodels.categorymodel
@@ -21,12 +22,14 @@ import kotlinx.android.synthetic.main.activity_chapter.*
 
 class chapter : AppCompatActivity() {
 
+
+    var previous : String? = null
     val list = arrayListOf<categorymodel>()
     val adapter = chapteradapter(list)
     val spinner = arrayListOf<String>()
-
+var proceed = 1
     companion object {
-        var coins: Int = 1000
+        var coins: Int = 0
         var usedcoins: Int = 100
     }
 
@@ -108,13 +111,22 @@ class chapter : AppCompatActivity() {
 
             }
 
-        spinner.add(0, "Choose Chapter")
+        spinner.add(0, "Go to Chapter")
 
+FirebaseFirestore.getInstance().collection("lastadapter").document(chapter).get()
+    .addOnCompleteListener {
+        if (it.isSuccessful)
+        {
+            val eee = it.result.get("chapterstartingfrom?") as Long
+            val dddd = it.result.get("lastchapternumber?") as Long
+            for (i in eee..dddd) {
+                spinner.add("chapter-${i}")
 
-        for (i in 1..23) {
-            spinner.add("chapter-${i}")
+            }
         }
-        setspinner()
+    }
+
+setspinner()
 
         spinnerr.onItemSelectedListener = object : AdapterView.OnItemClickListener,
             AdapterView.OnItemSelectedListener {
@@ -152,7 +164,7 @@ class chapter : AppCompatActivity() {
     private fun alertbox(cc: String) {
         val image = intent.getStringExtra("image")
         val sp = getSharedPreferences("sp", Context.MODE_PRIVATE)
-        val title = intent.getStringExtra("hi")
+        val title = intent.getStringExtra("hii")
         iOSDialogBuilder(this).apply {
             setTitle("Available Coins:${coins}")
 
@@ -167,13 +179,22 @@ class chapter : AppCompatActivity() {
                     edit.apply()
                     loadfragment(cccc(cc))
                     it.dismiss()
+                    proceed = 125
+                    previous = cc
+
                 })
                 setNegativeListener("BACK", iOSDialogClickListener {
                     it.dismiss()
                     spinnerr.setSelection(0)
-                    val titleee = intent.getStringExtra("hi")
-                    supportActionBar?.setTitle(titleee)
-
+                   if (proceed==1)
+                   {
+                       val titleee = intent.getStringExtra("hi")
+                       supportActionBar?.setTitle(titleee)
+                   }
+                    if (proceed==125)
+                    {
+                        supportActionBar?.setTitle(previous)
+                    }
                 })
 
             }
@@ -182,8 +203,8 @@ class chapter : AppCompatActivity() {
                 setPositiveListener("ADD COINS", {
                     startActivity(
                         Intent(this@chapter, MainActivity2::class.java).putExtra("code", 0)
-                            .putExtra("chaptername", title)
-                            .putExtra("comicname", cc)
+                            .putExtra("chaptername",cc )
+                            .putExtra("comicname",title )
                             .putExtra("imagelink", image)
                     )
 
@@ -193,6 +214,17 @@ class chapter : AppCompatActivity() {
                 setNegativeListener("BACK", iOSDialogClickListener {
                     it.dismiss()
                     spinnerr.setSelection(0)
+                    if (proceed==1)
+                    {
+                        val titleee = intent.getStringExtra("hi")
+                        supportActionBar?.setTitle(titleee)
+                    }
+                    if (proceed==125)
+                    {
+                        supportActionBar?.setTitle(cc)
+                    }
+
+
                 })
 
 

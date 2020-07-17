@@ -163,7 +163,8 @@
         android:textSize="15sp"
         android:layout_height="wrap_content"
         android:text="Each Chapter will cost you 100 coins,so you can add more coins by simply pressing the 'ADD COINS' button.
-\n\nTip: if you want to read 10 chapters,first collect 1000 coins and then read without any disturbance."
+\n\nTip: if you want to read 10 chapters,first collect 1000 coins and then read without any disturbance.
+\n\nFor Unlimited Coins(Premium package), go to 'CONTACT US' section and leave a message. "
         />
     <View
         android:layout_width="match_parent"

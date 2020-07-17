@@ -62,10 +62,11 @@ val list = arrayListOf<viewpagermodel>()
                     adapater.notifyDataSetChanged()
                     for (d in it.result)
                     {
-                        val dd = d.get("noofchapters") as Long
-                        for (i in 0..dd)
+                        val dd = d.get("lastchapternumber?") as Long
+                        val ee = d.get("chapterstartingfrom?") as Long
+                        for (i in ee..dd)
                         {
-                            list.add(viewpagermodel(vname = "${i}." , vdate =  "chapter-${i}"))
+                            list.add(viewpagermodel(vname = "\t• " , vdate =  "chapter-${i}"))
                         adapater.notifyDataSetChanged()
                         }
                         adapater.notifyDataSetChanged()

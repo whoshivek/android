@@ -19,13 +19,20 @@
 
 
     </com.google.android.material.appbar.MaterialToolbar>
-
+<androidx.core.widget.NestedScrollView
+    android:scrollbars="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:id="@+id/listrv"/>
-
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

@@ -2,17 +2,21 @@ package com.shivek.ttt
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.FirebaseFirestoreSettings
@@ -23,7 +27,9 @@ import com.shivek.mymallfinal.adapterandmodels.viewpagermodel
 import com.shivek.ttt.adaptersandmodel.gridadapter
 import com.shivek.ttt.adaptersandmodel.listrecycle
 import com.shivek.ttt.adaptersandmodel.productviewpager_vp
-import io.opencensus.trace.Link
+import com.wangpeiyuan.cycleviewpager2.CycleViewPager2
+import com.wangpeiyuan.cycleviewpager2.CycleViewPager2Helper
+import com.wangpeiyuan.cycleviewpager2.indicator.DotsIndicator
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.listrv.view.*
 import kotlinx.android.synthetic.main.rv_category.*
@@ -31,9 +37,10 @@ import kotlinx.android.synthetic.main.viewpager.*
 import kotlinx.android.synthetic.main.viewpager.view.*
 
 
+
 class home : Fragment() {
 
-
+ lateinit var viewpager : CycleViewPager2
 val categorylist = arrayListOf<categorymodel>()
     val categoryadapter = categoryadapter(categorylist , {categorymodel -> click(categorymodel) })
 
@@ -42,8 +49,12 @@ val categorylist = arrayListOf<categorymodel>()
                             val s = categorymodel.text
         startActivity(Intent(activity , category::class.java).putExtra("hello",s))
     }
-    val viewlist = arrayListOf<viewpagermodel>()
-    val viewAdapter =  viewpageradapter(viewlist,{viewpagermodel -> vclickk(viewpagermodel) } , {viewpagermodel -> vclickkk(viewpagermodel)})
+
+
+
+    private fun viewclick(viewpagermodel: viewpagermodel) {
+        startActivity(Intent(activity,boookkk::class.java).putExtra("bookname",viewpagermodel.vname))
+    }
 
     private fun vclickkk(viewpagermodel: viewpagermodel) {
         val k = viewpagermodel.vname
@@ -58,7 +69,9 @@ val categorylist = arrayListOf<categorymodel>()
         startActivity(Intent(activity , chapter::class.java).putExtra("hii",k).putExtra("hi",j).putExtra("image",viewpagermodel.banner))
     }
 
-    val lastlist = arrayListOf<viewpagermodel>()
+
+        val lastlist = arrayListOf<viewpagermodel>()
+
     val lastadapter = gridadapter(lastlist , { viewpagermodel -> clickk(viewpagermodel
     ) } , {viewpagermodel -> clickkk(viewpagermodel)  },{viewpagermodel -> sclick(viewpagermodel) })
 
@@ -96,20 +109,35 @@ val categorylist = arrayListOf<categorymodel>()
         categorylist.add(categorymodel(text = "Action",images = R.drawable.action))
 
         categoryadapter.notifyDataSetChanged()
+        val viewlist = arrayListOf<viewpagermodel>()
+        val viewAdapter =  viewpageradapter(viewlist,{viewpagermodel -> vclickk(viewpagermodel) } , {viewpagermodel -> vclickkk(viewpagermodel)} ,
+            {viewpagermodel -> viewclick(viewpagermodel) })
 
 
-
-        FirebaseFirestore.getInstance().collection("lastadapter").orderBy("index").get()
+        FirebaseFirestore.getInstance().collection("lastadapter").orderBy("Timestamp").get()
             .addOnCompleteListener {
             if (it.isSuccessful)
             {
 
                 for (d in it.result!!){
 
-                    viewlist.add(viewpagermodel(banner = d.get("comicimage") as String , vdate ="today date" as String,
-                    vname = d.get("comicname") as String , b1 =  "chapter-${d.get("noofchapters") as Long}" as String ,
-                        b2= "chapter-${d.get("noofchapters") as Long-1}" as String
-                        ))
+                    val a = d.get("chapterstartingfrom?") as Long
+                    val b = d.get("lastchapternumber?") as Long
+                       if (b-a == 0L )
+                       {
+                           viewlist.add(viewpagermodel(banner = d.get("comicimage") as String , vdate =d.get("comicdate") as String,
+                               vname = d.get("comicname") as String , b1 =  "chapter-${d.get("lastchapternumber?") as Long}" as String ,
+                               b2 = null
+                           ))
+                       }
+                    else
+                       {
+                           viewlist.add(viewpagermodel(banner = d.get("comicimage") as String , vdate =d.get("comicdate") as String,
+                               vname = d.get("comicname") as String , b1 =  "chapter-${d.get("lastchapternumber?") as Long}" as String ,
+                               b2= "chapter-${d.get("lastchapternumber?") as Long-1}" as String
+                           ))
+                       }
+
                     viewAdapter.notifyDataSetChanged()
                 }
                 viewAdapter.notifyDataSetChanged()
@@ -119,16 +147,15 @@ val categorylist = arrayListOf<categorymodel>()
                 Toast.makeText(activity , e , Toast.LENGTH_SHORT).show()
             }
             }
+viewpager = v.viewpagerrv
 
-
-        FirebaseFirestore.getInstance().collection("lastadapter").orderBy("index").get()
+        FirebaseFirestore.getInstance().collection("lastadapter").orderBy("Timestamp").get()
             .addOnCompleteListener {
                 if (it.isSuccessful)
                 {
 
                     for (d in it.result!!) {
                         lastlist.add(viewpagermodel( banner = d.get("comicimage") as String,vname = d.get("comicname") as String
-                        ,b1 ="chapter-${d.get("noofchapters") as Long}" as String,b2 ="chapter-${d.get("noofchapters") as Long -1}" as String
 
                         ))
 
@@ -160,13 +187,29 @@ v.category.layoutManager = LinearLayoutManager(activity , OrientationHelper.HORI
      //   viewlist.add(viewpagermodel(banner = "https://i2.wp.com/twilightscans.com/wp-content/uploads/2020/06/50117.jpg?resize=125%2C180&ssl=1"))
        // viewlist.add(viewpagermodel(banner = "https://i2.wp.com/twilightscans.com/wp-content/uploads/2020/06/50117.jpg?resize=125%2C180&ssl=1"))
         //viewlist.add(viewpagermodel(banner = "https://i2.wp.com/twilightscans.com/wp-content/uploads/2020/06/50117.jpg?resize=125%2C180&ssl=1"))
+        val nextItemVisiblePx = resources.getDimension(R.dimen.viewpager_next_item_visible)
+        val currentItemHorizontalMarginPx =
+            resources.getDimension(R.dimen.viewpager_current_item_horizontal_margin)
+        val dotsRadius = resources.getDimension(R.dimen.dots_radius)
+        val dotsPadding = resources.getDimension(R.dimen.dots_padding)
+        val dotsBottomMargin = resources.getDimension(R.dimen.dots_bottom_margin)
 
-        v.viewpagerrv.adapter = viewAdapter
-        viewAdapter.notifyDataSetChanged()
-        v.indicator.setViewPager(v.viewpagerrv)
-        viewAdapter.registerAdapterDataObserver(v.indicator.adapterDataObserver)
-       v.viewpagerrv.offscreenPageLimit = 5
 
+
+        CycleViewPager2Helper(v.viewpagerrv)
+            .setAdapter(viewAdapter)
+              .setDotsIndicator(
+                dotsRadius,
+                Color.WHITE,
+                Color.parseColor("#70FFFFFF"),
+                dotsPadding,
+                0,
+                dotsBottomMargin.toInt(),
+                0,
+                DotsIndicator.Direction.CENTER
+            )
+            .setAutoTurning(5000L)
+            .build()
 
 
 
@@ -203,5 +246,17 @@ v.category.layoutManager = LinearLayoutManager(activity , OrientationHelper.HORI
 
     }
 
+    override fun onPause() {
+        super.onPause()
+        viewpager.setAutoTurning(false,0)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewpager.setAutoTurning(5000L)
+    }
+
 
 }
+
+

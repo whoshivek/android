@@ -4,13 +4,14 @@
     android:layout_height="match_parent"
     android:background="#FAFAFA"
     android:orientation="vertical"
-    android:padding="16dp">
+    >
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
+        android:padding="16dp"
         android:layout_height="match_parent"
         android:orientation="vertical">
     <TextView
@@ -79,6 +80,22 @@
         android:paddingRight="70dp"
         android:text="Submit"
         android:textColor="#000000" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="#6000D2FF"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="70dp"
+            android:layout_height="wrap_content"
+            android:text="If want our Premium Package(Unlimited Coins) or for any kind of Suggestions/Concerns just drop a message here ,and we will reach you shortly. "
+            />
+
+
 
     </LinearLayout>
 

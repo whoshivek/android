@@ -58,7 +58,6 @@
                 android:layout_width="0dp"
                 android:layout_gravity="center"
                 android:textSize="12sp"
-                android:id="@+id/ldate1"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:layout_height="wrap_content"
@@ -91,7 +90,6 @@
                 android:textSize="12sp"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:id="@+id/ldate2"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=""/>
