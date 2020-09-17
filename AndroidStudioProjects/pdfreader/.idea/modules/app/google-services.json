@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "674627909455",
+    "firebase_url": "https://pdfreaderrrrrr.firebaseio.com",
+    "project_id": "pdfreaderrrrrr",
+    "storage_bucket": "pdfreaderrrrrr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674627909455:android:10e7c4f9ab92818db1f73a",
+        "android_client_info": {
+          "package_name": "com.manish.pdfreaderrr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "674627909455-4gb59fi64hh5afetggfh1sspbh137mua.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.manish.pdfreaderrr",
+            "certificate_hash": "b899cfeb4f1fb099f56a0be40b9a177e5fab8dde"
+          }
+        },
+        {
+          "client_id": "674627909455-maja547th0j5k15b1pgh8f578143dmlk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEHOerryll2WgApRVG-drLKboFKvtREbI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "674627909455-maja547th0j5k15b1pgh8f578143dmlk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

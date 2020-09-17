@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+<androidx.appcompat.widget.AppCompatImageView
+    android:layout_width="match_parent"
+    android:padding="15dp"
+
+    android:layout_height="100dp"
+    android:layout_gravity="center_horizontal"
+    android:src="@drawable/vpn"/>
+<androidx.appcompat.widget.AppCompatTextView
+    android:layout_width="match_parent"
+    android:layout_margin="16dp"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    android:layout_height="wrap_content"
+    android:text="Terms of Service"
+    android:textColor="#000000"
+    />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_margin="16dp"
+        android:textSize="16sp"
+        android:id="@+id/termofservice"
+       android:autoLink="all"
+        android:linksClickable="true"
+        android:lineSpacingExtra="5dp"
+        android:layout_height="wrap_content"
+        android:text="@string/termofservice"
+        android:textColor="#000000"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:id="@+id/accept"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Accept"
+        android:background="@drawable/button2"
+        android:textColor="#FFFFFF"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:id="@+id/exit"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="exit"
+        android:background="@drawable/button"
+        android:textColor="#000000"/>
+</LinearLayout>

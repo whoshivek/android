@@ -12,6 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.shivek.ttt.adaptersandmodel.productviewpager_vp
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_boookkk.*
+import kotlinx.android.synthetic.main.fragment_bookname.*
 
 class boookkk : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +38,7 @@ val ct : CollapsingToolbarLayout = findViewById(R.id.toolbar_layout)
                 .addOnCompleteListener {
                     if (it.isSuccessful)
                     {
-                        Glide.with(this).load(it.result.get("comichalfcover")).into(halfimage)
+                        Glide.with(applicationContext).load(it.result.get("comichalfcover")).into(halfimage)
                                 val bookchapter = it.result.get("lastchapternumber?")
                         val image = it.result.get("comicimage") as String
                         readlatest.setOnClickListener {
@@ -67,6 +68,8 @@ val ct : CollapsingToolbarLayout = findViewById(R.id.toolbar_layout)
             android.R.id.home->{
                 onBackPressed()
                 finish()
+
+
             }
 
         }

@@ -27,21 +27,7 @@ class Aboutus : Fragment() {
             startActivity(i)
         }
 
-        v.paypal.setOnClickListener {
-            val i = Intent()
-            i.action = Intent.ACTION_VIEW
-            i.data = Uri.parse("https://www.paypal.me/MANGANIC007")
-            startActivity(i)
-        }
 
-        v.patreon.setOnClickListener {
-            val i = Intent()
-            i.action = Intent.ACTION_VIEW
-            i.data = Uri.parse("https://www.patreon.com/twilightscanlations")
-            startActivity(i)
-
-
-        }
 
         return v
 

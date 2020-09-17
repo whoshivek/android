@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#75000000"
+    android:layout_height="match_parent"
+    tools:context=".Aboutus">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Who we are?"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:layout_margin="8dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:text="We are Twilight Scans, a scanlation group. We are a group of people who loves comic to read and to work on it. We are not from the same country and many of the staff who work with us are from different countries around the world."
+/>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_margin="8dp"
+    android:background="#40000000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What do we do?"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:layout_margin="8dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:text="Especially, We translate i.e scanlates the Chinese, Korean and Japanese comic( Manhua, Manhwa, and Manga) into English version by translating its text, proofreading the translation files, cleaning the foreign text,  typesetting the translated text and lastly, Doing the last check-up as a Quality checker."
+/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="8dp"
+        android:background="#40000000"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="When Did it start?"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:layout_margin="8dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+  android:text="Well, It started on 2nd March 2020. First, I was interested in scanlation work. Then I totally went crazy over it and started my own scanlation.\n\n
+
+At last, We are doing this because many Chinese, Korean, and Japanese comics are not translated in the English versions. The author of those comics may not have time for the translation. So, we are doing it to published in the outside world in their name so, their work will be recognized. Also, here we are not selling their work, it’s free to read under the copyright rule."
+    />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="8dp"
+        android:background="#40000000"/>
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical">
+
+         <ImageView
+             android:layout_width="wrap_content"
+             android:layout_height="40dp"
+             android:src="@drawable/discord"/>
+
+<ImageView
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:id="@+id/discord"
+    android:src="@drawable/dlogo"
+android:layout_marginBottom="70dp"
+    android:layout_gravity="center_horizontal"/>
+
+     </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

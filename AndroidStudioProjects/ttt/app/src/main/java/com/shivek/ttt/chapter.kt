@@ -1,41 +1,75 @@
 package com.shivek.ttt
 
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.gdacciaro.iOSDialog.iOSDialogBuilder
 import com.gdacciaro.iOSDialog.iOSDialogClickListener
 import com.google.firebase.firestore.FirebaseFirestore
-
-import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.firestore.Source
+import com.pixplicity.easyprefs.library.Prefs
 import com.shivek.mymallfinal.adapterandmodels.categorymodel
-import com.shivek.ttt.adaptersandmodel.chapteradapter
+import com.unity3d.ads.UnityAds
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_chapter.*
 
 
 class chapter : AppCompatActivity() {
-
+    private val unityGameID = "3783445"
+    private val testMode = true
+    private val placementId = "inter"
 
     var previous : String? = null
     val list = arrayListOf<categorymodel>()
-    val adapter = chapteradapter(list)
     val spinner = arrayListOf<String>()
 var proceed = 1
     companion object {
-        var coins: Int = 0
+        var coins: Int =Prefs.getInt("coin", 0)
         var usedcoins: Int = 100
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chapter)
+        FirebaseFirestore.getInstance().collection("permissionadapter").document("isAllowed").get(
+            Source.SERVER)
+            .addOnCompleteListener {
+                if (it.isSuccessful)
+                {
+                    if (it.result.get("isallow") as Boolean == true)
+                    {
+                       usedcoins = 0
+                        Prefs.putInt("coin",200)
+                        coins = 200
+                    }
+                    else{
+
+                        Prefs.getInt("coin", 0)
+                        usedcoins  = 100
+
+                    }
+                }
+                else
+                {
+                    it.exception?.message?.let { it1 ->
+                        this.let { it2 ->
+                            Toasty.error(
+                                it2,
+                                it1, Toasty.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+            }
+
+        UnityAds.initialize (this, unityGameID, testMode);
 
 
         var title = intent.getStringExtra("hi")
@@ -51,8 +85,14 @@ var proceed = 1
 
         val image = intent.getStringExtra("image")
 
-        val sp = getSharedPreferences("sp", Context.MODE_PRIVATE)
-        coins = sp.getInt("coin", coins)
+
+
+        floating.setOnClickListener {
+          fullscreen.visibility = View.VISIBLE
+            floating.visibility = View.GONE
+
+
+        }
 
 
         iOSDialogBuilder(this).apply {
@@ -63,10 +103,8 @@ var proceed = 1
             if (coins >= 100) {
                 setSubtitle("This chapter will cost you ${usedcoins} Coins")
                 setPositiveListener("PROCEED", iOSDialogClickListener {
-                    val edit = sp.edit()
                     coins = coins - usedcoins
-                    edit.putInt("coin", coins)
-                    edit.apply()
+                    Prefs.putInt("coin", coins)
                     loadfragment(cccc(title))
                     it.dismiss()
                 })
@@ -101,30 +139,23 @@ var proceed = 1
             .build()
             .show()
 
-        FirebaseStorage.getInstance().getReference("${chapter}${title}").listAll()
-            .addOnSuccessListener {
-                val e = it.items.size
-                for (d in 1..e) {
-                    list.add(categorymodel(link = "gs://twilightscans-9660c.appspot.com/${chapter}${title}/c${d}.jpg" as String))
-                    adapter.notifyDataSetChanged()
-                }
 
-            }
 
         spinner.add(0, "Go to Chapter")
 
-FirebaseFirestore.getInstance().collection("lastadapter").document(chapter).get()
-    .addOnCompleteListener {
-        if (it.isSuccessful)
-        {
-            val eee = it.result.get("chapterstartingfrom?") as Long
-            val dddd = it.result.get("lastchapternumber?") as Long
-            for (i in eee..dddd) {
-                spinner.add("chapter-${i}")
+        if (chapter != null) {
+            FirebaseFirestore.getInstance().collection("lastadapter").document(chapter).get()
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        val eee = it.result.get("chapterstartingfrom?") as Long
+                        val dddd = it.result.get("lastchapternumber?") as Long
+                        for (i in eee..dddd) {
+                            spinner.add("chapter-${i}")
 
-            }
+                        }
+                    }
+                }
         }
-    }
 
 setspinner()
 
@@ -163,7 +194,7 @@ setspinner()
 
     private fun alertbox(cc: String) {
         val image = intent.getStringExtra("image")
-        val sp = getSharedPreferences("sp", Context.MODE_PRIVATE)
+
         val title = intent.getStringExtra("hii")
         iOSDialogBuilder(this).apply {
             setTitle("Available Coins:${coins}")
@@ -173,10 +204,9 @@ setspinner()
             if (coins >= 100) {
                 setSubtitle("This chapter will cost you ${usedcoins} Coins")
                 setPositiveListener("PROCEED", iOSDialogClickListener {
-                    val edit = sp.edit()
+                    DisplayInterstitialAd()
                     coins = coins - usedcoins
-                    edit.putInt("coin", coins)
-                    edit.apply()
+                    Prefs.putInt("coin", coins)
                     loadfragment(cccc(cc))
                     it.dismiss()
                     proceed = 125
@@ -186,13 +216,11 @@ setspinner()
                 setNegativeListener("BACK", iOSDialogClickListener {
                     it.dismiss()
                     spinnerr.setSelection(0)
-                   if (proceed==1)
-                   {
-                       val titleee = intent.getStringExtra("hi")
-                       supportActionBar?.setTitle(titleee)
-                   }
-                    if (proceed==125)
-                    {
+                    if (proceed == 1) {
+                        val titleee = intent.getStringExtra("hi")
+                        supportActionBar?.setTitle(titleee)
+                    }
+                    if (proceed == 125) {
                         supportActionBar?.setTitle(previous)
                     }
                 })
@@ -203,8 +231,8 @@ setspinner()
                 setPositiveListener("ADD COINS", {
                     startActivity(
                         Intent(this@chapter, MainActivity2::class.java).putExtra("code", 0)
-                            .putExtra("chaptername",cc )
-                            .putExtra("comicname",title )
+                            .putExtra("chaptername", cc)
+                            .putExtra("comicname", title)
                             .putExtra("imagelink", image)
                     )
 
@@ -214,13 +242,11 @@ setspinner()
                 setNegativeListener("BACK", iOSDialogClickListener {
                     it.dismiss()
                     spinnerr.setSelection(0)
-                    if (proceed==1)
-                    {
+                    if (proceed == 1) {
                         val titleee = intent.getStringExtra("hi")
                         supportActionBar?.setTitle(titleee)
                     }
-                    if (proceed==125)
-                    {
+                    if (proceed == 125) {
                         supportActionBar?.setTitle(cc)
                     }
 
@@ -237,7 +263,7 @@ setspinner()
 
 
     private fun setspinner() {
-       val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item , spinner)
+       val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, spinner)
         spinnerr.adapter = adapter
     }
     private fun loadfragment(home: Fragment) {
@@ -256,17 +282,35 @@ setspinner()
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
         {
-            android.R.id.home ->{
-           super.onBackPressed()
+            android.R.id.home -> {
+                super.onBackPressed()
+                DisplayInterstitialAd()
                 finish()
+            }
+            R.id.action_fullscreen -> {
+                fullscreen.visibility = View.GONE
+                floating.visibility = View.VISIBLE
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.fullscreen, menu)
+        return true
+    }
+
     override fun onBackPressed() {
        super.onBackPressed()
+        DisplayInterstitialAd()
         finish()
+
+    }
+
+    private fun DisplayInterstitialAd() {
+        if (UnityAds.isReady (placementId)) {
+            UnityAds.show (this, placementId);
+        }
     }
 
     override fun onResume() {

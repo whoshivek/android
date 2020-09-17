@@ -1,15 +1,20 @@
 package com.shivek.ttt
 
 import android.os.Bundle
+import android.provider.Settings
+import android.text.format.DateUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
+import com.google.firebase.database.ServerValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.inappmessaging.internal.time.SystemClock
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_contactus.*
 import kotlinx.android.synthetic.main.fragment_contactus.view.*
+import java.util.*
 
 
 class contactus : Fragment() {
@@ -39,14 +44,15 @@ val name = v.name.text
                     "name" to name.toString(),
                 "phone" to phone.toString(),
                     "message" to message.toString(),
-                "email" to email.toString()
+                "email" to email.toString(),
+                "date" to  ServerValue.TIMESTAMP.toString()
                 )
                 val document = "${email.toString()}..${phone.toString()}..${message.toString()}..by..${name.toString()}"
                 FirebaseFirestore.getInstance().collection("user").document(document).set(map)
                     .addOnCompleteListener {
                     if (it.isSuccessful)
                     {
-                        Toasty.success(requireContext() , "Submitted" ,Toasty.LENGTH_SHORT).show()
+                        Toasty.success(requireContext() , "Submitted,We will send you an E-mail" ,Toasty.LENGTH_SHORT).show()
                     }
 
                      else

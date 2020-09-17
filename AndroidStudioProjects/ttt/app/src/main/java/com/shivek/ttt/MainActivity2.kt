@@ -1,74 +1,62 @@
 package com.shivek.ttt
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.gdacciaro.iOSDialog.iOSDialogBuilder
 import com.gdacciaro.iOSDialog.iOSDialogClickListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.reward.RewardedVideoAd
-import com.google.android.gms.ads.rewarded.RewardedAd
-import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.google.android.material.navigation.NavigationView
-
+import com.pixplicity.easyprefs.library.Prefs
+import com.unity3d.ads.UnityAds
+import com.unity3d.services.banners.BannerView
+import com.unity3d.services.banners.UnityBannerSize
 import kotlinx.android.synthetic.main.activity_main2.*
+import kotlinx.android.synthetic.main.fragment_bookname.view.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
+import java.security.AccessController.getContext
 
 class MainActivity2 : AppCompatActivity() {
     private var current: Int? = null
-    private lateinit var mAdView: AdView
+
     var c = 1
 lateinit var search : SearchView
-    private lateinit var rewardedAd: RewardedAd
+
     private var menushow: Int? = null
-    private lateinit var mRewardedVideoAd: RewardedVideoAd
 
-    private val mAppUnitId: String by lazy {
+    private val unityGameID = "3783445"
 
-        "ca-app-pub-8822526167094562~6749849483"
-    }
+    private var bannerPlacement = "bannermain"
+    private lateinit var bottomBanner : BannerView
+    private val testMode = true
+
     private lateinit var drawerLayout: DrawerLayout
 
     @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
+
+        UnityAds.initialize(this, unityGameID,  testMode);
+
+
+        bottomBanner = BannerView(this, bannerPlacement, UnityBannerSize(320, 50))
+        BannerView.CENTER_HORIZONTAL
+        banner_container.addView(bottomBanner)
+        bottomBanner.load()
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         drawerLayout = findViewById(R.id.drawer)
-        MobileAds.initialize(this)
-        rewardedAd = RewardedAd(
-            this,
-            "ca-app-pub-8822526167094562/5006103533"
-        )
-        val adLoadCallback = object : RewardedAdLoadCallback() {
-            override fun onRewardedAdLoaded() {
 
-            }
 
-            override fun onRewardedAdFailedToLoad(errorCode: Int) {
 
-            }
-        }
-        rewardedAd.loadAd(AdRequest.Builder().build(), adLoadCallback)
-
-        mAdView = findViewById(R.id.adView)
-
-        initializeBannerAd(mAppUnitId)
-
-        loadBannerAd()
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -127,8 +115,8 @@ lateinit var search : SearchView
             drawerLayout.closeDrawer(Gravity.START)
             return@setNavigationItemSelectedListener true
         }
-        val g = getSharedPreferences("sp", Context.MODE_PRIVATE)
-        val ggg = g.getInt("coin", 0)
+
+        val ggg = Prefs.getInt("coin", 0)
 
         val v = navView.getHeaderView(0)
         v.headerm.text = "COINS:${ggg}"
@@ -157,14 +145,7 @@ lateinit var search : SearchView
         }
     }
 
-    private fun initializeBannerAd(mAppUnitId: String) {
-        MobileAds.initialize(this, mAppUnitId)
-    }
 
-    private fun loadBannerAd() {
-        val adRequest = AdRequest.Builder().build()
-        mAdView.loadAd(adRequest)
-    }
 
     private fun loadfragment(home: Fragment) {
         if (supportFragmentManager.findFragmentById(R.id.container) != null) {
@@ -246,14 +227,11 @@ lateinit var search : SearchView
                 }
 
                 override fun onQueryTextChange(newText: String?): Boolean {
-                 if (!newText?.isBlank()!!)
-                 {
-                     loadfragment(searchfragment(newText))
-                 }
-                    else
-                 {
-                     loadfragment(home())
-                 }
+                    if (!newText?.isBlank()!!) {
+                        loadfragment(searchfragment(newText))
+                    } else {
+                        loadfragment(home())
+                    }
                     return true
                 }
 
@@ -269,40 +247,20 @@ lateinit var search : SearchView
 
     override fun onPause() {
         super.onPause()
-        MobileAds.initialize(this)
-        loadBannerAd()
-        val adLoadCallback = object : RewardedAdLoadCallback() {
-            override fun onRewardedAdLoaded() {
 
-            }
-
-            override fun onRewardedAdFailedToLoad(errorCode: Int) {
-
-            }
-        }
-        rewardedAd.loadAd(AdRequest.Builder().build(), adLoadCallback)
     }
 
     override fun onResume() {
             super.onResume()
-            val g = getSharedPreferences("sp", Context.MODE_PRIVATE)
-            val ggg = g.getInt("coin", 0)
-            MobileAds.initialize(this)
-            loadBannerAd()
-            val adLoadCallback = object : RewardedAdLoadCallback() {
-                override fun onRewardedAdLoaded() {
 
-                }
+            val ggg = Prefs.getInt("coin", 0)
 
-                override fun onRewardedAdFailedToLoad(errorCode: Int) {
-
-                }
-            }
-            rewardedAd.loadAd(AdRequest.Builder().build(), adLoadCallback)
             val v = nav_view.getHeaderView(0)
             v.headerm.text = "COINS:${ggg}"
 
 
         }
+
+
 
 }

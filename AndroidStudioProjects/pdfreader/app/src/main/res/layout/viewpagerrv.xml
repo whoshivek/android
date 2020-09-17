@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    android:layout_marginTop="0dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginBottom="5dp"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/imageviewpager"
+        android:layout_height="match_parent"
+        android:src="@drawable/comicbook"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:id="@+id/vname"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="Spicy female boss hi hjhi hihinjhhi ujhu jhu uh"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="july 28,2000"
+            android:id="@+id/vdate"
+            android:textColor="#6A6161"
+            android:gravity="center_horizontal"
+            />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="24sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:id="@+id/bb"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="4dp"
+            android:padding="0dp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/buttontwo"
+            android:text="Chapter-13"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="24sp"
+            android:id="@+id/bbb"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="4dp"
+            android:padding="0dp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/buttontwo"
+            android:text="Chapter-14"/>
+
+
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+

@@ -20,6 +20,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.google.firebase.firestore.Source
+import com.pixplicity.easyprefs.library.Prefs
 import com.shivek.mymallfinal.adapterandmodels.categoryadapter
 import com.shivek.mymallfinal.adapterandmodels.categorymodel
 import com.shivek.mymallfinal.adapterandmodels.viewpageradapter
@@ -27,9 +29,16 @@ import com.shivek.mymallfinal.adapterandmodels.viewpagermodel
 import com.shivek.ttt.adaptersandmodel.gridadapter
 import com.shivek.ttt.adaptersandmodel.listrecycle
 import com.shivek.ttt.adaptersandmodel.productviewpager_vp
+import com.unity3d.ads.UnityAds
+import com.unity3d.services.banners.BannerView
+import com.unity3d.services.banners.UnityBannerSize
+import com.unity3d.services.banners.UnityBanners
+import com.unity3d.services.banners.UnityBanners.destroy
+import com.unity3d.services.banners.bridge.BannerBridge.destroy
 import com.wangpeiyuan.cycleviewpager2.CycleViewPager2
 import com.wangpeiyuan.cycleviewpager2.CycleViewPager2Helper
 import com.wangpeiyuan.cycleviewpager2.indicator.DotsIndicator
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.listrv.view.*
 import kotlinx.android.synthetic.main.rv_category.*
@@ -99,6 +108,12 @@ val categorylist = arrayListOf<categorymodel>()
     ): View? {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_home, container, false)
+      //  UnityAds.initialize(activity, unityGameID, null, testMode, enableLoad);
+
+
+        //bottomBanner = BannerView(activity, bannerPlacement, UnityBannerSize(320, 50))
+        //v.banner_container.addView(bottomBanner)
+        //bottomBanner.load()
 
        categorylist.add(categorymodel(text = "Romance" , images = R.drawable.romance))
         categorylist.add(categorymodel(text = "Comedy" , images =R.drawable.comedy ))
@@ -221,19 +236,7 @@ v.category.layoutManager = LinearLayoutManager(activity , OrientationHelper.HORI
             startActivity(i)
         }
 
-        v.paypal.setOnClickListener {
-            val i = Intent()
-            i.action = Intent.ACTION_VIEW
-            i.data = Uri.parse("https://www.paypal.me/MANGANIC007")
-            startActivity(i)
-        }
 
-        v.patreon.setOnClickListener {
-            val i = Intent()
-            i.action = Intent.ACTION_VIEW
-            i.data = Uri.parse("https://www.patreon.com/twilightscanlations")
-            startActivity(i)
-        }
 
 
 

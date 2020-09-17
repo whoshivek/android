@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#75000000"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".addcoin">
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:scrollbars="vertical"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bungee_shade"
+        android:gravity="center_horizontal"
+        android:text="AVAILABLE COINS"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+
+            android:src="@drawable/money"
+            android:tint="#FFC107"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/balance"
+            android:layout_marginStart="2dp"
+            android:textColor="#FFC107"
+            android:textStyle="bold"
+            android:textSize="40dp"
+            android:gravity="center_vertical"/>
+
+
+    </LinearLayout>
+
+<Button
+    android:layout_width="match_parent"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="24sp"
+    android:layout_marginEnd="24sp"
+    android:layout_height="35dp"
+    android:layout_gravity="center"
+    android:text="add coins"
+    android:id="@+id/add"
+    android:textSize="15sp"
+    android:background="@drawable/buttonfour"
+    android:textColor="#000000"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center"
+            android:text="(Watch Video and get 100 coins reward)"
+            android:textSize="10sp"
+            android:layout_margin="8dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/linear">
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_margin="8dp"
+    android:background="#40000000"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="2dp"
+                android:textSize="15sp"
+                android:id="@+id/tech"
+                android:textColor="#000000"
+                android:layout_height="wrap_content"
+                android:text="Nice Choice Reader, just collect 50 coins and enjoy reading"
+                />
+
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="4dp"
+    android:layout_height="match_parent"
+    android:id="@+id/historyrecycle"
+    />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="8dp"
+            android:background="#40000000"/>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:id="@+id/how"
+       android:visibility="gone"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Facing 'try after sometime' error?"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:layout_margin="8dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:text="No need to worry, just keep on pressing 'ADD COINS' button for 3-4 times or Check your internet Connection.
+\n\nif still facing the same issue Restart your device.
+
+\n \n Keep Supporting
+\n Keep Loving"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="8dp"
+        android:background="#40000000"/>
+   </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How it Works?"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:layout_margin="8dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:text="Each Chapter will cost you 50 coins,so you can add more coins by simply pressing the 'ADD COINS' button.
+\n\nTip: if you want to read 10 chapters,first collect 500 coins and then read without any disturbance.
+\n\nFor Unlimited Coins(Premium package), go to 'CONTACT US' section and leave a message. "
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="8dp"
+        android:background="#40000000"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@drawable/discord"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/discord"
+            android:src="@drawable/dlogo"
+android:layout_marginBottom="70dp"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

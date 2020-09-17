@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:elevation="1dp"
+    android:layout_height="match_parent"
+    tools:context=".boookkk">
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/test"
+        android:background="#000000"
+        android:fitsSystemWindows="true"
+        >
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:background="#000000"
+            android:layout_height="230dp"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/detail_toolbar" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="286dp"
+                android:id="@+id/halfimage"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="top"
+                android:background="@drawable/scrimtop"
+                android:fitsSystemWindows="true"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/scrim"/>
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+android:theme="@style/test"
+                app:popupTheme="@style/AppTheme"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+
+                app:contentInsetStartWithNavigation="0dp"
+                app:titleMarginStart="20dp">
+
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:orientation="vertical">
+        <com.google.android.material.tabs.TabLayout
+            android:layout_height="wrap_content"
+            android:id="@+id/tablayoutviewpager"
+            android:background="#000000"
+            app:tabTextColor="#FFFFFF"
+            app:tabIndicatorColor="#FFFFFF"
+            android:layout_width="match_parent">
+
+            <com.google.android.material.tabs.TabItem
+                android:text="Description"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+            <com.google.android.material.tabs.TabItem
+                android:text="Chapter"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+        </com.google.android.material.tabs.TabLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#75000000"
+            android:layout_marginBottom="70dp"
+            android:isScrollContainer="true"
+            android:id="@+id/viewpagerproductdetails"/>
+
+    </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#FFFFFF"
+            android:layout_gravity="bottom"
+            android:elevation="5dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:text="READ LATEST"
+                android:id="@+id/readlatest"
+                android:layout_margin="10dp"
+                android:textColor="#000000"
+                android:background="@drawable/buttonfour"/>
+
+        </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</FrameLayout>
